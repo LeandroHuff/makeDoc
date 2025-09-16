@@ -115,7 +115,7 @@ function parseArgs()
 function getTag()   { echo -n "${1%§*}"  ; }
 
 #§Get a value from parameter.
-function getValue() { echo -n "${1##*§}" ; }
+function getValue() { echo -n "${1/#*§}" ; }
 
 #§
 #§*integer* **main**( *vector string* **$@** ) : *none*
@@ -142,7 +142,7 @@ function main()
         logF "Could not create ( ${Destine} ) file."
         return 1
     fi
-    local value
+    local text
     while read -e line
     do
         logT "line: ${line}"
@@ -151,7 +151,6 @@ function main()
         logD "value: ${value}"
         if [ -n "${value}" ] ; then
             echo "${value}" >> "${Destine}"
-            logI "${value}"
         fi
     done < "${Source}"
     logS "Documentation generated."
