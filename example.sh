@@ -5,18 +5,19 @@
 #MD**Date**   : 2025.09.16
 #MD**Author** : Leandro - leandrohuff@programmer.net
 #MD**Brief**  : Extract MarkDown comment lines and write lines on document file,
-#MD             usual comment lines start with #, // and so on, for markdown,
-#MD             lines start with tag '#MD', all characters after the tag will
-#MD             be written on document file.
-#MD             The script program accept some parameters to controle source and
-#MD             destination files, also some behaviours and libShell setup.
+#MDusual comment lines start with #, // and so on, for markdown, lines start with
+#MDtag '#MD', is must important that the tag reside at first column in source code.
+#MDAll characters after the tag will be written on document file.
+#MDThe script program accept some parameters to controle source and destination
+#MDfiles, also some behaviours and libShell setup.
+#MDTags #MD without characters is just a newline in markdown document.
 ################################################################################
 
 # This is a normal commented line and will not be written on documentation file.
 #MD# Markdown Documentation from Source Code
 
 #MD### Functions
-#MD 
+#MD
 #MD#### Follow link and get target file.
 #MD*integer* **followLink**( *string* **link** ) : *string*
 function followLink()
@@ -24,7 +25,7 @@ function followLink()
     echo 'followLink()'
     return 0
 }
-#MD 
+#MD
 #MD#### Check parameter for block device.
 #MD*boolean* **isBlockDevice**( *string* **device** ) : *none*
 function isBlockDevice()
@@ -33,14 +34,14 @@ function isBlockDevice()
     return 0
 }
 
-#MD 
+#MD
 #MD### Variables
-#MD 
+#MD
 #MD*integer* **libTIMEOUT** = *10*
 declare -i libTIMEOUT=10
 
-#MD 
+#MD
 #MD### Constants
-#MD 
+#MD
 #MD*string* **WHITE** = *'\033[97m'*
 declare -r WHITE='\033[97m'
