@@ -1,45 +1,72 @@
 #!/usr/bin/env bash
 
-#MD#Markdown Document Generator
-#MD
-#MD**Description**: Markdown Document Generator.
-#MD**File**       : genMarkDown.sh
-#MD**Author**     : Leandro - leandrohuff@programmer.net
-#MD**Date**       : 2025-09-16
-#MD**Version**    : 1.0.0
-#MD**Copyright**  : CC01 1.0 Universal
-#MD**Details**    : Generate a formatted markdown file from a source code.
-#MD                 Read source code line-by-line and save a documentation for tags.
-#MD
-#MD## Constants
-#MD
-#MD*vector integer* **Version** = *(1 0 0)*
+#/D # Markdown Document Generator
+#/D 
+#/D **Description**: Markdown Document Generator
+#/D **File**       : makeDoc.sh
+#/D **Author**     : Leandro - leandrohuff@programmer.net
+#/D **Date**       : 2025-09-16
+#/D **Version**    : 1.0.0
+#/D **Copyright**  : CC01 1.0 Universal
+#/D **Details**    :
+#/D Save formatted markdown lines from source code into destine file.
+#/D Read source code line-by-line and save prefixed lines by "/D" to a file.
+#/D C/C++ source code lines start with "//D" tag and Shell Script lines start with "#/D" tags.
+#/D Only lines started with apropriate tags are saved into respective documentation files.
+#/D 
+#/D ## Constants
+#/D 
+#/D *integer*[] **Version** = (*1 0 0*)
 declare -a -i -r Version=(1 0 0)
-#MD
-#MD## Variables
-#MD
-#MD*string* **Source** = *''*
+#/D 
+#/D ## Variables
+#/D 
+#/D *string* **Source** = *''*
 declare Source=""
-#MD*string* **Destine** = *''*
+#/D *string* **Destine** = *''*
 declare Destine=""
-#MD
-#MD## Functions
-#MD
-#MD*none* **logFail**( *string* **message** ) : *string*
-#MDPrint a failure log message.
+#/D 
+#/D ## Functions
+#/D 
+#/D ### logFail()
+#/D 
+#/D **Function**: *none* **logFail**( *string* ) : *string*
+#/D Print a failure log message.
+#/D **Parameter**:
+#/D *string*    String log message.
+#/D **Result**:
+#/D *string*    Formatted log message.
+#/D **Return**:
+#/D *none*
 function logFail() { echo -e "\033[91mfailure:\033[0m $*" ; }
-#MD
-#MD*integer* **unsetVars**( **none** ) : *none*
-#MDUnset and unload global variables.
+#/D 
+#/D ### unsetVars()
+#/D 
+#/D **Function**: *integer* **unsetVars**( *none* ) : *none*
+#/D Unset global variables.
+#/D **Parameter**:
+#/D *none*
+#/D **Result**:
+#/D *none*
+#/D **Return**:
+#/D *integer* 0 Success
 function unsetVars()
 {
     unset -v Source
     unset -v Destine
     return 0
 }
-#MD
-#MD*integer* **_exit**( **none** ) : *none*
-#MDEnd log, stop libShell, deinitialize variables and exit an error code.
+#/D 
+#/D ### _exit()
+#/D 
+#/D **Function**: *integer* **_exit**( *none* ) : *none*
+#/D End log, stop libShell, deinitialize variables and exit an error code.
+#/D **Parameter**:
+#/D *none*
+#/D **Result**:
+#/D *none*
+#/D **Return**:
+#/D *integer* 0 Success
 function _exit()
 {
     local code=$([ -n "$1" ] && echo $1 || echo 0)
@@ -48,28 +75,53 @@ function _exit()
     unsetVars
     exit $code
 }
-
+# Source libShell.sh
+# Call libInit()
+# Call libSetup()
+# Call logBegin()
 source libShell.sh || { logFail "Load libShell.sh"       ; _exit 1 ; }
 libInit            || { logFail "Initialize libShell.sh" ; _exit 1 ; }
 libSetup -d -l 1   || { logFail "Setup libShell.sh"      ; _exit 1 ; }
 logBegin           || { logFail "Initialize Log."        ; _exit 1 ; }
-#MD
-#MD*integer* **_help**( **none** ) : *string*
-#MDPrint an help message.
+#/D 
+#/D ### _help()
+#/D 
+#/D **Function**: *integer* **_help**( *none* ) : *string*
+#/D Print an help message.
+#/D **Parameter**:
+#/D *none*
+#/D **Result**:
+#/D *string*    Help message.
+#/D **Return**:
+#/D *integer* 0 Success
 function _help()
 {
-printf "Generate Markdown documentation from source files.
+    printf "Generate Markdown documentation from source files.
 $(printLibVersion)
 Script   Version: ${WHITE}$(genVersionStr ${Version[@]})${NC}
 Syntax: $(getScriptName) [options]
 Options:
 -h | --help             Print help information about syntax and use.
--s | --source <file>    Generate documentation for source file.
+-s | --source  <file>   Generate documentation from source file.
+-d | --destine <file>   Generate documentation into destine file.
+     --                 Send next parameters to libShell.
 "
 }
-#MD
-#MD*integer* **parseArgs**( *vector string* **$@** ) : *none*
-#MDParse command line parameters.
+#/D 
+#/D ### parseArgs()
+#/D 
+#/D **Function**: *integer* **parseArgs**( *string*[] ) : *none*
+#/D Parse parameters from command line.
+#/D **Parameter**:
+#/D **-h** | **--help**            : Print help message on screen.
+#/D **-s** | **--source**  <*file*>: Set a file as source of code and tags.
+#/D **-d** | **--destine** <*file*>: Set a file as destine|target of markdown codes.
+#/D      **--**              : Send next parameters to libShell.
+#/D **Result**:
+#/D *none*
+#/D **Return**:
+#/D *integer* 0 Success
+#/D *integer* 1 Failure
 function parseArgs()
 {
     while [ $# -gt 0 ]
@@ -80,7 +132,8 @@ function parseArgs()
             _exit 0
             ;;
         -s | --source)
-            if isArgValue "$2" ; then
+            if isArgValue "$2"
+            then
                 shift
                 Source="$1"
             else
@@ -89,7 +142,8 @@ function parseArgs()
             fi
             ;;
         -d | --destine)
-            if isArgValue "$2" ; then
+            if isArgValue "$2"
+            then
                 shift
                 Destine="$1"
             else
@@ -111,51 +165,92 @@ function parseArgs()
     done
     return 0
 }
-#MDGet a tag name from parameter.
-function getTag()   { echo -n "${1%"\#MD"*}"  ; }
-
-#MDGet a value from parameter.
-function getValue() { echo -n "${1/#*"\#MD"}" ; }
-
-#MD
-#MD*integer* **main**( *vector string* **$@** ) : *none*
-#MDRun main application.
+#/D 
+#/D ### getTag()
+#/D 
+#/D **Function**: *none* **getTag**( *string* ) : *string*
+#/D Search and extract a tag from a string and print it back.
+#/D **Parameter**:
+#/D *string*    String to search for a tag name.
+#/D **Result**:
+#/D *string*    Tag name.
+#/D **Return**:
+#/D *none*
+function getTag()   { echo -n "${1%"\#/D "*}"  ; }
+#/D 
+#/D ### getValue()
+#/D 
+#/D **Function**: *none* **getValue**( *string* ) : *string*
+#/D Search and extract a value from a string and print it back.
+#/D **Parameter**:
+#/D *string*    String to search for a tag value.
+#/D **Result**:
+#/D *string*    Tag value.
+#/D **Return**:
+#/D *none*
+function getValue() { echo -n "${1/#*"\#/D "}" ; }
+#/D 
+#/D ### main()
+#/D 
+#/D **Function**: *integer* **main**( *string*[] ) : *none*
+#/D Main shell script application.
+#/D **Parameter**:
+#/D *string*[]  Parameter list from command line.
+#/D **Result**:
+#/D *none*
+#/D **Return**:
+#/D *integer* 0    Success
+#/D *integer* 1..N Failure
 function main()
 {
     parseArgs "$@" || return $?
-    if ! itExist "${Source}" ; then
+    if ! itExist "${Source}"
+    then
         logF "Source file ( ${Source} ) not found."
         return 1
     fi
     logD "Source: ${Source}"
-    if [ -z "${Destine}" ] ; then
+    if [ -z "${Destine}" ]
+    then
         Destine="$(getName ${Source}).md"
     fi
     logD "Destine: ${Destine}"
-    if itExist "${Destine}" ; then
+    if itExist "${Destine}"
+    then
         logW "Destine ( ${Destine} ) already exist."
-        askToContinue 10 'Overwrite it'
+        askToContinue 'Overwrite it'
         [ $? -eq 0 ] || return 1
     fi
-    echo > "${Destine}"
-    if [ $? -ne 0 ] ; then
+    echo -n > "${Destine}"
+    if [ $? -ne 0 ]
+    then
         logF "Could not create ( ${Destine} ) file."
         return 1
     fi
     while read -e line
     do
-        [ -z "${line}" ] && continue
-        if [[ "${line:0:3}" == "#MD" ]] ; then
+        [ -n "${line}" ] || continue
+        if [[ "${line:0:4}" == "#/D " ]] || \
+           [[ "${line:0:4}" == "//D " ]]
+        then
+            logD "${line:4}"
+            echo "${line:4}" >> "${Destine}"
+        elif [[ "${line:0:3}" == "#/D" ]] || \
+             [[ "${line:0:3}" == "//D" ]]
+        then
+            logD "${line:3}"
             echo "${line:3}" >> "${Destine}"
+        else
+            logD "${line}"
         fi
     done < "${Source}"
     logS "Documentation generated."
     return 0
 }
-
-#MD###Script Entry Point
-#MDCall *main()* function and pass all command line parameters.
-#MDafter return from main, call _exit() function passing to it
-#MDthe error code returned by main().
+#/D
+#/D ### Shell Script Program
+#/D
+#/D Call **main**() function.
+#/D Pass all command line parameters to main.
 main "$@"
 _exit $?
