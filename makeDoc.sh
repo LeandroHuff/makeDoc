@@ -1,35 +1,41 @@
 #!/usr/bin/env bash
 
-#/D # Markdown Document Generator
-#/D 
-#/D **Description**: Markdown Document Generator
-#/D **File**       : makeDoc.sh
-#/D **Author**     : Leandro - leandrohuff@programmer.net
-#/D **Date**       : 2025-09-16
-#/D **Version**    : 1.0.0
-#/D **Copyright**  : CC01 1.0 Universal
-#/D **Details**    :
-#/D Save formatted markdown lines from source code into destine file.
-#/D Read source code line-by-line and save prefixed lines by "/D" to a file.
-#/D C/C++ source code lines start with "//D" tag and Shell Script lines start with "#/D" tags.
-#/D Only lines started with apropriate tags are saved into respective documentation files.
-#/D 
+#/D # Make Documentation from Source Code
+#/D
+#/D |                 | Description                                  |
+#/D |----------------:|:---------------------------------------------|
+#/D | Brief           | Export Documentation from taged lines.       |
+#/D | File            | makeDoc.sh                                   |
+#/D | Author          | Leandro - leandrohuff@programmer.net         |
+#/D | Date            | 2025-09-16                                   |
+#/D | Version         | 1.0.0                                        |
+#/D | Copyright       | CC01 1.0 Universal                           |
+#/D
+#/D **Details**
+#/D Save formatted lines from source code into documentation file.
+#/D Read source code line-by-line and save prefixed lines by tag '/D' to file.
+#/D C/C++ source code lines start with tag '//D' and Shell Script lines start with tag '#/D'.
+#/D Only those lines started with apropriate tags are sent to respective documentation files.
+#/D Mixed documentation can co-exist at same source code, one for local documentation purpose and another to be exported to apropriate documentation file.
+#/D All lines taged to export was documented using Markdown format, the document exported can be read by an Markdown program reader.
+#/D Bellow is the documentation exported from source code by its own shell script program makeDoc.sh.
+#/D
 #/D ## Constants
-#/D 
+#/D
 #/D *integer*[] **Version** = (*1 0 0*)
 declare -a -i -r Version=(1 0 0)
-#/D 
+#/D
 #/D ## Variables
-#/D 
+#/D
 #/D *string* **Source** = *''*
 declare Source=""
 #/D *string* **Destine** = *''*
 declare Destine=""
-#/D 
+#/D
 #/D ## Functions
-#/D 
+#/D
 #/D ### logFail()
-#/D 
+#/D
 #/D **Function**: *none* **logFail**( *string* ) : *string*
 #/D Print a failure log message.
 #/D **Parameter**:
@@ -39,9 +45,9 @@ declare Destine=""
 #/D **Return**:
 #/D *none*
 function logFail() { echo -e "\033[91mfailure:\033[0m $*" ; }
-#/D 
+#/D
 #/D ### unsetVars()
-#/D 
+#/D
 #/D **Function**: *integer* **unsetVars**( *none* ) : *none*
 #/D Unset global variables.
 #/D **Parameter**:
@@ -56,9 +62,9 @@ function unsetVars()
     unset -v Destine
     return 0
 }
-#/D 
+#/D
 #/D ### _exit()
-#/D 
+#/D
 #/D **Function**: *integer* **_exit**( *none* ) : *none*
 #/D End log, stop libShell, deinitialize variables and exit an error code.
 #/D **Parameter**:
@@ -83,9 +89,9 @@ source libShell.sh || { logFail "Load libShell.sh"       ; _exit 1 ; }
 libInit            || { logFail "Initialize libShell.sh" ; _exit 1 ; }
 libSetup -d -l 1   || { logFail "Setup libShell.sh"      ; _exit 1 ; }
 logBegin           || { logFail "Initialize Log."        ; _exit 1 ; }
-#/D 
+#/D
 #/D ### _help()
-#/D 
+#/D
 #/D **Function**: *integer* **_help**( *none* ) : *string*
 #/D Print an help message.
 #/D **Parameter**:
@@ -107,9 +113,9 @@ Options:
      --                 Send next parameters to libShell.
 "
 }
-#/D 
+#/D
 #/D ### parseArgs()
-#/D 
+#/D
 #/D **Function**: *integer* **parseArgs**( *string*[] ) : *none*
 #/D Parse parameters from command line.
 #/D **Parameter**:
@@ -165,9 +171,9 @@ function parseArgs()
     done
     return 0
 }
-#/D 
+#/D
 #/D ### getTag()
-#/D 
+#/D
 #/D **Function**: *none* **getTag**( *string* ) : *string*
 #/D Search and extract a tag from a string and print it back.
 #/D **Parameter**:
@@ -177,9 +183,9 @@ function parseArgs()
 #/D **Return**:
 #/D *none*
 function getTag()   { echo -n "${1%"\#/D "*}"  ; }
-#/D 
+#/D
 #/D ### getValue()
-#/D 
+#/D
 #/D **Function**: *none* **getValue**( *string* ) : *string*
 #/D Search and extract a value from a string and print it back.
 #/D **Parameter**:
@@ -189,9 +195,9 @@ function getTag()   { echo -n "${1%"\#/D "*}"  ; }
 #/D **Return**:
 #/D *none*
 function getValue() { echo -n "${1/#*"\#/D "}" ; }
-#/D 
+#/D
 #/D ### main()
-#/D 
+#/D
 #/D **Function**: *integer* **main**( *string*[] ) : *none*
 #/D Main shell script application.
 #/D **Parameter**:

@@ -1,16 +1,22 @@
-# Markdown Document Generator
+# Make Documentation from Source Code
 
-**Description**: Markdown Document Generator
-**File**       : makeDoc.sh
-**Author**     : Leandro - leandrohuff@programmer.net
-**Date**       : 2025-09-16
-**Version**    : 1.0.0
-**Copyright**  : CC01 1.0 Universal
-**Details**    :
-Save formatted markdown lines from source code into destine file.
-Read source code line-by-line and save prefixed lines by "/D" to a file.
-C/C++ source code lines start with "//D" tag and Shell Script lines start with "#/D" tags.
-Only lines started with apropriate tags are saved into respective documentation files.
+|                 | Description                                  |
+|----------------:|:---------------------------------------------|
+| Brief           | Export Documentation from taged lines.       |
+| File            | makeDoc.sh                                   |
+| Author          | Leandro - leandrohuff@programmer.net         |
+| Date            | 2025-09-16                                   |
+| Version         | 1.0.0                                        |
+| Copyright       | CC01 1.0 Universal                           |
+
+**Details**
+Save formatted lines from source code into documentation file.
+Read source code line-by-line and save prefixed lines by tag '/D' to file.
+C/C++ source code lines start with tag '//D' and Shell Script lines start with tag '#/D'.
+Only those lines started with apropriate tags are sent to respective documentation files.
+Mixed documentation can co-exist at same source code, one for local documentation purpose and another to be exported to apropriate documentation file.
+All lines taged to export was documented using Markdown format, the document exported can be read by an Markdown program reader.
+Bellow is the documentation exported from source code by its own shell script program makeDoc.sh.
 
 ## Constants
 
