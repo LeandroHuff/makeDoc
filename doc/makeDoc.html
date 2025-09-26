@@ -1,0 +1,212 @@
+<h1 id="top"> makeDoc </h1>
+<table id="description">
+<tr> <td align="right"> <b>  Purpose</b> </td> <td align="left">:&ensp;Export Documentation from taged lines. </td> </tr>
+<tr> <td align="right"> <b>     File</b> </td> <td align="left">:&ensp;makeDoc.sh                                                                      </td> </tr>
+<tr> <td align="right"> <b>   Author</b> </td> <td align="left">:&ensp;Leandro - <a href="mailto:leandrohuff@programmer.net">leandrohuff@programmer.net</a> </td> </tr>
+<tr> <td align="right"> <b>     Date</b> </td> <td align="left">:&ensp;2025-09-21                                                                           </td> </tr>
+<tr> <td align="right"> <b>  Version</b> </td> <td align="left">:&ensp;1.0.0                                                                                </td> </tr>
+<tr> <td align="right"> <b>Copyright</b> </td> <td align="left">:&ensp;CC01 1.0 Universal<td>                                                               </td> </tr>
+</table> <br>
+<b>Note</b>: Changes in this document will be discarded on next build, any changes should be made on source code documentation instead. <br>
+<h2 id="details"> Details </h2>
+<p>
+Save formatted lines from source code into documentation file. <br>
+Read source code line-by-line and save prefixed lines by tag ??D to file. <br>
+C/C++ source code lines start with tag //D and Bash lines start with tag ##D. <br>
+Only those lines started by tags are exportedd to documentation files. <br>
+Mixed commented lines can co-exist at same source code, one for local documentation purpose and another to be exported to apropriate documentation file. <br>
+All lines are documented using Markdown format, the exported document can be read by an Markdown program reader. <br>
+</p> <br>
+<h2 id="index"> Index </h2>
+<table>
+<tr> <td>               <a href="#top">Top</a>             </td> <td>                                                         </td> </tr>
+<tr> <td>               <a href="#details">Details</a>     </td> <td>                                                         </td> </tr>
+<tr> <td>               <a href="#glossary">Glossary</a>   </td> <td>                                                         </td> </tr>
+<tr> <td>               <a href="#constants">Constants</a> </td> <td>                                                         </td> </tr>
+<tr> <td>               <a href="#variables">Variables</a> </td> <td>                                                         </td> </tr>
+<tr> <td>               <a href="#functions">Functions</a> </td> <td>                                                         </td> </tr>
+<tr> <td align="right"> <a href="#logFail">logFail</a>     </td> <td> Print a failure log message                             </td> </tr>
+<tr> <td align="right"> <a href="#unsetVars">unsetVars</a> </td> <td> Unset global variables                                  </td> </tr>
+<tr> <td align="right"> <a href="#_exit">_exit</a>         </td> <td> End log, stop libShell, deinitialize variables and exit </td> </tr>
+<tr> <td align="right"> <a href="#printHelp">printHelp</a> </td> <td> Print an help message                                   </td> </tr>
+<tr> <td align="right"> <a href="#parseArgs">parseArgs</a> </td> <td> Parse parameters from command line                      </td> </tr>
+<tr> <td align="right"> <a href="#barGraph">barGraph</a>   </td> <td> Draw a prograssive line counter bar graph               </td> </tr>
+<tr> <td align="right"> <a href="#source">libShell</a>     </td> <td> Source libShell                                         </td> </tr>
+<tr> <td align="right"> <a href="#runScript">runScript</a> </td> <td> Main shell script application                           </td> </tr>
+<tr> <td align="right"> <a href="#bottom">Start Script</a> </td> <td> Start Shell Script                                      </td> </tr>
+<tr> <td>               <a href="#bottom">Bottom</a>       </td> <td>                                                         </td> </tr>
+</table>
+<br>
+<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+<h2 id="glossary">Glossary</h2>
+<table>
+<tr> <th align="left"> Use</th> <th align="left"> Description                                                      </th> </tr>
+<tr> <td> Constants       </td> <td> Memory space for read only data                                               </td> </tr>
+<tr> <td> Variables       </td> <td> Memory space for read/write data                                              </td> </tr>
+<tr> <td> Functions       </td> <td> Source/Executable statement code, can be called anywhere from source code     </td> </tr>
+<tr> <td> Parameters      </td> <td> Data passed to functions                                                      </td> </tr>
+<tr> <td> Result          </td> <td> Functions result after execution                                              </td> </tr>
+<tr> <td> Return          </td> <td> Allways an integer returned from function to inform success or failure        </td> </tr>
+<tr> <td> none            </td> <td> Is similar as a void type, no parameter, no result or no return from function </td> </tr>
+<tr> <td> char            </td> <td> One byte data type to store single characters                                 </td> </tr>
+<tr> <td> string          </td> <td> Char vector to store a group of characters                                    </td> </tr>
+<tr> <td> integer         </td> <td> Memory space to store ordinal numbers                                         </td> </tr>
+<tr> <td> float           </td> <td> Memory space to store 32 bits floating point numbers                          </td> </tr>
+<tr> <td> double          </td> <td> Memory space to store 64 bits floating point numbers                          </td> </tr>
+<tr> <td> type[]          </td> <td> Memory vector space to store contigous data type                              </td> </tr>
+<tr> <td> ##D             </td> <td> Bash, Zsh, Python, Perl, Ruby                                                 </td> </tr>
+<tr> <td> //D             </td> <td> C/C++, C#, Java, JavaScript, Pascal/Object Pascal, Go, Swift, Kotlin, Rust    </td> </tr>
+<tr> <td> --D             </td> <td> SQL, Ada, Haskell                                                             </td> </tr>
+<tr> <td> ''D             </td> <td> Visual Basic, VBScript                                                        </td> </tr>
+<tr> <td> %%D             </td> <td> LaTex, MATLAB                                                                 </td> </tr>
+</table>
+<br>
+<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+<br>
+<h2 id="constants"> Constants </h2>
+<i>integer</i>[] <b>numVERSION</b> = ( <i>1 0 0</i> ) <br>
+<i>integer</i>[] <b>dateVERSION</b> = ( <i>2025 9 21</i> ) <br>
+<br>
+<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+<br>
+<h2 id="variables"> Variables </h2>
+<i>string</i> <b>Source</b> = <i>''</i> <br>
+<i>string</i> <b>Destine</b> = <i>''</i> <br>
+<br>
+<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+<br>
+<h2 id="functions"> Functions </h2>
+<h3 id="logFail"> logFail( ) </h3>
+<i>none</i> <b>logFail</b>( <i>string</i> <b>"$*"</b> ) : <i>string</i> <br>
+&ensp;Send formatted failure log messages to screen. <br>
+<br>
+<b>Parameter</b>: <br>
+&ensp;<i>string</i>: <b>"$*"</b> - Message to display on screen. <br>
+<br>
+<b>Result</b>: <br>
+&ensp;<i>string</i>: Log message. <br>
+<br>
+<b>Return</b>: <br>
+&ensp;<i>none</i> <br>
+<br>
+<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+<br>
+<h3 id="unsetVars"> unsetVars( ) </h3>
+<i>integer</i> <b>unsetVars</b>( <i>none</i> ) : <i>none</i> <br>
+&ensp;Unset global variables. <br>
+<br>
+<b>Parameter</b>: <br>
+&ensp;<i>none</i> <br>
+<br>
+<b>Result</b>: <br>
+&ensp;<i>none</i> <br>
+<br>
+<b>Return</b>: <br>
+&ensp;<i>integer</i>: <b>0</b> - Success <br>
+<br>
+<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+<br>
+<h3 id="_exit"> _exit( ) </h3>
+<i>integer</i> <b>_exit</b>( <i>integer</i> <b>$1</b> ) : <i>none</i> <br>
+Finish script file and return an exit code. <br>
+<ul>
+<li> Log runtime message.    </li>
+<li> Finish log messages.    </li>
+<li> Stop libShell.          </li>
+<li> Unset global variables. </li>
+<li> Exit an error code.     </li>
+</ul>
+<b>Parameter</b>: <br>
+&ensp;<i>integer</i>: <b>$1</b> - Exit code. <br>
+<br>
+<b>Result</b>: <br>
+&ensp;<i>none</i> <br>
+<br>
+<b>Return</b>: <br>
+&ensp;<i>integer</i>: <b>0</b> - Success <br>
+&ensp;<i>integer</i>: <b>1..N</b> - Error code. <br>
+<br>
+<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+<br>
+<h3 id="printHelp"> printHelp( ) </h3>
+<i>integer</i> <b>printHelp</b>( <i>none</i> ) : <i>string</i> <br>
+&ensp;Print an help information. <br>
+<br>
+<b>Parameter</b>: <br>
+&ensp;<i>none</i> <br>
+<br>
+<b>Result</b>: <br>
+&ensp;<i>string</i>: Help message on screen. <br>
+<br>
+<b>Return</b>: <br>
+&ensp;<i>integer</i>: <b>0</b> - Success <br>
+<br>
+<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+<br>
+<h3 id="parseArgs"> parseArgs( ) </h3>
+<i>integer</i> <b>parseArgs</b>( <i>string</i> "<b>$@</b>" ) : <i>none</i> <br>
+&ensp;Parse all parameters from command line. <br>
+<br>
+<b>Parameter</b>: <br>
+&ensp;<b>-h</b>                     - Print help information about syntax and use. <br>
+&ensp;[<i>file</i>]                 - Open file as input and save in a file with extension *.md <br>
+<br>
+Options: <br>
+&ensp;<b>-i</b> <i>file</i>         - Generate documentation from input file. <br>
+&ensp;<b>-o</b> <i>file</i>         - Generate documentation into output file. <br>
+&ensp;<b>--</b> [<i>parameters</i>] - Send [parameters] to libShell. <br>
+<br>
+<b>Result</b>: <br>
+&ensp;<i>none</i> <br>
+<br>
+<b>Return</b>: <br>
+&ensp;<i>integer</i>: <b>0</b>    - Success <br>
+&ensp;<i>integer</i>: <b>1..N</b> - Error code. <br>
+<br>
+<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+<br>
+<h3 id="barGraph"> barGraph( )</h3>
+<br>
+<i>none</i> <b>barGraph</b>( <i>integer</i> <b>counter</b> ) : <i>string</i> <br>
+Draw a prograssive line counter bar graph. <br>
+<br>
+<b>Parameter</b>: <br>
+<i>integer</i> : <b>counter</b> - Progress counter. <br>
+<br>
+<b>Result</b>: <br>
+<i>string</i> : Draw a progressive counter bar graph accorgin to lines read for file. <br>
+<br>
+<b>Return</b>: <br>
+<i>none</i> <br>
+<br>
+<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+<br>
+<h3 id="source"> Source and Initialize libShell </h3>
+<i>source</i> <b>libShell.sh</b> <br>
+<b>libInit</b> <br>
+<b>libSetup</b> <i>-v -l 1</i> <br>
+<b>logBegin</b> <br>
+<br>
+<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+<br>
+<h3 id="runScript"> runScript( ) </h3>
+<i>integer</i> <b>runScript</b>( <i>string</i> "<b>$@</b>" ) : <i>none</i> <br>
+&ensp;Run bash script file. <br>
+<br>
+<b>Parameter</b>: <br>
+&ensp;<i>string</i>: "<b>$@</b>" - All command line parameters. <br>
+<br>
+<b>Result</b>: <br>
+&ensp;<i>none</i> <br>
+<br>
+<b>Return</b>: <br>
+&ensp;<i>integer</i>: <b>0</b>    - Success <br>
+&ensp;<i>integer</i>: <b>1..N</b> - Error code. <br>
+<br>
+<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+<br>
+<h3 id="bottom"> Start Shell Script </h3> <br>
+<b>runScript</b> "<i>$@</i>" <br>
+Call function runScript( ) and pass all parameters from command line. <br>
+<br>
+<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>

@@ -1,320 +1,248 @@
 #!/usr/bin/env bash
-##D # makeDoc
-##D
-##D | Type/Name | Description                           |
-##D |----------:|:--------------------------------------|
-##D |           | Export Documentation from taged lines |
-##D | File      | makeDoc.sh                            |
-##D | Author    | Leandro - leandrohuff@programmer.net  |
-##D | Date      | 2025-09-16                            |
-##D | Version   | 1.0.0                                 |
-##D | Copyright | CC01 1.0 Universal                    |
-##D
-##D ---
-##D ## Details
-##D
-##D Save formatted lines from source code into documentation file.
-##D Read source code line-by-line and save prefixed lines by tag ??D to file.
-##D C/C++ source code lines start with tag //D and Bash lines start with tag ##D.
-##D Only those lines started by tags are exportedd to documentation files.
-##D Mixed commented lines can co-exist at same source code, one for local documentation purpose and another to be exported to apropriate documentation file.
-##D All lines are documented using Markdown format, the exported document can be read by an Markdown program reader.
-##D
-##D ---
-##D ## Documentation Format
-##D
-##D ```
-##D ??D # fileName
-##D ??D
-##D ??D | Type/Name | Description              |
-##D ??D |----------:|:-------------------------|
-##D ??D |           | Source Code Description  |
-##D ??D | File      | fileName.sh              |
-##D ??D | Author    | Name - author@e-Mail     |
-##D ??D | Date      | YYYY-MM-DD               |
-##D ??D | Version   | Version.Release.Features |
-##D ??D | Copyright | Copyright description    |
-##D ??D
-##D ??D ---
-##D ??D ## Index
-##D ??D
-##D ??D [Constants](#Constants)
-##D ??D [Variables](#Variables)
-##D ??D [Functions](#Functions)
-##D ??D
-##D ??D ---
-##D ??D <a id="Constants"></a>
-##D ??D ## Constants
-##D ??D
-##D ??D *type*[] **Name** = *value*
-##D ??D
-##D ??D [Index](#Index)
-##D ??D
-##D ??D ---
-##D ??D <a id="Variables"></a>
-##D ??D ## Variables
-##D ??D
-##D ??D *type* **Name** = *value*
-##D ??D
-##D ??D [Index](#Index)
-##D ??D
-##D ??D ---
-##D ??D <a id="Functions"></a>
-##D ??D ## Functions
-##D ??D
-##D ??D | Function Index              | Brief Description       |
-##D ??D |----------------------------:|:------------------------|
-##D ??D | [FunctionOne](#FunctionOne) | FunctionOne description |
-##D ??D | [FunctionTwo](#FunctionTwo) | FunctionTwo description |
-##D ??D | ...                         |                         |
-##D ??D | [FunctionN](#FunctionN)     | FunctionN description   |
-##D ??D
-##D ??D <a id="FunctionOne"></a>
-##D ??D ### FunctionOne
-##D ??D
-##D ??D *typeReturn* **FunctionOne**( *type* **parameter** ) : *typeResult*
-##D ??D FunctionOne description.
-##D ??D
-##D ??D **Parameter**:
-##D ??D *type* **parameter** : Parameter description.
-##D ??D
-##D ??D **Result**:
-##D ??D *typeResult* : Result description.
-##D ??D
-##D ??D **Return**:
-##D ??D *typeReturn* **value** : Return description
-##D ??D
-##D ??D [Functions](#Functions) | [Index](#Index)
-##D ```
-##D
-##D ?? Change to:
-##D
-##D | Doc Tag   | Description                                                                |
-##D |----------:|:---------------------------------------------------------------------------|
-##D | ##D       | Bash, Zsh, Python, Perl, Ruby                                              |
-##D | //D       | C/C++, C#, Java, JavaScript, Pascal/Object Pascal, Go, Swift, Kotlin, Rust |
-##D | --D       | SQL, Ada, Haskell                                                          |
-##D | ''D       | Visual Basic, VBScript                                                     |
-##D | %%D       | LaTex, MATLAB                                                              |
-##D
-##D **Markdown Tags**:
-##D
-##D | MD Tag        | Description                                 |
-##D |--------------:|:--------------------------------------------|
-##D | \#            | Title, File Name                            |
-##D | \#\#          | Title, Constants/Variables/Functions blocks |
-##D | \#\#\#        | Title, Function Name                        |
-##D | \* \*         | *Italic*, Types                             |
-##D | \*\* \*\*     | **Bold**, Function and Varible Names        |
-##D | \'\'\' \'\'\' | Code Blocks                                 |
-##D | \---          | Horizontal Line                             |
-##D
-##D ---
-##D ## Documentation Result
-##D
-##D <a id="logFail"></a>
-##D ### functionName
-##D
-##D *type return* **functionName**( *type* **param 1** , ... , *type* **param N** ) : *type result*
-##D Function description.
-##D
-##D **Parameter**:
-##D *type* : Parameter description.
-##D
-##D **Result**:
-##D *type* : Result description.
-##D
-##D **Return**:
-##D *type* : Return description.
-##D
-##D [Function](#Functions) | [Index](#Index)
-##D
-##D ---
-##D <a id="Index"></a>
-##D ## Index
-##D
-##D [Constants](#Constants)
-##D [Variables](#Variables)
-##D [Functions](#Functions)
-##D
-##D ---
-##D <a id="Constants"></a>
-##D ## Constants
-##D
-##D *integer*[] **Version** = (*1 0 0*)
-declare -a -i -r Version=(1 0 0)
-##D
-##D [Index](#Index)
-##D
-##D ---
-##D <a id="Variables"></a>
-##D ## Variables
-##D
-##D *string* **Source** = *''*
+########################################
+##D <h1 id="top"> makeDoc </h1>
+
+########################################
+##D <table id="description">
+##D <tr> <td align="right"> <b>  Purpose</b> </td> <td align="left">:&ensp;Export Documentation from taged lines. </td> </tr>
+##D <tr> <td align="right"> <b>     File</b> </td> <td align="left">:&ensp;makeDoc.sh                                                                      </td> </tr>
+##D <tr> <td align="right"> <b>   Author</b> </td> <td align="left">:&ensp;Leandro - <a href="mailto:leandrohuff@programmer.net">leandrohuff@programmer.net</a> </td> </tr>
+##D <tr> <td align="right"> <b>     Date</b> </td> <td align="left">:&ensp;2025-09-21                                                                           </td> </tr>
+##D <tr> <td align="right"> <b>  Version</b> </td> <td align="left">:&ensp;1.0.0                                                                                </td> </tr>
+##D <tr> <td align="right"> <b>Copyright</b> </td> <td align="left">:&ensp;CC01 1.0 Universal<td>                                                               </td> </tr>
+##D </table> <br>
+
+########################################
+##D <b>Note</b>: Changes in this document will be discarded on next build, any changes should be made on source code documentation instead. <br>
+
+########################################
+##D <h2 id="details"> Details </h2>
+##D <p>
+##D Save formatted lines from source code into documentation file. <br>
+##D Read source code line-by-line and save prefixed lines by tag ??D to file. <br>
+##D C/C++ source code lines start with tag //D and Bash lines start with tag ##D. <br>
+##D Only those lines started by tags are exportedd to documentation files. <br>
+##D Mixed commented lines can co-exist at same source code, one for local documentation purpose and another to be exported to apropriate documentation file. <br>
+##D All lines are documented using Markdown format, the exported document can be read by an Markdown program reader. <br>
+##D </p> <br>
+
+########################################
+##D <h2 id="index"> Index </h2>
+##D <table>
+##D <tr> <td>               <a href="#top">Top</a>             </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#details">Details</a>     </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#glossary">Glossary</a>   </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#constants">Constants</a> </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#variables">Variables</a> </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#functions">Functions</a> </td> <td>                                                         </td> </tr>
+##D <tr> <td align="right"> <a href="#logFail">logFail</a>     </td> <td> Print a failure log message                             </td> </tr>
+##D <tr> <td align="right"> <a href="#unsetVars">unsetVars</a> </td> <td> Unset global variables                                  </td> </tr>
+##D <tr> <td align="right"> <a href="#_exit">_exit</a>         </td> <td> End log, stop libShell, deinitialize variables and exit </td> </tr>
+##D <tr> <td align="right"> <a href="#printHelp">printHelp</a> </td> <td> Print an help message                                   </td> </tr>
+##D <tr> <td align="right"> <a href="#parseArgs">parseArgs</a> </td> <td> Parse parameters from command line                      </td> </tr>
+##D <tr> <td align="right"> <a href="#barGraph">barGraph</a>   </td> <td> Draw a prograssive line counter bar graph               </td> </tr>
+##D <tr> <td align="right"> <a href="#source">libShell</a>     </td> <td> Source libShell                                         </td> </tr>
+##D <tr> <td align="right"> <a href="#runScript">runScript</a> </td> <td> Main shell script application                           </td> </tr>
+##D <tr> <td align="right"> <a href="#bottom">Start Script</a> </td> <td> Start Shell Script                                      </td> </tr>
+##D <tr> <td>               <a href="#bottom">Bottom</a>       </td> <td>                                                         </td> </tr>
+##D </table>
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+
+########################################
+##D <h2 id="glossary">Glossary</h2>
+##D <table>
+##D <tr> <th align="left"> Use</th> <th align="left"> Description                                                      </th> </tr>
+##D <tr> <td> Constants       </td> <td> Memory space for read only data                                               </td> </tr>
+##D <tr> <td> Variables       </td> <td> Memory space for read/write data                                              </td> </tr>
+##D <tr> <td> Functions       </td> <td> Source/Executable statement code, can be called anywhere from source code     </td> </tr>
+##D <tr> <td> Parameters      </td> <td> Data passed to functions                                                      </td> </tr>
+##D <tr> <td> Result          </td> <td> Functions result after execution                                              </td> </tr>
+##D <tr> <td> Return          </td> <td> Allways an integer returned from function to inform success or failure        </td> </tr>
+##D <tr> <td> none            </td> <td> Is similar as a void type, no parameter, no result or no return from function </td> </tr>
+##D <tr> <td> char            </td> <td> One byte data type to store single characters                                 </td> </tr>
+##D <tr> <td> string          </td> <td> Char vector to store a group of characters                                    </td> </tr>
+##D <tr> <td> integer         </td> <td> Memory space to store ordinal numbers                                         </td> </tr>
+##D <tr> <td> float           </td> <td> Memory space to store 32 bits floating point numbers                          </td> </tr>
+##D <tr> <td> double          </td> <td> Memory space to store 64 bits floating point numbers                          </td> </tr>
+##D <tr> <td> type[]          </td> <td> Memory vector space to store contigous data type                              </td> </tr>
+##D <tr> <td> ##D             </td> <td> Bash, Zsh, Python, Perl, Ruby                                                 </td> </tr>
+##D <tr> <td> //D             </td> <td> C/C++, C#, Java, JavaScript, Pascal/Object Pascal, Go, Swift, Kotlin, Rust    </td> </tr>
+##D <tr> <td> --D             </td> <td> SQL, Ada, Haskell                                                             </td> </tr>
+##D <tr> <td> ''D             </td> <td> Visual Basic, VBScript                                                        </td> </tr>
+##D <tr> <td> %%D             </td> <td> LaTex, MATLAB                                                                 </td> </tr>
+##D </table>
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+
+########################################
+##D <br>
+##D <h2 id="constants"> Constants </h2>
+#
+##D <i>integer</i>[] <b>numVERSION</b> = ( <i>1 0 0</i> ) <br>
+declare -a -i -r numVERSION=(1 0 0)
+##D <i>integer</i>[] <b>dateVERSION</b> = ( <i>2025 9 21</i> ) <br>
+declare -a -i -r dateVERSION=(2025 9 10)
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+
+########################################
+##D <br>
+##D <h2 id="variables"> Variables </h2>
+#
+##D <i>string</i> <b>Source</b> = <i>''</i> <br>
 declare Source=""
-##D *string* **Destine** = *''*
+##D <i>string</i> <b>Destine</b> = <i>''</i> <br>
 declare Destine=""
-##D
-##D [Index](#Index)
-##D
-##D ---
-##D <a id="Functions"></a>
-##D ## Functions
-##D
-##D | Name                      | Description                                              |
-##D |--------------------------:|:---------------------------------------------------------|
-##D | [logFail](#logFail)       | Print a failure log message.                             |
-##D | [unsetVars](#unsetVars)   | Unset global variables.                                  |
-##D | [_exit](#_exit)           | End log, stop libShell, deinitialize variables and exit. |
-##D | [_help](#_help)           | Print an help message.                                   |
-##D | [parseArgs](#parseArgs)   | Parse parameters from command line.                      |
-##D | [main](#main)             | Main shell script application.                           |
-##D
-##D [Index](#Index)
-##D
-##D ---
-##D <a id="logFail"></a>
-##D ### logFail
-##D
-##D *none* **logFail**( *string* ) : *string*
-##D Print a failure log message.
-##D
-##D **Parameter**:
-##D *string* : String log message.
-##D
-##D **Result**:
-##D *string* : Formatted log message.
-##D
-##D **Return**:
-##D *none*
-##D
-##D [Function](#Functions) | [Index](#Index)
-function logFail() { echo -e "\033[91mfailure:\033[0m $*" ; }
-##D
-##D ---
-##D <a id="unsetVars"></a>
-##D ### unsetVars
-##D
-##D *integer* **unsetVars**( *none* ) : *none*
-##D Unset global variables.
-##D
-##D **Parameter**:
-##D *none*
-##D
-##D **Result**:
-##D *none*
-##D
-##D **Return**:
-##D *integer* : 0 Success
-##D
-##D [Function](#Functions) | [Index](#Index)
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+
+########################################
+##D <br>
+##D <h2 id="functions"> Functions </h2>
+
+########################################
+##D <h3 id="logFail"> logFail( ) </h3>
+##D <i>none</i> <b>logFail</b>( <i>string</i> <b>"$*"</b> ) : <i>string</i> <br>
+##D &ensp;Send formatted failure log messages to screen. <br>
+##D <br>
+##D <b>Parameter</b>: <br>
+##D &ensp;<i>string</i>: <b>"$*"</b> - Message to display on screen. <br>
+##D <br>
+##D <b>Result</b>: <br>
+##D &ensp;<i>string</i>: Log message. <br>
+##D <br>
+##D <b>Return</b>: <br>
+##D &ensp;<i>none</i> <br>
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+function logFail() { echo -e "\033[31mFailure:\033[0m $*" ; }
+
+########################################
+##D <br>
+##D <h3 id="unsetVars"> unsetVars( ) </h3>
+##D <i>integer</i> <b>unsetVars</b>( <i>none</i> ) : <i>none</i> <br>
+##D &ensp;Unset global variables. <br>
+##D <br>
+##D <b>Parameter</b>: <br>
+##D &ensp;<i>none</i> <br>
+##D <br>
+##D <b>Result</b>: <br>
+##D &ensp;<i>none</i> <br>
+##D <br>
+##D <b>Return</b>: <br>
+##D &ensp;<i>integer</i>: <b>0</b> - Success <br>
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 function unsetVars()
 {
     unset -v Source
     unset -v Destine
+    unset -v exitCode
     return 0
 }
-##D
-##D ---
-##D <a id="_exit"></a>
-##D ### _exit
-##D
-##D *integer* **_exit**( *none* ) : *none*
-##D End log, stop libShell, deinitialize variables and exit an error code.
-##D
-##D **Parameter**:
-##D *none*
-##D
-##D **Result**:
-##D *none*
-##D
-##D **Return**:
-##D *integer* : 0 Success
-##D
-##D [Function](#Functions) | [Index](#Index)
+
+########################################
+##D <br>
+##D <h3 id="_exit"> _exit( ) </h3>
+##D <i>integer</i> <b>_exit</b>( <i>integer</i> <b>\$1</b> ) : <i>none</i> <br>
+##D Finish script file and return an exit code. <br>
+##D <ul>
+##D <li> Log runtime message.    </li>
+##D <li> Finish log messages.    </li>
+##D <li> Stop libShell.          </li>
+##D <li> Unset global variables. </li>
+##D <li> Exit an error code.     </li>
+##D </ul>
+##D <b>Parameter</b>: <br>
+##D &ensp;<i>integer</i>: <b>$1</b> - Exit code. <br>
+##D <br>
+##D <b>Result</b>: <br>
+##D &ensp;<i>none</i> <br>
+##D <br>
+##D <b>Return</b>: <br>
+##D &ensp;<i>integer</i>: <b>0</b> - Success <br>
+##D &ensp;<i>integer</i>: <b>1..N</b> - Error code. <br>
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 function _exit()
 {
-    local code=$([ -n "$1" ] && echo $1 || echo 0)
+    declare -i code=$( [ -n "$1" ] && echo -n $1 || echo -n 0 )
     logR
-    logEnd
-    libStop
-    unsetVars
+    logEnd    || logFail "End log to file."
+    libStop   || logFail "Stop libShell"
+    unsetVars || logFail "Unset local variables"
     exit $code
 }
-# Source libShell.sh
-# Call libInit()
-# Call libSetup()
-# Call logBegin()
-source libShell.sh || { logFail "Load libShell.sh"       ; _exit 1 ; }
-libInit            || { logFail "Initialize libShell.sh" ; _exit 1 ; }
-libSetup -v -l 1   || { logFail "Setup libShell.sh"      ; _exit 1 ; }
-logBegin           || { logFail "Initialize Log."        ; _exit 1 ; }
-##D
-##D ---
-##D <a id="_help"></a>
-##D ### _help
-##D
-##D *integer* **_help**( *none* ) : *string*
-##D Print an help message.
-##D
-##D **Parameter**:
-##D *none*
-##D
-##D **Result**:
-##D *string* : Help message.
-##D
-##D **Return**:
-##D *integer* : 0 Success
-##D
-##D [Function](#Functions) | [Index](#Index)
-function _help()
+
+########################################
+##D <br>
+##D <h3 id="printHelp"> printHelp( ) </h3>
+##D <i>integer</i> <b>printHelp</b>( <i>none</i> ) : <i>string</i> <br>
+##D &ensp;Print an help information. <br>
+##D <br>
+##D <b>Parameter</b>: <br>
+##D &ensp;<i>none</i> <br>
+##D <br>
+##D <b>Result</b>: <br>
+##D &ensp;<i>string</i>: Help message on screen. <br>
+##D <br>
+##D <b>Return</b>: <br>
+##D &ensp;<i>integer</i>: <b>0</b> - Success <br>
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+function printHelp()
 {
     printf "Generate Documentation from taged source files.
 Script   Version: ${WHITE}$(genVersionStr ${Version[@]})${NC}
-$(printLibVersion)
+
 Syntax: $(getScriptName) [-h]
         $(getScriptName) [file]
         $(getScriptName) [options]
         $(getScriptName) [options] -- [parameters]
 -h      Print help information about syntax and use.
 [file]  Open file as input and save in a file with extension *.md
+
 Options:
 -i <file>       Generate documentation from input file.
 -o <file>       Generate documentation into output file.
 -- [parameters] Send [parameters] to libShell.
+
 "
+    libSetup -h
+    return 0
 }
-##D
-##D ---
-##D <a id="parseArgs"></a>
-##D ### parseArgs
-##D
-##D *integer* **parseArgs**( *string*[] ) : *none*
-##D Parse parameters from command line.
-##D
-##D **-h**              Print help information about syntax and use.
-##D [*file*]          Open file as input and save in a file with extension *.md
-##D
-##D Options:
-##D **-i** <*file*>       Generate documentation from input file.
-##D **-o** <*file*>       Generate documentation into output file.
-##D **--** [*parameters*] Send [parameters] to libShell.
-##D
-##D **Result**:
-##D *none*
-##D
-##D **Return**:
-##D *integer* : 0 Success
-##D *integer* : 1 Failure
-##D
-##D [Function](#Functions) | [Index](#Index)
+
+########################################
+##D <br>
+##D <h3 id="parseArgs"> parseArgs( ) </h3>
+##D <i>integer</i> <b>parseArgs</b>( <i>string</i> "<b>$@</b>" ) : <i>none</i> <br>
+##D &ensp;Parse all parameters from command line. <br>
+##D <br>
+##D <b>Parameter</b>: <br>
+##D &ensp;<b>-h</b>                     - Print help information about syntax and use. <br>
+##D &ensp;[<i>file</i>]                 - Open file as input and save in a file with extension *.md <br>
+##D <br>
+##D Options: <br>
+##D &ensp;<b>-i</b> <i>file</i>         - Generate documentation from input file. <br>
+##D &ensp;<b>-o</b> <i>file</i>         - Generate documentation into output file. <br>
+##D &ensp;<b>--</b> [<i>parameters</i>] - Send [parameters] to libShell. <br>
+##D <br>
+##D <b>Result</b>: <br>
+##D &ensp;<i>none</i> <br>
+##D <br>
+##D <b>Return</b>: <br>
+##D &ensp;<i>integer</i>: <b>0</b>    - Success <br>
+##D &ensp;<i>integer</i>: <b>1..N</b> - Error code. <br>
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 function parseArgs()
 {
     while [ $# -gt 0 ]
     do
         case "$1" in
         -h)
-            _help
+            printHelp
             _exit 0
             ;;
         -i)
@@ -376,26 +304,68 @@ function parseArgs()
     done
     return 0
 }
-##D
-##D ---
-##D <a id="main"></a>
-##D ### main
-##D
-##D *integer* **main**( *string*[] ) : *none*
-##D Main shell script application.
-##D
-##D **Parameter**:
-##D *string*[] : Parameter list from command line.
-##D
-##D **Result**:
-##D *none*
-##D
-##D **Return**:
-##D *integer* : 0    Success
-##D *integer* : 1..N Failure
-##D
-##D [Function](#Functions) | [Index](#Index)
-function main()
+
+########################################
+##D <br>
+##D <h3 id="barGraph"> barGraph( )</h3>
+##D <br>
+##D <i>none</i> <b>barGraph</b>( <i>integer</i> <b>counter</b> ) : <i>string</i> <br>
+##D Draw a prograssive line counter bar graph. <br>
+##D <br>
+##D <b>Parameter</b>: <br>
+##D <i>integer</i> : <b>counter</b> - Progress counter. <br>
+##D <br>
+##D <b>Result</b>: <br>
+##D <i>string</i> : Draw a progressive counter bar graph accorgin to lines read for file. <br>
+##D <br>
+##D <b>Return</b>: <br>
+##D <i>none</i> <br>
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+function barGraph()
+{
+    local counter=$1
+    # print a green '*'
+    printf "${HGREEN}*${NC}"
+    # print [N] each 10 and '|' each 5
+    if   [ $((counter % 10)) -eq 0 ] ; then printf "[%4d]" $counter
+    elif [ $((counter %  5)) -eq 0 ] ; then printf '|' ; fi
+    # echo a new line each 50
+    if  [ $((counter % 50)) -eq 0 ] ; then echo ; fi
+}
+
+########################################
+##D <br>
+##D <h3 id="source"> Source and Initialize libShell </h3>
+##D <i>source</i> <b>libShell.sh</b> <br>
+##D <b>libInit</b> <br>
+##D <b>libSetup</b> <i>-v -l 1</i> <br>
+##D <b>logBegin</b> <br>
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+source libShell.sh || { logFail "Load libShell.sh"       ; _exit 1 ; }
+libInit            || { logFail "Initialize libShell.sh" ; _exit 1 ; }
+libSetup -v -l 1   || { logFail "Setup libShell.sh"      ; _exit 1 ; }
+logBegin           || { logFail "Initialize Log."        ; _exit 1 ; }
+
+####s####################################
+##D <br>
+##D <h3 id="runScript"> runScript( ) </h3>
+##D <i>integer</i> <b>runScript</b>( <i>string</i> "<b>$@</b>" ) : <i>none</i> <br>
+##D &ensp;Run bash script file. <br>
+##D <br>
+##D <b>Parameter</b>: <br>
+##D &ensp;<i>string</i>: "<b>$@</b>" - All command line parameters. <br>
+##D <br>
+##D <b>Result</b>: <br>
+##D &ensp;<i>none</i> <br>
+##D <br>
+##D <b>Return</b>: <br>
+##D &ensp;<i>integer</i>: <b>0</b>    - Success <br>
+##D &ensp;<i>integer</i>: <b>1..N</b> - Error code. <br>
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+function runScript()
 {
     parseArgs "$@" || return $?
     if ! itExist "${Source}"
@@ -422,8 +392,11 @@ function main()
         logF "Could not create ( ${Destine} ) file."
         return 1
     fi
+    local counter=0
     while read -e line
     do
+        let counter++
+        barGraph $counter
         # ##: Bash ;  //: C,C++,C# ;  --: SQL ;  '': VB ;  %%: LaTex
         [ -n "${line}" ] || continue
         if [[ "${line:0:4}" == "##D " ]] || \
@@ -432,7 +405,6 @@ function main()
            [[ "${line:0:4}" == "''D " ]] || \
            [[ "${line:0:4}" == "%%D " ]]
         then
-            logT "${line:4}"
             echo "${line:4}" >> "${Destine}"
         elif [[ "${line:0:3}" == "##D" ]] || \
              [[ "${line:0:3}" == "//D" ]] || \
@@ -440,17 +412,22 @@ function main()
              [[ "${line:0:3}" == "''D" ]] || \
              [[ "${line:0:3}" == "%%D" ]]
         then
-            logT "${line:3}"
             echo "${line:3}" >> "${Destine}"
-        else
-            logT "${line}"
         fi
     done < "${Source}"
+    echo
     return 0
 }
 
-main "$@"
-code=$?
-message="Export source file ( ${Source} ) into output file ( ${Destine} )."
-[ $code -eq 0 ] && logS "${message}" || logF "${message}"
-_exit $code
+########################################
+##D <br>
+##D <h3 id="bottom"> Start Shell Script </h3> <br>
+##D <b>runScript</b> "<i>$@</i>" <br>
+##D Call function runScript( ) and pass all parameters from command line. <br>
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+runScript "$@"
+exitCode=$?
+message="Export from source file ( ${Source} ) to output file ( ${Destine} )."
+[ $exitCode -eq 0 ] && logS "${message}" || logF "${message}"
+_exit $exitCode
