@@ -29,22 +29,24 @@
 ########################################
 ##D <h2 id="index"> Index </h2>
 ##D <table>
-##D <tr> <td>               <a href="#top">Top</a>             </td> <td>                                                         </td> </tr>
-##D <tr> <td>               <a href="#details">Details</a>     </td> <td>                                                         </td> </tr>
-##D <tr> <td>               <a href="#glossary">Glossary</a>   </td> <td>                                                         </td> </tr>
-##D <tr> <td>               <a href="#constants">Constants</a> </td> <td>                                                         </td> </tr>
-##D <tr> <td>               <a href="#variables">Variables</a> </td> <td>                                                         </td> </tr>
-##D <tr> <td>               <a href="#functions">Functions</a> </td> <td>                                                         </td> </tr>
-##D <tr> <td align="right"> <a href="#logFail">logFail</a>     </td> <td> Print a failure log message                             </td> </tr>
-##D <tr> <td align="right"> <a href="#unsetVars">unsetVars</a> </td> <td> Unset global variables                                  </td> </tr>
-##D <tr> <td align="right"> <a href="#_exit">_exit</a>         </td> <td> End log, stop libShell, deinitialize variables and exit </td> </tr>
-##D <tr> <td align="right"> <a href="#printHelp">printHelp</a> </td> <td> Print an help message                                   </td> </tr>
-##D <tr> <td align="right"> <a href="#parseArgs">parseArgs</a> </td> <td> Parse parameters from command line                      </td> </tr>
-##D <tr> <td align="right"> <a href="#barGraph">barGraph</a>   </td> <td> Draw a prograssive line counter bar graph               </td> </tr>
-##D <tr> <td align="right"> <a href="#source">libShell</a>     </td> <td> Source libShell                                         </td> </tr>
-##D <tr> <td align="right"> <a href="#runScript">runScript</a> </td> <td> Main shell script application                           </td> </tr>
-##D <tr> <td align="right"> <a href="#bottom">Start Script</a> </td> <td> Start Shell Script                                      </td> </tr>
-##D <tr> <td>               <a href="#bottom">Bottom</a>       </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#top">Top</a>                   </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#details">Details</a>           </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#glossary">Glossary</a>         </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#constants">Constants</a>       </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#variables">Variables</a>       </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#functions">Functions</a>       </td> <td>                                                         </td> </tr>
+##D <tr> <td align="right"> <a href="#logFail">logFail</a>           </td> <td> Print a failure log message                             </td> </tr>
+##D <tr> <td align="right"> <a href="#unsetVars">unsetVars</a>       </td> <td> Unset global variables                                  </td> </tr>
+##D <tr> <td align="right"> <a href="#_exit">_exit</a>               </td> <td> End log, stop libShell, deinitialize variables and exit </td> </tr>
+##D <tr> <td align="right"> <a href="#printHelp">printHelp</a>       </td> <td> Print an help message                                   </td> </tr>
+##D <tr> <td align="right"> <a href="#parseArgs">parseArgs</a>       </td> <td> Parse parameters from command line                      </td> </tr>
+##D <tr> <td align="right"> <a href="#barGraph">barGraph</a>         </td> <td> Draw a prograssive line counter bar graph               </td> </tr>
+##D <tr> <td align="right"> <a href="#saveHeaderTo">saveHeaderTo</a> </td> <td> Save a pre formatted HTML Header                        </td> </tr>
+##D <tr> <td align="right"> <a href="#saveFooterTo">saveFooterTo</a> </td> <td> Save a pre formatted HTML Footer                        </td> </tr>
+##D <tr> <td align="right"> <a href="#source">libShell</a>           </td> <td> Source libShell                                         </td> </tr>
+##D <tr> <td align="right"> <a href="#runScript">runScript</a>       </td> <td> Main shell script application                           </td> </tr>
+##D <tr> <td align="right"> <a href="#bottom">Start Script</a>       </td> <td> Start Shell Script                                      </td> </tr>
+##D <tr> <td>               <a href="#bottom">Bottom</a>             </td> <td>                                                         </td> </tr>
 ##D </table>
 ##D <br>
 ##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
@@ -90,10 +92,12 @@ declare -a -i -r dateVERSION=(2025 9 10)
 ##D <br>
 ##D <h2 id="variables"> Variables </h2>
 #
-##D <i>string</i> <b>Source</b> = <i>''</i> <br>
+##D <i>string</i> <b>Source</b> : Source file to generate documentation from. <br>
 declare Source=""
-##D <i>string</i> <b>Destine</b> = <i>''</i> <br>
+##D <i>string</i> <b>Destine</b> : Destine file to save documentation into. <br>
 declare Destine=""
+##D <i>boolean</i> <b>isHtmlFile</b> : Flag to store HTML file detected. <br>
+declare isHtmlFile=false
 ##D <br>
 ##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 
@@ -146,7 +150,7 @@ function unsetVars()
 ##D <br>
 ##D <h3 id="_exit"> _exit( ) </h3>
 ##D <i>integer</i> <b>_exit</b>( <i>integer</i> <b>\$1</b> ) : <i>none</i> <br>
-##D Finish script file and return an exit code. <br>
+##D &ensp;Finish script file and return an exit code. <br>
 ##D <ul>
 ##D <li> Log runtime message.    </li>
 ##D <li> Finish log messages.    </li>
@@ -308,18 +312,17 @@ function parseArgs()
 ########################################
 ##D <br>
 ##D <h3 id="barGraph"> barGraph( )</h3>
-##D <br>
 ##D <i>none</i> <b>barGraph</b>( <i>integer</i> <b>counter</b> ) : <i>string</i> <br>
-##D Draw a prograssive line counter bar graph. <br>
+##D &ensp;Draw a prograssive line counter bar graph. <br>
 ##D <br>
 ##D <b>Parameter</b>: <br>
-##D <i>integer</i> : <b>counter</b> - Progress counter. <br>
+##D &ensp;<i>integer</i> : <b>counter</b> - Progress counter. <br>
 ##D <br>
 ##D <b>Result</b>: <br>
-##D <i>string</i> : Draw a progressive counter bar graph accorgin to lines read for file. <br>
+##D &ensp;<i>string</i> : Draw a progressive counter bar graph accorgin to lines read for file. <br>
 ##D <br>
-##D <b>Return</b>: <br>
-##D <i>none</i> <br>
+##D &ensp;<b>Return</b>: <br>
+##D &ensp;<i>none</i> <br>
 ##D <br>
 ##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 function barGraph()
@@ -333,6 +336,73 @@ function barGraph()
     # echo a new line each 50
     if  [ $((counter % 50)) -eq 0 ] ; then echo ; fi
 }
+
+########################################
+##D <br>
+##D <h3 id="saveHeaderTo"> saveHeaderTo( )</h3>
+##D <i>integer</i> <b>saveHeaderTo</b>( <i>string</i> <b>title</b> , <i>string</i> <b>file</b> ) : <i>string</i> <br>
+##D &ensp;Save a pre formatted HTML Header into a target file passed by parameter. <br>
+##D <br>
+##D <b>Parameter</b>: <br>
+##D &ensp;<i>string</i> : <b>title</b> - HTML title, if empty, file name will be used instead. <br>
+##D &ensp;<i>string</i> : <b>file</b> - Target filename. <br>
+##D <br>
+##D <b>Result</b>: <br>
+##D &ensp;<i>string</i> : Pre formatted HTML header to save into target file. <br>
+##D <br>
+##D <b>Return</b>: <br>
+##D &ensp;<i>integer</i> : <b>0</b> - Success <br>
+##D &ensp;<i>integer</i> : <b>1</b> - Error code, empty parameter or file not found. <br>
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+function saveHeaderTo()
+{
+    local title=$( [ -n "$2" ] && echo -n "$1" || echo -n $(getName "$1") )
+    local destine=$( [ -n "$2" ] && echo -n "$2" || echo -n "$1" )
+    if ! [ -n "${destine}" ] || ! [ -f "${destine}" ] ; then return 1 ; fi
+    printf "<!DOCTYPE html>
+<html>
+<head>
+    <title>%s Documentation</title>
+    <style>
+    table, th, td {
+      border: 1px solid lightgray;
+      border-collapse: collapse;
+    }
+    th { background-color: #C0C0C0;
+    }
+    </style>
+</head>
+<body>
+
+" ${title} > "${destine}"
+    return 0
+}
+
+########################################
+##D <br>
+##D <h3 id="saveFooterTo"> saveFooterTo( )</h3>
+##D <i>integer</i> <b>saveFooterTo</b>( <i>string</i> <b>file</b> ) : <i>string</i> <br>
+##D &ensp;Save a pre defined HTML Footer into file. <br>
+##D <br>
+##D <b>Parameter</b>: <br>
+##D &ensp;<i>string</i> : <b>file</b> - Target file. <br>
+##D <br>
+##D <b>Result</b>: <br>
+##D &ensp;<i>string</i> : Pre formatted HTML Footer to save into a target file passed by parameter. <br>
+##D <br>
+##D <b>Return</b>: <br>
+##D &ensp;<i>integer</i> : <b>0</b> - Success <br>
+##D &ensp;<i>integer</i> : <b>1</b> - Error code, empty parameter or file not found. <br>
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+function saveFooterTo()
+{
+    if ! [ -n "$1" ] || ! [ -f "$1" ] ; then return 1 ; fi
+    printf "\n</body>\n</html>\n" >> "$1"
+    return 0
+}
+
 
 ########################################
 ##D <br>
@@ -367,34 +437,57 @@ logBegin           || { logFail "Initialize Log."        ; _exit 1 ; }
 ##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 function runScript()
 {
+    local err
+    # Parse command line parameters.
     parseArgs "$@" || return $?
     if ! itExist "${Source}"
     then
-        logF "Source file ( ${Source} ) not found."
+        logF "Source file ${Source} not found."
         return 1
     fi
     logD "Source: ${Source}"
+    # Check empty destine file.
     if [ -z "${Destine}" ]
     then
         logW "Empty output file, using <input>.md as output filename."
         Destine="$(getName ${Source}).md"
     fi
     logD "Destine: ${Destine}"
+    # Check destine file already exist.
     if itExist "${Destine}"
     then
-        logW "Destine ( ${Destine} ) already exist."
+        logW "Destine ${Destine} already exist."
+        # Ask to confirm to overwrite the file.
         askToContinue 'Overwrite it'
-        [ $? -eq 0 ] || return 1
+        err=$?
+        if [ $err -eq 1 ]
+        then
+            logW "Canceled by user."
+            return $err
+        elif [ $err -eq 2 ]
+        then
+            logW "Canceled by timeout."
+            return $err
+        fi
     fi
+    # Clear file or create a new file.
     echo -n > "${Destine}"
-    if [ $? -ne 0 ]
+    # Check if file exist.
+    if ! itExist "${Destine}"
     then
-        logF "Could not create ( ${Destine} ) file."
+        logF "Could not create ${Destine} file."
         return 1
     fi
+    # For HTML file, save a header into it.
+    if [ "$(getExt "${Destine}")" = "html" ]
+    then
+        saveHeaderTo "$(getName ${Source})" "${Destine}"
+    fi
     local counter=0
+    # Run documentation procedure.
     while read -e line
     do
+        # Inc counter and draw a prograss bargraph.
         let counter++
         barGraph $counter
         # ##: Bash ;  //: C,C++,C# ;  --: SQL ;  '': VB ;  %%: LaTex
@@ -415,7 +508,14 @@ function runScript()
             echo "${line:3}" >> "${Destine}"
         fi
     done < "${Source}"
+    # at the end, print a new line.
     echo
+    # for HTML files, add a footer into it.
+    if [ "$(getExt "${Destine}")" = "html" ]
+    then
+        saveFooterTo "${Destine}"
+    fi
+
     return 0
 }
 
@@ -428,6 +528,6 @@ function runScript()
 ##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 runScript "$@"
 exitCode=$?
-message="Export from source file ( ${Source} ) to output file ( ${Destine} )."
+message="Export from source file ${Source} to output file ${Destine}"
 [ $exitCode -eq 0 ] && logS "${message}" || logF "${message}"
 _exit $exitCode

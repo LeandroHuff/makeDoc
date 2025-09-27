@@ -1,3 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>makeDoc Documentation</title>
+    <style>
+    table, th, td {
+      border: 1px solid lightgray;
+      border-collapse: collapse;
+    }
+    th { background-color: #C0C0C0;
+    }
+    </style>
+</head>
+<body>
+
 <h1 id="top"> makeDoc </h1>
 <table id="description">
 <tr> <td align="right"> <b>  Purpose</b> </td> <td align="left">:&ensp;Export Documentation from taged lines. </td> </tr>
@@ -19,22 +34,24 @@ All lines are documented using Markdown format, the exported document can be rea
 </p> <br>
 <h2 id="index"> Index </h2>
 <table>
-<tr> <td>               <a href="#top">Top</a>             </td> <td>                                                         </td> </tr>
-<tr> <td>               <a href="#details">Details</a>     </td> <td>                                                         </td> </tr>
-<tr> <td>               <a href="#glossary">Glossary</a>   </td> <td>                                                         </td> </tr>
-<tr> <td>               <a href="#constants">Constants</a> </td> <td>                                                         </td> </tr>
-<tr> <td>               <a href="#variables">Variables</a> </td> <td>                                                         </td> </tr>
-<tr> <td>               <a href="#functions">Functions</a> </td> <td>                                                         </td> </tr>
-<tr> <td align="right"> <a href="#logFail">logFail</a>     </td> <td> Print a failure log message                             </td> </tr>
-<tr> <td align="right"> <a href="#unsetVars">unsetVars</a> </td> <td> Unset global variables                                  </td> </tr>
-<tr> <td align="right"> <a href="#_exit">_exit</a>         </td> <td> End log, stop libShell, deinitialize variables and exit </td> </tr>
-<tr> <td align="right"> <a href="#printHelp">printHelp</a> </td> <td> Print an help message                                   </td> </tr>
-<tr> <td align="right"> <a href="#parseArgs">parseArgs</a> </td> <td> Parse parameters from command line                      </td> </tr>
-<tr> <td align="right"> <a href="#barGraph">barGraph</a>   </td> <td> Draw a prograssive line counter bar graph               </td> </tr>
-<tr> <td align="right"> <a href="#source">libShell</a>     </td> <td> Source libShell                                         </td> </tr>
-<tr> <td align="right"> <a href="#runScript">runScript</a> </td> <td> Main shell script application                           </td> </tr>
-<tr> <td align="right"> <a href="#bottom">Start Script</a> </td> <td> Start Shell Script                                      </td> </tr>
-<tr> <td>               <a href="#bottom">Bottom</a>       </td> <td>                                                         </td> </tr>
+<tr> <td>               <a href="#top">Top</a>                   </td> <td>                                                         </td> </tr>
+<tr> <td>               <a href="#details">Details</a>           </td> <td>                                                         </td> </tr>
+<tr> <td>               <a href="#glossary">Glossary</a>         </td> <td>                                                         </td> </tr>
+<tr> <td>               <a href="#constants">Constants</a>       </td> <td>                                                         </td> </tr>
+<tr> <td>               <a href="#variables">Variables</a>       </td> <td>                                                         </td> </tr>
+<tr> <td>               <a href="#functions">Functions</a>       </td> <td>                                                         </td> </tr>
+<tr> <td align="right"> <a href="#logFail">logFail</a>           </td> <td> Print a failure log message                             </td> </tr>
+<tr> <td align="right"> <a href="#unsetVars">unsetVars</a>       </td> <td> Unset global variables                                  </td> </tr>
+<tr> <td align="right"> <a href="#_exit">_exit</a>               </td> <td> End log, stop libShell, deinitialize variables and exit </td> </tr>
+<tr> <td align="right"> <a href="#printHelp">printHelp</a>       </td> <td> Print an help message                                   </td> </tr>
+<tr> <td align="right"> <a href="#parseArgs">parseArgs</a>       </td> <td> Parse parameters from command line                      </td> </tr>
+<tr> <td align="right"> <a href="#barGraph">barGraph</a>         </td> <td> Draw a prograssive line counter bar graph               </td> </tr>
+<tr> <td align="right"> <a href="#saveHeaderTo">saveHeaderTo</a> </td> <td> Save a pre formatted HTML Header                        </td> </tr>
+<tr> <td align="right"> <a href="#saveFooterTo">saveFooterTo</a> </td> <td> Save a pre formatted HTML Footer                        </td> </tr>
+<tr> <td align="right"> <a href="#source">libShell</a>           </td> <td> Source libShell                                         </td> </tr>
+<tr> <td align="right"> <a href="#runScript">runScript</a>       </td> <td> Main shell script application                           </td> </tr>
+<tr> <td align="right"> <a href="#bottom">Start Script</a>       </td> <td> Start Shell Script                                      </td> </tr>
+<tr> <td>               <a href="#bottom">Bottom</a>             </td> <td>                                                         </td> </tr>
 </table>
 <br>
 <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
@@ -70,8 +87,9 @@ All lines are documented using Markdown format, the exported document can be rea
 <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 <br>
 <h2 id="variables"> Variables </h2>
-<i>string</i> <b>Source</b> = <i>''</i> <br>
-<i>string</i> <b>Destine</b> = <i>''</i> <br>
+<i>string</i> <b>Source</b> : Source file to generate documentation from. <br>
+<i>string</i> <b>Destine</b> : Destine file to save documentation into. <br>
+<i>boolean</i> <b>isHtmlFile</b> : Flag to store HTML file detected. <br>
 <br>
 <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 <br>
@@ -108,7 +126,7 @@ All lines are documented using Markdown format, the exported document can be rea
 <br>
 <h3 id="_exit"> _exit( ) </h3>
 <i>integer</i> <b>_exit</b>( <i>integer</i> <b>$1</b> ) : <i>none</i> <br>
-Finish script file and return an exit code. <br>
+&ensp;Finish script file and return an exit code. <br>
 <ul>
 <li> Log runtime message.    </li>
 <li> Finish log messages.    </li>
@@ -166,18 +184,50 @@ Options: <br>
 <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 <br>
 <h3 id="barGraph"> barGraph( )</h3>
-<br>
 <i>none</i> <b>barGraph</b>( <i>integer</i> <b>counter</b> ) : <i>string</i> <br>
-Draw a prograssive line counter bar graph. <br>
+&ensp;Draw a prograssive line counter bar graph. <br>
 <br>
 <b>Parameter</b>: <br>
-<i>integer</i> : <b>counter</b> - Progress counter. <br>
+&ensp;<i>integer</i> : <b>counter</b> - Progress counter. <br>
 <br>
 <b>Result</b>: <br>
-<i>string</i> : Draw a progressive counter bar graph accorgin to lines read for file. <br>
+&ensp;<i>string</i> : Draw a progressive counter bar graph accorgin to lines read for file. <br>
+<br>
+&ensp;<b>Return</b>: <br>
+&ensp;<i>none</i> <br>
+<br>
+<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+<br>
+<h3 id="saveHeaderTo"> saveHeaderTo( )</h3>
+<i>integer</i> <b>saveHeaderTo</b>( <i>string</i> <b>title</b> , <i>string</i> <b>file</b> ) : <i>string</i> <br>
+&ensp;Save a pre formatted HTML Header into a target file passed by parameter. <br>
+<br>
+<b>Parameter</b>: <br>
+&ensp;<i>string</i> : <b>title</b> - HTML title, if empty, file name will be used instead. <br>
+&ensp;<i>string</i> : <b>file</b> - Target filename. <br>
+<br>
+<b>Result</b>: <br>
+&ensp;<i>string</i> : Pre formatted HTML header to save into target file. <br>
 <br>
 <b>Return</b>: <br>
-<i>none</i> <br>
+&ensp;<i>integer</i> : <b>0</b> - Success <br>
+&ensp;<i>integer</i> : <b>1</b> - Error code, empty parameter or file not found. <br>
+<br>
+<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+<br>
+<h3 id="saveFooterTo"> saveFooterTo( )</h3>
+<i>integer</i> <b>saveFooterTo</b>( <i>string</i> <b>file</b> ) : <i>string</i> <br>
+&ensp;Save a pre defined HTML Footer into file. <br>
+<br>
+<b>Parameter</b>: <br>
+&ensp;<i>string</i> : <b>file</b> - Target file. <br>
+<br>
+<b>Result</b>: <br>
+&ensp;<i>string</i> : Pre formatted HTML Footer to save into a target file passed by parameter. <br>
+<br>
+<b>Return</b>: <br>
+&ensp;<i>integer</i> : <b>0</b> - Success <br>
+&ensp;<i>integer</i> : <b>1</b> - Error code, empty parameter or file not found. <br>
 <br>
 <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 <br>
@@ -210,3 +260,6 @@ Draw a prograssive line counter bar graph. <br>
 Call function runScript( ) and pass all parameters from command line. <br>
 <br>
 <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+
+</body>
+</html>
