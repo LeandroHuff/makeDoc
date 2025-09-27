@@ -8,7 +8,7 @@
 ##D <tr> <td align="right"> <b>     File</b>: </td> <td align="left">&ensp;makeDoc.sh                                                                      </td> </tr>
 ##D <tr> <td align="right"> <b>   Author</b>: </td> <td align="left">&ensp;Leandro - <a href="mailto:leandrohuff@programmer.net">leandrohuff@programmer.net</a> </td> </tr>
 ##D <tr> <td align="right"> <b>     Date</b>: </td> <td align="left">&ensp;2025-09-21                                                                           </td> </tr>
-##D <tr> <td align="right"> <b>  Version</b>: </td> <td align="left">&ensp;1.0.0                                                                                </td> </tr>
+##D <tr> <td align="right"> <b>  Version</b>: </td> <td align="left">&ensp;2.0.0                                                                                </td> </tr>
 ##D <tr> <td align="right"> <b>Copyright</b>: </td> <td align="left">&ensp;CC01 1.0 Universal<td>                                                               </td> </tr>
 ##D </table> <br>
 
@@ -83,9 +83,9 @@
 ##D <h2 id="constants"> Constants </h2>
 #
 ##D <i>integer</i>[] <b>numVERSION</b> : Version Number <br>
-declare -a -i -r numVERSION=(1 0 0)
+declare -a -i -r numVERSION=(2 0 0)
 ##D <i>integer</i>[] <b>dateVERSION</b> : Date Version Number <br>
-declare -a -i -r dateVERSION=(2025 9 10)
+declare -a -i -r dateVERSION=(2025 9 27)
 ##D <br>
 ##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 
