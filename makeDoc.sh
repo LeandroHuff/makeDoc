@@ -29,24 +29,25 @@
 ########################################
 ##D <h2 id="index"> Index </h2>
 ##D <table>
-##D <tr> <td>               <a href="#top">Top</a>                   </td> <td>                                                         </td> </tr>
-##D <tr> <td>               <a href="#details">Details</a>           </td> <td>                                                         </td> </tr>
-##D <tr> <td>               <a href="#glossary">Glossary</a>         </td> <td>                                                         </td> </tr>
-##D <tr> <td>               <a href="#constants">Constants</a>       </td> <td>                                                         </td> </tr>
-##D <tr> <td>               <a href="#variables">Variables</a>       </td> <td>                                                         </td> </tr>
-##D <tr> <td>               <a href="#functions">Functions</a>       </td> <td>                                                         </td> </tr>
-##D <tr> <td align="right"> <a href="#logFail">logFail</a>           </td> <td> Print a failure log message                             </td> </tr>
-##D <tr> <td align="right"> <a href="#unsetVars">unsetVars</a>       </td> <td> Unset global variables                                  </td> </tr>
-##D <tr> <td align="right"> <a href="#_exit">_exit</a>               </td> <td> End log, stop libShell, deinitialize variables and exit </td> </tr>
-##D <tr> <td align="right"> <a href="#printHelp">printHelp</a>       </td> <td> Print an help message                                   </td> </tr>
-##D <tr> <td align="right"> <a href="#parseArgs">parseArgs</a>       </td> <td> Parse parameters from command line                      </td> </tr>
-##D <tr> <td align="right"> <a href="#barGraph">barGraph</a>         </td> <td> Draw a prograssive line counter bar graph               </td> </tr>
-##D <tr> <td align="right"> <a href="#saveHeaderTo">saveHeaderTo</a> </td> <td> Save a pre formatted HTML Header                        </td> </tr>
-##D <tr> <td align="right"> <a href="#saveFooterTo">saveFooterTo</a> </td> <td> Save a pre formatted HTML Footer                        </td> </tr>
-##D <tr> <td align="right"> <a href="#source">libShell</a>           </td> <td> Source libShell                                         </td> </tr>
-##D <tr> <td align="right"> <a href="#runScript">runScript</a>       </td> <td> Main shell script application                           </td> </tr>
-##D <tr> <td align="right"> <a href="#bottom">Start Script</a>       </td> <td> Start Shell Script                                      </td> </tr>
-##D <tr> <td>               <a href="#bottom">Bottom</a>             </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#top">Top</a>                       </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#details">Details</a>               </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#glossary">Glossary</a>             </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#constants">Constants</a>           </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#variables">Variables</a>           </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#functions">Functions</a>           </td> <td>                                                         </td> </tr>
+##D <tr> <td align="right"> <a href="#logFail">logFail</a>               </td> <td> Print a failure log message                             </td> </tr>
+##D <tr> <td align="right"> <a href="#unsetVars">unsetVars</a>           </td> <td> Unset global variables                                  </td> </tr>
+##D <tr> <td align="right"> <a href="#_exit">_exit</a>                   </td> <td> End log, stop libShell, deinitialize variables and exit </td> </tr>
+##D <tr> <td align="right"> <a href="#printHelp">printHelp</a>           </td> <td> Print an help message                                   </td> </tr>
+##D <tr> <td align="right"> <a href="#saveHeaderTo">saveHeaderTo</a>     </td> <td> Save a pre formatted HTML Header                        </td> </tr>
+##D <tr> <td align="right"> <a href="#saveFooterTo">saveFooterTo</a>     </td> <td> Save a pre formatted HTML Footer                        </td> </tr>
+##D <tr> <td align="right"> <a href="#guiMessageBox">guiMessageBox</a>   </td> <td> Dialog box to show a message and get answer.            </td> </tr>
+##D <tr> <td align="right"> <a href="#guiShowMessage">guiShowMessage</a> </td> <td> Dialog box to show a message.                         </td> </tr>
+##D <tr> <td align="right"> <a href="#parseArgs">parseArgs</a>           </td> <td> Parse parameters from command line                      </td> </tr>
+##D <tr> <td align="right"> <a href="#source">libShell</a>               </td> <td> Source libShell                                         </td> </tr>
+##D <tr> <td align="right"> <a href="#runScript">runScript</a>           </td> <td> Main shell script application                           </td> </tr>
+##D <tr> <td align="right"> <a href="#bottom">Start Script</a>           </td> <td> Start Shell Script                                      </td> </tr>
+##D <tr> <td>               <a href="#bottom">Bottom</a>                 </td> <td>                                                         </td> </tr>
 ##D </table>
 ##D <br>
 ##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
@@ -81,9 +82,9 @@
 ##D <br>
 ##D <h2 id="constants"> Constants </h2>
 #
-##D <i>integer</i>[] <b>numVERSION</b> = ( <i>1 0 0</i> ) <br>
+##D <i>integer</i>[] <b>numVERSION</b> : Version Number <br>
 declare -a -i -r numVERSION=(1 0 0)
-##D <i>integer</i>[] <b>dateVERSION</b> = ( <i>2025 9 21</i> ) <br>
+##D <i>integer</i>[] <b>dateVERSION</b> : Date Version Number <br>
 declare -a -i -r dateVERSION=(2025 9 10)
 ##D <br>
 ##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
@@ -96,8 +97,11 @@ declare -a -i -r dateVERSION=(2025 9 10)
 declare Source=""
 ##D <i>string</i> <b>Destine</b> : Destine file to save documentation into. <br>
 declare Destine=""
-##D <i>boolean</i> <b>isHtmlFile</b> : Flag to store HTML file detected. <br>
-declare isHtmlFile=false
+##D <i>integer</i> <b>exitCode</b> : Store exit code from main program. <br>
+declare -i exitCode
+##D <i>string</i> <b>Message</b> : Formatted message for message box. <br>
+declare Message=''
+
 ##D <br>
 ##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 
@@ -142,6 +146,8 @@ function unsetVars()
 {
     unset -v Source
     unset -v Destine
+    unset -v title
+    unset -v message
     unset -v exitCode
     return 0
 }
@@ -205,7 +211,7 @@ Syntax: $(getScriptName) [-h]
         $(getScriptName) [options]
         $(getScriptName) [options] -- [parameters]
 -h      Print help information about syntax and use.
-[file]  Open file as input and save in a file with extension *.md
+[file]  Open file as input and save in a file with extension *.{md|html}
 
 Options:
 -i <file>       Generate documentation from input file.
@@ -215,126 +221,6 @@ Options:
 "
     libSetup -h
     return 0
-}
-
-########################################
-##D <br>
-##D <h3 id="parseArgs"> parseArgs( ) </h3>
-##D <i>integer</i> <b>parseArgs</b>( <i>string</i> "<b>$@</b>" ) : <i>none</i> <br>
-##D &ensp;Parse all parameters from command line. <br>
-##D <br>
-##D <b>Parameter</b>: <br>
-##D &ensp;<b>-h</b>                     - Print help information about syntax and use. <br>
-##D &ensp;[<i>file</i>]                 - Open file as input and save in a file with extension *.md <br>
-##D <br>
-##D Options: <br>
-##D &ensp;<b>-i</b> <i>file</i>         - Generate documentation from input file. <br>
-##D &ensp;<b>-o</b> <i>file</i>         - Generate documentation into output file. <br>
-##D &ensp;<b>--</b> [<i>parameters</i>] - Send [parameters] to libShell. <br>
-##D <br>
-##D <b>Result</b>: <br>
-##D &ensp;<i>none</i> <br>
-##D <br>
-##D <b>Return</b>: <br>
-##D &ensp;<i>integer</i>: <b>0</b>    - Success <br>
-##D &ensp;<i>integer</i>: <b>1..N</b> - Error code. <br>
-##D <br>
-##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
-function parseArgs()
-{
-    while [ $# -gt 0 ]
-    do
-        case "$1" in
-        -h)
-            printHelp
-            _exit 0
-            ;;
-        -i)
-            if isArgValue "$2"
-            then
-                shift
-                if itExist "$1" && isEmpty "${Source}"
-                then
-                    Source="$1"
-                else
-                    if ! itExist "$1" ; then logF "File ( $1 ) not found." ; fi
-                    if ! isEmpty "${Source}" ; then logF "Input filename was set previously." ; fi
-                    return 1
-                fi
-            else
-                logF "Empty value for parameter -i <file>"
-                return 1
-            fi
-            ;;
-        -o)
-            if isArgValue "$2"
-            then
-                shift
-                if isEmpty "${Destine}"
-                then
-                    Destine="$1"
-                else
-                    logF "Output filename was set previously."
-                    return 1
-                fi
-            else
-                logF "Empty value for parameter -o <file>"
-                return 1
-            fi
-            ;;
-        --)
-            shift
-            libSetup "$@"
-            break
-            ;;
-        *)
-            if isArgValue "$1"
-            then
-                if itExist "$1" && isEmpty "${Source}"
-                then
-                    Source="$1"
-                else
-                    if ! itExist "$1" ; then logF "File ( $1 ) not found." ; fi
-                    if ! isEmpty "${Source}" ; then logF "Input filename was set previously." ; fi
-                    return 1
-                fi
-            else
-                logF "Empty input filename parameter for $(getScriptName) [file]"
-                return 1
-            fi
-            ;;
-        esac
-        shift
-    done
-    return 0
-}
-
-########################################
-##D <br>
-##D <h3 id="barGraph"> barGraph( )</h3>
-##D <i>none</i> <b>barGraph</b>( <i>integer</i> <b>counter</b> ) : <i>string</i> <br>
-##D &ensp;Draw a prograssive line counter bar graph. <br>
-##D <br>
-##D <b>Parameter</b>: <br>
-##D &ensp;<i>integer</i> : <b>counter</b> - Progress counter. <br>
-##D <br>
-##D <b>Result</b>: <br>
-##D &ensp;<i>string</i> : Draw a progressive counter bar graph accorgin to lines read for file. <br>
-##D <br>
-##D &ensp;<b>Return</b>: <br>
-##D &ensp;<i>none</i> <br>
-##D <br>
-##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
-function barGraph()
-{
-    local counter=$1
-    # print a green '*'
-    printf "${HGREEN}*${NC}"
-    # print [N] each 10 and '|' each 5
-    if   [ $((counter % 10)) -eq 0 ] ; then printf "[%4d]" $counter
-    elif [ $((counter %  5)) -eq 0 ] ; then printf '|' ; fi
-    # echo a new line each 50
-    if  [ $((counter % 50)) -eq 0 ] ; then echo ; fi
 }
 
 ########################################
@@ -403,6 +289,164 @@ function saveFooterTo()
     return 0
 }
 
+########################################
+##D <br>
+##D <h3 id="guiMessageBox"> guiMessageBox( )</h3>
+##D <i>integer</i> <b>guiMessageBox</b>( <i>string</i> <b>title</b> , <i>string</i> <b>text</b> , <i>string</i> <b>image</b> ) : <i>none</i> <br>
+##D &ensp;Show a dialog box to search and select a file. <br>
+##D <br>
+##D <b>Parameter</b>: <br>
+##D &ensp;<i>string</i> : <b>title</b> - Dialog box title. <br>
+##D &ensp;<i>string</i> : <b>text</b> - Dialog box text. <br>
+##D &ensp;<i>string</i> : <b>image</b> - Dialog box image. <br>
+##D <br>
+##D <b>Result</b>: <br>
+##D &ensp;<i>none</i>
+##D <br>
+##D <b>Return</b>: <br>
+##D &ensp;<i>integer</i> : <b>0</b> - User choose Ok. <br>
+##D &ensp;<i>integer</i> : <b>1</b> - User choose Close. <br>
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+function guiMessageBox
+{
+    local ret=1
+    yad --title="$1" \
+    --text="$2" \
+    --image="$3" \
+    --escape-ok \
+    --button="Ok":0 \
+    --button="Cancel":1 \
+    --width=500 \
+    --height=50
+    ret=$?
+    return $ret
+}
+
+########################################
+##D <br>
+##D <h3 id="guiShowMessage"> guiShowMessage( )</h3>
+##D <i>integer</i> <b>guiShowMessage</b>( <i>string</i> <b>title</b> , <i>string</i> <b>text</b> , <i>string</i> <b>image</b> ) : <i>none</i> <br>
+##D &ensp;Show a dialog box to search and select a file. <br>
+##D <br>
+##D <b>Parameter</b>: <br>
+##D &ensp;<i>string</i> : <b>title</b> - Dialog box title. <br>
+##D &ensp;<i>string</i> : <b>text</b> - Dialog box text. <br>
+##D &ensp;<i>string</i> : <b>image</b> - Dialog box image. <br>
+##D <br>
+##D <b>Result</b>: <br>
+##D &ensp;<i>none</i>
+##D <br>
+##D <b>Return</b>: <br>
+##D &ensp;<i>integer</i> : <b>0</b> - User choose Ok. <br>
+##D &ensp;<i>integer</i> : <b>1</b> - User choose Close. <br>
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+function guiShowMessage
+{
+    local ret=1
+    yad --title="$1" \
+    --text="$2" \
+    --image="$3" \
+    --escape-ok \
+    --button="Close":0 \
+    --width=500 \
+    --height=50
+    ret=$?
+    return $ret
+}
+
+########################################
+##D <br>
+##D <h3 id="parseArgs"> parseArgs( ) </h3>
+##D <i>integer</i> <b>parseArgs</b>( <i>string</i> "<b>$@</b>" ) : <i>none</i> <br>
+##D &ensp;Parse all parameters from command line. <br>
+##D <br>
+##D <b>Parameter</b>: <br>
+##D &ensp;<b>-h</b>                     - Print help information about syntax and use. <br>
+##D &ensp;[<i>file</i>]                 - Open file as input and save in a file with extension *.md <br>
+##D <br>
+##D Options: <br>
+##D &ensp;<b>-i</b> <i>file</i>         - Generate documentation from input file. <br>
+##D &ensp;<b>-o</b> <i>file</i>         - Generate documentation into output file. <br>
+##D &ensp;<b>--</b> [<i>parameters</i>] - Send [parameters] to libShell. <br>
+##D <br>
+##D <b>Result</b>: <br>
+##D &ensp;<i>none</i> <br>
+##D <br>
+##D <b>Return</b>: <br>
+##D &ensp;<i>integer</i>: <b>0</b>    - Success <br>
+##D &ensp;<i>integer</i>: <b>1..N</b> - Error code. <br>
+##D <br>
+##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+function parseArgs()
+{
+    while [ $# -gt 0 ]
+    do
+        case "$1" in
+        -h)
+            printHelp
+            _exit 0
+            ;;
+        -i)
+            if isArgValue "$2"
+            then
+                shift
+                if itExist "$1" && isEmpty "${Source}"
+                then
+                    Source="$1"
+                else
+                    if ! itExist "$1" ; then guiShowMessage "Failure" "Input file $1 not found!" "icons/failure.png" ; fi
+                    if ! isEmpty "${Source}" ; then guiShowMessage "Failure" "Input filename already set previously." "icons/failure.png" ; fi
+                    return 1
+                fi
+            else
+                guiShowMessage "Failure" "Empty value for parameter -i <file>" "icons/failure.png"
+                return 1
+            fi
+            ;;
+        -o)
+            if isArgValue "$2"
+            then
+                shift
+                if isEmpty "${Destine}"
+                then
+                    Destine="$1"
+                else
+                    guiShowMessage "Failure" "Output filename already set previously." "icons/failure.png"
+                    return 1
+                fi
+            else
+                guiShowMessage "Failure" "Empty value for parameter -o <file>" "icons/failure.png"
+                return 1
+            fi
+            ;;
+        --)
+            shift
+            libSetup "$@"
+            break
+            ;;
+        *)
+            if isArgValue "$1"
+            then
+                if itExist "$1" && isEmpty "${Source}"
+                then
+                    Source="$1"
+                else
+                    if ! itExist "$1" ; then guiMessageBox "Failure" "Input file $1 not found!" "icons/failure.png" ; fi
+                    if ! isEmpty "${Source}" ; then guiMessageBox "Failure" "Input filename already set previously." "icons/failure.png" ; fi
+                    return 1
+                fi
+            else
+                guiMessageBox "Failure" "Option $1 not valid." "icons/failure.png"
+                return 1
+            fi
+            ;;
+        esac
+        shift
+    done
+    return 0
+}
 
 ########################################
 ##D <br>
@@ -414,8 +458,7 @@ function saveFooterTo()
 ##D <br>
 ##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 source libShell.sh || { logFail "Load libShell.sh"       ; _exit 1 ; }
-libInit            || { logFail "Initialize libShell.sh" ; _exit 1 ; }
-libSetup -v -l 1   || { logFail "Setup libShell.sh"      ; _exit 1 ; }
+libInit -d -l 1    || { logFail "Initialize libShell.sh" ; _exit 1 ; }
 logBegin           || { logFail "Initialize Log."        ; _exit 1 ; }
 
 ####s####################################
@@ -437,37 +480,68 @@ logBegin           || { logFail "Initialize Log."        ; _exit 1 ; }
 ##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 function runScript()
 {
-    local err
+    declare -i err=1
     # Parse command line parameters.
     parseArgs "$@" || return $?
-    if ! itExist "${Source}"
-    then
-        logF "Source file ${Source} not found."
-        return 1
-    fi
-    logD "Source: ${Source}"
+    while ! isFile "${Source}"
+    do
+        logW "Empty source file or not found."
+        Source=$(yad \
+        --width=700 \
+        --height=300 \
+        --title="Select source file" \
+        --file \
+        --button="Ok":0 \
+        --button="Cancel":1 )
+        err=$?
+        if [ $err -ne 0 ]
+        then
+            Source=$(yad \
+                --width=700 \
+                --height=50 \
+                --title="Edit Path and Source File" \
+                --entry \
+                --entry-label="File: " \
+                --ricon=gtk-clear \
+            )
+            err=$?
+            if [ $err -ne 0 ]
+            then
+                logI "Canceled by user."
+                _exit $err
+            fi
+        fi
+    done
+    logI "Source: ${Source}"
     # Check empty destine file.
     if [ -z "${Destine}" ]
     then
-        logW "Empty output file, using <input>.md as output filename."
-        Destine="$(getName ${Source}).md"
+        logW "Empty destine file."
+        Destine=$(yad \
+        --width=700 \
+        --height=300 \
+        --title="Select destine file" \
+        --file \
+        --button="Ok":0 \
+        --button="Cancel":1 )
+        err=$?
+        if [ $err -ne 0 ]
+        then
+            logI "Canceled by user."
+            _exit $err
+        fi
     fi
-    logD "Destine: ${Destine}"
+    logI "Destine: ${Destine}"
     # Check destine file already exist.
     if itExist "${Destine}"
     then
         logW "Destine ${Destine} already exist."
-        # Ask to confirm to overwrite the file.
-        askToContinue 'Overwrite it'
+        guiMessageBox "$(getFileName "$Destine")" "Confirm to OVERWRITE file?" "icons/ok.png"
         err=$?
-        if [ $err -eq 1 ]
+        if [ $err -ne 0 ]
         then
-            logW "Canceled by user."
-            return $err
-        elif [ $err -eq 2 ]
-        then
-            logW "Canceled by timeout."
-            return $err
+            logI "Canceled by user."
+            _exit $err
         fi
     fi
     # Clear file or create a new file.
@@ -476,20 +550,20 @@ function runScript()
     if ! itExist "${Destine}"
     then
         logF "Could not create ${Destine} file."
+        guiShowMessage "$(getFileName "${Destine}")" "Could not create file!" "icons/failure.png"
         return 1
     fi
     # For HTML file, save a header into it.
     if [ "$(getExt "${Destine}")" = "html" ]
     then
-        saveHeaderTo "$(getName ${Source})" "${Destine}"
+        saveHeaderTo "$(getName "${Source}")" "${Destine}"
     fi
     local counter=0
     # Run documentation procedure.
     while read -e line
     do
-        # Inc counter and draw a prograss bargraph.
-        let counter++
-        barGraph $counter
+        counter=$((counter+1))
+        logNLF "Lines complete: $counter"
         # ##: Bash ;  //: C,C++,C# ;  --: SQL ;  '': VB ;  %%: LaTex
         [ -n "${line}" ] || continue
         if [[ "${line:0:4}" == "##D " ]] || \
@@ -528,6 +602,13 @@ function runScript()
 ##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 runScript "$@"
 exitCode=$?
-message="Export from source file ${Source} to output file ${Destine}"
-[ $exitCode -eq 0 ] && logS "${message}" || logF "${message}"
+Message="Documentation from $(getFileName ${Source}) to $(getFileName ${Destine})"
+if [ $exitCode -eq 0 ]
+then
+    logS "${Message}"
+    guiShowMessage "Success" "${Message}" "icons/success.png"
+else
+    logF "${Message}"
+    guiShowMessage "Failure" "${Message}" "icons/failure.png"
+fi
 _exit $exitCode
