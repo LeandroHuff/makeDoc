@@ -4,12 +4,12 @@
 
 ########################################
 ##D <table id="description">
-##D <tr> <td align="right"> <b>  Purpose</b> </td> <td align="left">:&ensp;Export Documentation from taged lines. </td> </tr>
-##D <tr> <td align="right"> <b>     File</b> </td> <td align="left">:&ensp;makeDoc.sh                                                                      </td> </tr>
-##D <tr> <td align="right"> <b>   Author</b> </td> <td align="left">:&ensp;Leandro - <a href="mailto:leandrohuff@programmer.net">leandrohuff@programmer.net</a> </td> </tr>
-##D <tr> <td align="right"> <b>     Date</b> </td> <td align="left">:&ensp;2025-09-21                                                                           </td> </tr>
-##D <tr> <td align="right"> <b>  Version</b> </td> <td align="left">:&ensp;1.0.0                                                                                </td> </tr>
-##D <tr> <td align="right"> <b>Copyright</b> </td> <td align="left">:&ensp;CC01 1.0 Universal<td>                                                               </td> </tr>
+##D <tr> <td align="right"> <b>  Purpose</b>: </td> <td align="left">&ensp;Export Documentation from taged lines. </td> </tr>
+##D <tr> <td align="right"> <b>     File</b>: </td> <td align="left">&ensp;makeDoc.sh                                                                      </td> </tr>
+##D <tr> <td align="right"> <b>   Author</b>: </td> <td align="left">&ensp;Leandro - <a href="mailto:leandrohuff@programmer.net">leandrohuff@programmer.net</a> </td> </tr>
+##D <tr> <td align="right"> <b>     Date</b>: </td> <td align="left">&ensp;2025-09-21                                                                           </td> </tr>
+##D <tr> <td align="right"> <b>  Version</b>: </td> <td align="left">&ensp;1.0.0                                                                                </td> </tr>
+##D <tr> <td align="right"> <b>Copyright</b>: </td> <td align="left">&ensp;CC01 1.0 Universal<td>                                                               </td> </tr>
 ##D </table> <br>
 
 ########################################
