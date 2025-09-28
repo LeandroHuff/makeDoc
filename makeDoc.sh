@@ -93,6 +93,8 @@ declare -a -i -r dateVERSION=(2025 9 27)
 ##D <br>
 ##D <h2 id="variables"> Variables </h2>
 #
+##D <i>boolean</i> <b>flagForce</b> = <i>false</i> : Assume yes for any question. <br>
+declare flagForce=false
 ##D <i>string</i> <b>Source</b> : Source file to generate documentation from. <br>
 declare Source=""
 ##D <i>string</i> <b>Destine</b> : Destine file to save documentation into. <br>
@@ -214,6 +216,7 @@ Syntax: $(getScriptName) [-h]
 [file]  Open file as input and save in a file with extension *.{md|html}
 
 Options:
+-y              Assume yes for any question.
 -i <file>       Generate documentation from input file.
 -o <file>       Generate documentation into output file.
 -- [parameters] Send [parameters] to libShell.
@@ -388,17 +391,23 @@ function parseArgs()
             printHelp
             _exit 0
             ;;
+        -y) flagForce=true ;;
         -i)
             if isArgValue "$2"
             then
                 shift
-                if itExist "$1" && isEmpty "${Source}"
+                if itExist "$1"
                 then
-                    Source="$1"
+                    if isEmpty "${Source}" || $flagForce
+                    then
+                        Source="$1"
+                        logD "Source: ${Source}"
+                    else
+                        guiShowMessage "Failure" "Input filename already set previously." "icons/failure.png"
+                        return 1
+                    fi
                 else
-                    if ! itExist "$1" ; then guiShowMessage "Failure" "Input file $1 not found!" "icons/failure.png" ; fi
-                    if ! isEmpty "${Source}" ; then guiShowMessage "Failure" "Input filename already set previously." "icons/failure.png" ; fi
-                    return 1
+                    guiShowMessage "Failure" "Input file $1 not found!" "icons/failure.png"
                 fi
             else
                 guiShowMessage "Failure" "Empty value for parameter -i <file>" "icons/failure.png"
@@ -409,9 +418,10 @@ function parseArgs()
             if isArgValue "$2"
             then
                 shift
-                if isEmpty "${Destine}"
+                if isEmpty "${Destine}"  || $flagForce
                 then
                     Destine="$1"
+                    logD "Destine: ${Destine}"
                 else
                     guiShowMessage "Failure" "Output filename already set previously." "icons/failure.png"
                     return 1
@@ -429,16 +439,21 @@ function parseArgs()
         *)
             if isArgValue "$1"
             then
-                if itExist "$1" && isEmpty "${Source}"
+                if itExist "$1"
                 then
-                    Source="$1"
+                    if isEmpty "${Source}" || $flagForce
+                    then
+                        Source="$1"
+                        logD "Source: ${Source}"
+                    else
+                        guiShowMessage "Failure" "Input filename already set previously." "icons/failure.png"
+                        return 1
+                    fi
                 else
-                    if ! itExist "$1" ; then guiMessageBox "Failure" "Input file $1 not found!" "icons/failure.png" ; fi
-                    if ! isEmpty "${Source}" ; then guiMessageBox "Failure" "Input filename already set previously." "icons/failure.png" ; fi
-                    return 1
+                    guiShowMessage "Failure" "Input file $1 not found!" "icons/failure.png"
                 fi
             else
-                guiMessageBox "Failure" "Option $1 not valid." "icons/failure.png"
+                guiShowMessage "Failure" "Empty value for parameter -i <file>" "icons/failure.png"
                 return 1
             fi
             ;;
@@ -502,8 +517,7 @@ function runScript()
                 --title="Edit Path and Source File" \
                 --entry \
                 --entry-label="File: " \
-                --ricon=gtk-clear \
-            )
+                --ricon=gtk-clear )
             err=$?
             if [ $err -ne 0 ]
             then
@@ -525,15 +539,28 @@ function runScript()
         --button="Ok":0 \
         --button="Cancel":1 )
         err=$?
-        if [ $err -ne 0 ]
+        if [ $err -ne 0 ] || [ -z "${Destine}" ] || ! [ -f "${Destine}" ]
         then
-            logI "Canceled by user."
-            _exit $err
+            Destine=$([ -n "${Destine}" ] && echo -n "${Destine}" || echo -n "${PWD}/doc/")
+            Destine=$(yad \
+                --width=700 \
+                --height=50 \
+                --title="Edit Path and Destine File" \
+                --entry= \
+                --entry-label="File: " \
+                --entry-text="${Destine}/" \
+                --ricon=gtk-clear )
+            err=$?
+            if [ $err -ne 0 ]
+            then
+                logI "Canceled by user."
+                _exit $err
+            fi
         fi
     fi
     logI "Destine: ${Destine}"
     # Check destine file already exist.
-    if itExist "${Destine}"
+    if ! $flagForce && itExist "${Destine}"
     then
         logW "Destine ${Destine} already exist."
         guiMessageBox "$(getFileName "$Destine")" "Confirm to OVERWRITE file?" "icons/ok.png"
