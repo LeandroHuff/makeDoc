@@ -4,14 +4,14 @@
 
 ########################################
 ##D <table id="description">
-##D <tr> <td align="right"> <b>  Purpose</b>: </td> <td align="left">&ensp;Export Documentation from taged lines. </td> </tr>
-##D <tr> <td align="right"> <b>     File</b>: </td> <td align="left">&ensp;makeDoc.sh                                                                      </td> </tr>
-##D <tr> <td align="right"> <b>   Author</b>: </td> <td align="left">&ensp;Leandro - <a href="mailto:leandrohuff@programmer.net">leandrohuff@programmer.net</a> </td> </tr>
-##D <tr> <td align="right"> <b>     Date</b>: </td> <td align="left">&ensp;2025-09-21                                                                           </td> </tr>
-##D <tr> <td align="right"> <b>  Version</b>: </td> <td align="left">&ensp;2.0.0                                                                                </td> </tr>
-##D <tr> <td align="right"> <b>Copyright</b>: </td> <td align="left">&ensp;CC01 1.0 Universal<td>                                                               </td> </tr>
-##D </table> <br>
-
+##D <tr> <td align="right"> <b>Purpose</b>: </td> <td align="left">&ensp;Export Documentation from taged lines.                                               </td> </tr>
+##D <tr> <td align="right"> <b>File</b>: </td> <td align="left">&ensp;makeDoc.sh                                                                           </td> </tr>
+##M echo -e "<tr> <td align=\"right\"> <b>Date</b>: </td> <td align=\"left\">&ensp;$(getDate)                                                              </td> </tr>"
+##D <tr> <td align="right"> <b>Author</b>: </td> <td align="left">&ensp;<a href="mailto:leandrohuff@email.com">Leandro</a> </td> </tr>
+##M echo -e "<tr> <td align=\"right\"> <b>Version</b>: </td> <td align=\"left\">&ensp;$(genVersionStr ${numVERSION[@]}) / $(genDateVersionStr ${dateVERSION[@]}) </td> </tr>"
+##D <tr> <td align="right"> <b>Copyright</b>: </td> <td align="left">&ensp;CC01 1.0 Universal                                                                   </td> </tr>
+##D </table>
+##D <br>
 ########################################
 ##D <b>Note</b>: Changes in this document will be discarded on next build, any changes should be made on source code documentation instead. <br>
 
@@ -29,25 +29,31 @@
 ########################################
 ##D <h2 id="index"> Index </h2>
 ##D <table>
-##D <tr> <td>               <a href="#top">Top</a>                       </td> <td>                                                         </td> </tr>
-##D <tr> <td>               <a href="#details">Details</a>               </td> <td>                                                         </td> </tr>
-##D <tr> <td>               <a href="#glossary">Glossary</a>             </td> <td>                                                         </td> </tr>
-##D <tr> <td>               <a href="#constants">Constants</a>           </td> <td>                                                         </td> </tr>
-##D <tr> <td>               <a href="#variables">Variables</a>           </td> <td>                                                         </td> </tr>
-##D <tr> <td>               <a href="#functions">Functions</a>           </td> <td>                                                         </td> </tr>
-##D <tr> <td align="right"> <a href="#logFail">logFail</a>               </td> <td> Print a failure log message                             </td> </tr>
-##D <tr> <td align="right"> <a href="#unsetVars">unsetVars</a>           </td> <td> Unset global variables                                  </td> </tr>
-##D <tr> <td align="right"> <a href="#_exit">_exit</a>                   </td> <td> End log, stop libShell, deinitialize variables and exit </td> </tr>
-##D <tr> <td align="right"> <a href="#printHelp">printHelp</a>           </td> <td> Print an help message                                   </td> </tr>
-##D <tr> <td align="right"> <a href="#saveHeaderTo">saveHeaderTo</a>     </td> <td> Save a pre formatted HTML Header                        </td> </tr>
-##D <tr> <td align="right"> <a href="#saveFooterTo">saveFooterTo</a>     </td> <td> Save a pre formatted HTML Footer                        </td> </tr>
-##D <tr> <td align="right"> <a href="#guiMessageBox">guiMessageBox</a>   </td> <td> Dialog box to show a message and get answer.            </td> </tr>
-##D <tr> <td align="right"> <a href="#guiShowMessage">guiShowMessage</a> </td> <td> Dialog box to show a message.                           </td> </tr>
-##D <tr> <td align="right"> <a href="#parseArgs">parseArgs</a>           </td> <td> Parse parameters from command line                      </td> </tr>
-##D <tr> <td align="right"> <a href="#source">libShell</a>               </td> <td> fileSOURCE libShell                                         </td> </tr>
-##D <tr> <td align="right"> <a href="#runScript">runScript</a>           </td> <td> Main shell script application                           </td> </tr>
-##D <tr> <td align="right"> <a href="#bottom">Start Script</a>           </td> <td> Start Shell Script                                      </td> </tr>
-##D <tr> <td>               <a href="#bottom">Bottom</a>                 </td> <td>                                                         </td> </tr>
+##D <tr> <td>               <a href="#top">Top</a>                                        </td> <td>                                                       </td> </tr>
+##D <tr> <td>               <a href="#details">Details</a>                                </td> <td>                                                       </td> </tr>
+##D <tr> <td>               <a href="#glossary">Glossary</a>                              </td> <td>                                                       </td> </tr>
+##D <tr> <td>               <a href="#constants">Constants</a>                            </td> <td>                                                       </td> </tr>
+##D <tr> <td>               <a href="#variables">Variables</a>                            </td> <td>                                                       </td> </tr>
+##D <tr> <td>               <a href="#functions">Functions</a>                            </td> <td>                                                       </td> </tr>
+##D <tr> <td align="right"> <a href="#logFail">logFail</a>:                               </td> <td> Print a failure log message                           </td> </tr>
+##D <tr> <td align="right"> <a href="#unsetVars">unsetVars</a>:                           </td> <td> Unset global variables                                </td> </tr>
+##D <tr> <td align="right"> <a href="#_exit">_exit</a>:                                   </td> <td> End log, stop libShell, unset variables and exit      </td> </tr>
+##D <tr> <td align="right"> <a href="#printHelp">printHelp</a>:                           </td> <td> Print an help message                                 </td> </tr>
+##D <tr> <td align="right"> <a href="#printHelp">printHelp</a>:                           </td> <td> Print an help message                                 </td> </tr>
+##D <tr> <td align="right"> <a href="#getTag">getTag</a>:                                 </td> <td> Get tag name from a string until '=' symbol.          </td> </tr>
+##D <tr> <td align="right"> <a href="#getValue">getValue</a>:                             </td> <td> Get tag value from a string after '=' symbol.         </td> </tr>
+##D <tr> <td align="right"> <a href="#saveUserConfigToFile">saveUserConfigToFile</a>:     </td> <td> Save a pre formatted configuration into a filename.   </td> </tr>
+##D <tr> <td align="right"> <a href="#loadUserConfigFromFile">loadUserConfigFromFile</a>: </td> <td> Load configuration list from file or a defautl table. </td> </tr>
+##D <tr> <td align="right"> <a href="#saveHeaderTo">saveHeaderTo</a>:                     </td> <td> Save a pre formatted HTML Header into a target file.  </td> </tr>
+##D <tr> <td align="right"> <a href="#saveFooterTo">saveFooterTo</a>:                     </td> <td> Save a pre formatted HTML Footer                      </td> </tr>
+##D <tr> <td align="right"> <a href="#guiMessageBox">guiMessageBox</a>:                   </td> <td> Dialog box to show a message and get answer.          </td> </tr>
+##D <tr> <td align="right"> <a href="#guiShowMessage">guiShowMessage</a>:                 </td> <td> Dialog box to show a message.                         </td> </tr>
+##D <tr> <td align="right"> <a href="#loadConfiguration">loadConfiguration</a>:           </td> <td> Load user configuration values from file.             </td> </tr>
+##D <tr> <td align="right"> <a href="#parseArgs">parseArgs</a>:                           </td> <td> Parse parameters from command line                    </td> </tr>
+##D <tr> <td align="right"> <a href="#source">Load libShell</a>:                          </td> <td> fileSOURCE libShell                                   </td> </tr>
+##D <tr> <td align="right"> <a href="#runScript">runScript</a>:                           </td> <td> Main shell script application                         </td> </tr>
+##D <tr> <td align="right"> <a href="#bottom">Start Shell Script</a>:                     </td> <td> Start Shell Script                                    </td> </tr>
+##D <tr> <td>               <a href="#bottom">Bottom</a>                                  </td> <td>                                                       </td> </tr>
 ##D </table>
 ##D <br>
 ##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
@@ -58,7 +64,7 @@
 ##D <tr> <th align="left"> Use</th> <th align="left"> Description                                                      </th> </tr>
 ##D <tr> <td> Constants       </td> <td> Memory space for read only data                                               </td> </tr>
 ##D <tr> <td> Variables       </td> <td> Memory space for read/write data                                              </td> </tr>
-##D <tr> <td> Functions       </td> <td> fileSOURCE/Executable statement code, can be called anywhere from source code     </td> </tr>
+##D <tr> <td> Functions       </td> <td> fileSOURCE/Executable statement code, can be called anywhere from source code </td> </tr>
 ##D <tr> <td> Parameters      </td> <td> Data passed to functions                                                      </td> </tr>
 ##D <tr> <td> Result          </td> <td> Functions result after execution                                              </td> </tr>
 ##D <tr> <td> Return          </td> <td> Allways an integer returned from function to inform success or failure        </td> </tr>
@@ -69,11 +75,15 @@
 ##D <tr> <td> float           </td> <td> Memory space to store 32 bits floating point numbers                          </td> </tr>
 ##D <tr> <td> double          </td> <td> Memory space to store 64 bits floating point numbers                          </td> </tr>
 ##D <tr> <td> type[]          </td> <td> Memory vector space to store contigous data type                              </td> </tr>
+##D <tr> <th align="left">Tags</th> <th align="left"> Programming Language Documentation                               </th> </tr>
 ##D <tr> <td> ##D             </td> <td> Bash, Zsh, Python, Perl, Ruby                                                 </td> </tr>
 ##D <tr> <td> //D             </td> <td> C/C++, C#, Java, JavaScript, Pascal/Object Pascal, Go, Swift, Kotlin, Rust    </td> </tr>
 ##D <tr> <td> --D             </td> <td> SQL, Ada, Haskell                                                             </td> </tr>
 ##D <tr> <td> ''D             </td> <td> Visual Basic, VBScript                                                        </td> </tr>
 ##D <tr> <td> %%D             </td> <td> LaTex, MATLAB                                                                 </td> </tr>
+##D <tr> <td> ??ED            </td> <td> End Documentation, stop documentation until ??BD Tag                          </td> </tr>
+##D <tr> <td> ??BD            </td> <td> Begin Documentation                                                           </td> </tr>
+##D <tr> <td> ??M             </td> <td> Evaluate line as a macro to enable variables inside                           </td> </tr>
 ##D </table>
 ##D <br>
 ##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
@@ -81,36 +91,37 @@
 ########################################
 ##D <br>
 ##D <h2 id="constants"> Constants </h2>
-#
-##D <i>integer</i>[] <b>numVERSION</b> : Version Number. <br>
+##D <table>
+##D <tr><th align="left"> Type </th><th align="left"> Name </th><th align="left"> Value </th><th align="left"> Description </th></tr>
+##M echo -e "<tr><td align=\"right\"> <i>integer</i>[] </td><td align=\"right\"> <b>numVERSION</b> </td><td> =(${numVERSION[*]}) </td><td> Version Number </td> </tr>"
 declare -a -i -r numVERSION=(2 0 0)
-##D <i>integer</i>[] <b>dateVERSION</b> : Date Version Number. <br>
+##M echo -e "<tr><td align=\"right\"> <i>integer</i>[] </td><td align=\"right\"> <b>dateVERSION</b> </td> <td> =(${dateVERSION[*]}) </td><td> Date Version Number </td></tr>"
 declare -a -i -r dateVERSION=(2025 9 27)
-##D <i>integer</i> <b>iFILE</b> : ID for user file config. <br>
+##M echo -e "<tr><td align=\"right\"> <i>integer</i> </td><td align=\"right\"> <b>iFILE</b> </td><td> =${iFILE} </td><td> Configuration file ID </td> </tr>"
 declare -i -r iFILE=0
-##D <i>integer</i> <b>iUSER_DIR</b> : ID for user directory. <br>
+##M echo -e "<tr><td align=\"right\"> <i>integer</i> </td><td align=\"right\"> <b>iUSER_DIR</b> </td><td> =${iUSER_DIR} </td><td> ID for user directory </td></tr>"
 declare -i -r iUSER_DIR=1
-##D <i>integer</i> <b>iBASE_DIR</b> : ID for base directory. <br>
+##M echo -e "<tr><td align=\"right\"> <i>integer</i> </td><td align=\"right\"> <b>iBASE_DIR</b> </td><td> =${iBASE_DIR} </td><td> ID for base directory </td></tr>"
 declare -i -r iBASE_DIR=2
-##D <i>integer</i> <b>iAPP_DIR</b> : ID for base application directory. <br>
+##M echo -e "<tr><td align=\"right\"> <i>integer</i> </td><td align=\"right\"> <b>iAPP_DIR</b> </td><td> =${iAPP_DIR} </td><td> ID for base application directory </td></tr>"
 declare -i -r iAPP_DIR=3
-##D <i>integer</i> <b>iDOC_DIR</b> : ID for base documentation directory. <br>
+##M echo -e "<tr><td align=\"right\"> <i>integer</i> </td><td align=\"right\"> <b>iDOC_DIR</b> </td><td> =${iDOC_DIR} </td><td> ID for base documentation directory </td></tr>"
 declare -i -r iDOC_DIR=4
-##D <i>integer</i> <b>iICON_FAILURE</b> : ID for Failure icon file. <br>
+##M echo -e "<tr><td align=\"right\"> <i>integer</i> </td><td align=\"right\"> <b>iICON_FAILURE</b> </td><td> =${iICON_FAILURE} </td><td> ID for Failure icon file </td></tr>"
 declare -i -r iICON_FAILURE=5
-##D <i>integer</i> <b>iICON_SUCCESS</b> : ID for Success icon file. <br>
+##M echo -e "<tr><td align=\"right\"> <i>integer</i> </td><td align=\"right\"> <b>iICON_SUCCESS</b> </td><td> =${iICON_SUCCESS} </td><td> ID for Success icon file </td></tr>"
 declare -i -r iICON_SUCCESS=6
-##D <i>integer</i> <b>iICON_NOK</b> : ID for Not Ok icon file. <br>
+##M echo -e "<tr><td align=\"right\"> <i>integer</i> </td><td align=\"right\"> <b>iICON_NOK</b> </td><td> =${iICON_NOK} </td><td> ID for Not Ok icon file </td></tr>"
 declare -i -r iICON_NOK=7
-##D <i>integer</i> <b>iICON_OK</b> : ID for Ok icon file. <br>
+###M echo -e "<tr><td align=\"right\"> <i>integer</i> </td><td align=\"right\"> <b>iICON_OK</b> </td><td> =${iICON_OK} </td><td> ID for Ok icon file </td></tr>"
 declare -i -r iICON_OK=8
-##D <i>integer</i> <b>iLOG_TARGET</b> : ID for log target (screen|file). <br>
+##M echo -e "<tr><td align=\"right\"> <i>integer</i> </td><td align=\"right\"> <b>iLOG_TARGET</b> </td><td> =${iLOG_TARGET} </td><td> ID for log target (screen|file) </td></tr>"
 declare -i -r iLOG_TARGET=9
-##D <i>integer</i> <b>iLOG_LEVEL</b> : ID for log level. <br>
+##M echo -e "<tr><td align=\"right\"> <i>integer</i> </td><td align=\"right\"> <b>iLOG_LEVEL</b> </td><td> =${iLOG_LEVEL} </td><td> ID for log level </td></tr>"
 declare -i -r iLOG_LEVEL=10
-##D <i>integer</i> <b>iMAX</b> : Number of IDs. <br>
+##M echo -e "<tr><td align=\"right\"> <i>integer</i> </td><td align=\"right\"> <b>iMAX</b> </td><td> =${iMAX} </td><td> Number of IDs </td></tr>"
 declare -i -r iMAX=11
-##D <i>integer</i>[] <b>tableID</b> : IDs table. <br>
+##D <tr><td align="right"> <i>integer</i>[] </td><td align="right"> <b>tableID</b> </td><td> [<a href="#tableID"><sup>1</sup></a>] </td><td> IDs table </td></tr>"
 declare -a -r tableID=($iFILE \
 $iUSER_DIR \
 $iBASE_DIR \
@@ -122,7 +133,7 @@ $iICON_NOK \
 $iICON_OK \
 $iLOG_TARGET \
 $iLOG_LEVEL)
-##D <i>string</i>[] <b>tableTAG</b> : Tags table. <br>
+##D <tr><td align="right"> <i>string</i>[] </td><td align="right"> <b>tableTAG</b> </td><td> [<a href="#tableTAG"><sup>2</sup></a>] </td><td> Tags table </td></tr>
 declare -a -r tableTAG=(FILE \
 USER_DIR \
 BASE_DIR \
@@ -134,7 +145,7 @@ ICON_NOK \
 ICON_OK \
 LOG_TARGET \
 LOG_LEVEL)
-##D <i>string</i>[] <b>tableDEFAULT</b> :Default values table. <br>
+##D <tr><td align="right"> <i>string</i>[] </td><td align="right"> <b>tableDEFAULT</b> </td><td> [<a href="#tableTAG"><sup>3</sup></a>] </td><td> Default values table </td></tr>
 declare -a -r tableDEFAULT=(makeDoc.cfg \
 \$HOME \
 dev \
@@ -146,45 +157,53 @@ icons/nok.png \
 icons/ok.png \
 1 \
 -v)
-##D <br>
+##D </table>
+##M echo -e "<p id=\"tableID\"> <sup>1</sup> =(${tableID[*]}) </p>"
+##M echo -e "<p id=\"tableTAG\"> <sup>2</sup> =(${tableTAG[*]}) </p>"
+##M echo -e "<p id=\"tableDEFAULT\"> <sup>3</sup> =(${tableDEFAULT[*]}) </p>"
 ##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 
 ########################################
 ##D <br>
 ##D <h2 id="variables"> Variables </h2>
 #
-##D <i>boolean</i> <b>flagFORCE</b> = <i>false</i> : Assume yes for any question. <br>
+##D <table>
+##D <tr><th align="left"> Type </th><th align="left"> Name </th><th align="left"> Value </th><th align="left"> Description </th></tr>
+##D <tr><td align="right"> <i>boolean</i> </td><td align="right"> <b>enableDOC</b> </td><td> =true </td><td> Enable documentation </td> </tr>
+declare enableDOC=true
+##D <tr><td align="right"> <i>boolean</i> </td><td align="right"> <b>flagFORCE</b> </td><td> =false </td><td> Assume yes for any question </td> </tr>
 declare flagFORCE=false
-##D <i>string</i> <b>fileSOURCE</b> : Source file to generate documentation from. <br>
-declare fileSOURCE=""
-##D <i>string</i> <b>fileDESTINE</b> : Destine file to save documentation into. <br>
-declare fileDESTINE=""
-##D <i>integer</i> <b>exitCODE</b> : Store exit code from main program. <br>
-declare -i exitCODE
-##D <i>string</i> <b>userMESSAGE</b> : Formatted message for message box. <br>
+##D <tr><td align="right"> <i>string</i> </td><td align="right"> <b>fileSOURCE</b> </td><td> ='' </td><td> Source file to generate documentation from code </td> </tr>
+declare fileSOURCE=''
+##D <tr><td align="right"> <i>string</i> </td><td align="right"> <b>fileDESTINE</b> </td><td> ='' </td><td> Destine file to save documentation into </td> </tr>
+declare fileDESTINE=''
+##D <tr><td align="right"> <i>integer</i> </td><td align="right"> <b>exitCODE</b> </td><td> =0 </td><td> Store exit code from main program </td> </tr>
+declare -i exitCODE=0
+##D <tr><td align="right"> <i>string</i> </td><td align="right"> <b>userMESSAGE</b> </td><td> ='' </td><td> Formatted message for message box </td> </tr>
 declare userMESSAGE=''
-##D <i>string</i> <b>tableCONFIG</b> : Table for user configuration values. <br>
+##D <tr><td align="right"> <i>string</i> </td><td align="right"> <b>tableCONFIG</b> </td><td> ='' </td><td> Table for user configuration values </td> </tr>
 declare -a tableCONFIG=()
-##D <i>string</i> <b>configFile</b> : User configuration filename. <br>
+##D <tr><td align="right"> <i>string</i> </td><td align="right"> <b>configFile</b> </td><td> ='' </td><td> User configuration filename </td> </tr>
 declare configFILE=${tableDEFAULT[$iFILE]}
-##D <i>string</i> <b>currentDir</b> : Current directory. <br>
+##D <tr><td align="right"> <i>string</i> </td><td align="right"> <b>currentDir</b> </td><td> ='' </td><td> Current directory </td> </tr>
 declare currentDIR="$PWD"
-##D <i>string</i> <b>userDIR</b> : User home directory. <br>
+##D <tr><td align="right"> <i>string</i> </td><td align="right"> <b>userDIR</b> </td><td> ='' </td><td> User home directory </td> </tr>
 declare userDIR''
-##D <i>string</i> <b>baseDIR</b> : Base development directory. <br>
+##D <tr><td align="right"> <i>string</i> </td><td align="right"> <b>baseDIR</b> </td><td> ='' </td><td> Base development directory </td> </tr>
 declare baseDIR=''
-##D <i>string</i> <b>appDIR</b> : Application directory. <br>
+##D <tr><td align="right"> <i>string</i> </td><td align="right"> <b>appDIR</b> </td><td> ='' </td><td> Application directory </td> </tr>
 declare appDIR=''
-##D <i>string</i> <b>docDIR</b> : Documentation directory. <br>
+##D <tr><td align="right"> <i>string</i> </td><td align="right"> <b>docDIR</b> </td><td> ='' </td><td> Documentation directory </td> </tr>
 declare docDIR=''
-##D <i>string</i> <b>iconFAIL</b> : Icon failure directory. <br>
+##D <tr><td align="right"> <i>string</i> </td><td align="right"> <b>iconFAIL</b> </td><td> ='' </td><td> Icon failure directory </td> </tr>
 declare iconFAIL=''
-##D <i>string</i> <b>iconSUCCESS</b> : Icon success directory. <br>
+##D <tr><td align="right"> <i>string</i> </td><td align="right"> <b>iconSUCCESS</b> </td><td> ='' </td><td> Icon success directory </td> </tr>
 declare iconSUCCESS=''
-##D <i>string</i> <b>iconNOK</b> : Icon not Ok directory. <br>
+##D <tr><td align="right"> <i>string</i> </td><td align="right"> <b>iconNOK</b> </td><td> ='' </td><td> Icon not Ok directory </td> </tr>
 declare iconNOK=''
-##D <i>string</i> <b>iconOK</b> : Icon Ok directory. <br>
+##D <tr><td align="right"> <i>string</i> </td><td align="right"> <b>iconOK</b> </td><td> ='' </td><td> Icon Ok directory </td> </tr>
 declare iconOK=''
+##D </table>
 ##D <br>
 ##D <a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 
@@ -374,7 +393,7 @@ function saveUserConfigToFile()
         logF "Empty parameter to saveUserConfigToFile()"
         return 1
     fi
-
+##ED
 cat << EOT > "${file}" || err=$?
 # HTML Documentation.
 # Syntax: makeDoc.sh -i makeDoc.cfg -o makeDoc.html
@@ -446,6 +465,7 @@ LOG_TARGET=${tableCONFIG[$iLOG_TARGET]}
 ##D <b>LOG_LEVEL</b> = <i>${tableCONFIG[$iLOG_LEVEL]}</i> <br>
 LOG_LEVEL=${tableCONFIG[$iLOG_LEVEL]}
 EOT
+##BD
     local message="Save user configuration into ${file} file."
     if [ $err -eq 0 ]
     then
@@ -540,6 +560,7 @@ function saveHeaderTo()
     table, th, td {
       border: 1px solid lightgray;
       border-collapse: collapse;
+      padding: 3;
     }
     th { background-color: #C0C0C0;
     }
@@ -579,7 +600,7 @@ function saveFooterTo()
 ##D <br>
 ##D <h3 id="guiMessageBox"> guiMessageBox( )</h3>
 ##D <i>integer</i> <b>guiMessageBox</b>( <i>string</i> <b>title</b> , <i>string</i> <b>text</b> , <i>string</i> <b>image</b> ) : <i>none</i> <br>
-##D &ensp;Show a dialog box to search and select a file. <br>
+##D &ensp;Dialog box to show a message and get answer. <br>
 ##D <br>
 ##D <b>Parameter</b>: <br>
 ##D &ensp;<i>string</i> : <b>title</b> - Dialog box title. <br>
@@ -613,7 +634,7 @@ function guiMessageBox
 ##D <br>
 ##D <h3 id="guiShowMessage"> guiShowMessage( )</h3>
 ##D <i>integer</i> <b>guiShowMessage</b>( <i>string</i> <b>title</b> , <i>string</i> <b>text</b> , <i>string</i> <b>image</b> ) : <i>none</i> <br>
-##D &ensp;Show a dialog box to search and select a file. <br>
+##D &ensp;Dialog box to show a message. <br>
 ##D <br>
 ##D <b>Parameter</b>: <br>
 ##D &ensp;<i>string</i> : <b>title</b> - Dialog box title. <br>
@@ -939,21 +960,27 @@ function runScript()
         logNLF "Lines complete: $counter"
         #  ##: Bash ;  //: C,C++,C# ;  --: SQL ;  '': VB ;  %%: LaTex
         [ -n "${line}" ] || continue
-        if [[ "${line:0:4}" == "##D " ]] || \
-           [[ "${line:0:4}" == "//D " ]] || \
-           [[ "${line:0:4}" == "--D " ]] || \
-           [[ "${line:0:4}" == "''D " ]] || \
-           [[ "${line:0:4}" == "%%D " ]]
+        if [[ "${line:0:4}" == "##ED" || "${line:0:4}" == "//ED" || "${line:0:4}" == "--ED" || "${line:0:4}" == "''ED" || "${line:0:4}" == "%%ED" ]]
+        then
+            enableDOC=false
+        elif [[ "${line:0:4}" == "##BD" || "${line:0:4}" == "//BD" || "${line:0:4}" == "--BD" || "${line:0:4}" == "''BD" || "${line:0:4}" == "%%BD" ]]
+        then
+            enableDOC=true
+        elif $enableDOC && [[ "${line:0:4}" == "##D " || "${line:0:4}" == "//D " || "${line:0:4}" == "--D " || "${line:0:4}" == "''D " || "${line:0:4}" == "%%D " ]]
         then
             printf -v userMESSAGE "%s" "${line:4}"
             echo "${userMESSAGE}" >> "${fileDESTINE}"
-        elif [[ "${line:0:3}" == "##D" ]] || \
-             [[ "${line:0:3}" == "//D" ]] || \
-             [[ "${line:0:3}" == "--D" ]] || \
-             [[ "${line:0:3}" == "''D" ]] || \
-             [[ "${line:0:3}" == "%%D" ]]
+        elif $enableDOC && [[ "${line:0:3}" == "##D" || "${line:0:3}" == "//D" || "${line:0:3}" == "--D" || "${line:0:3}" == "''D" || "${line:0:3}" == "%%D" ]]
         then
             printf -v userMESSAGE "%s" "${line:3}"
+            echo "${userMESSAGE}" >> "${fileDESTINE}"
+        elif [[ "${line:0:4}" == "##M " || "${line:0:5}" == "//DM " || "${line:0:5}" == "--DM " || "${line:0:5}" == "''DM " || "${line:0:5}" == "%%DM " ]]
+        then
+            printf -v userMESSAGE "%s" "$(eval ${line:4})"
+            echo "${userMESSAGE}" >> "${fileDESTINE}"
+        elif [[ "${line:0:3}" == "##M" || "${line:0:4}" == "//DM" || "${line:0:4}" == "--DM" || "${line:0:4}" == "''DM" || "${line:0:4}" == "%%DM" ]]
+        then
+            printf -v userMESSAGE "%s" "$(eval ${line:3})"
             echo "${userMESSAGE}" >> "${fileDESTINE}"
         fi
     done < "${fileSOURCE}"
