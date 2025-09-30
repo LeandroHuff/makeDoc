@@ -94,7 +94,7 @@
 ##D><table>
 ##D><tr><th align=right>Type</th><th align=right>Name</th><th></th><th align=left>Value</th><th align=left>Description</th></tr>
 ##M>echo -e "<tr><td align=right> <i>integer</i>[]</td><td align=right><b>numVERSION</b></td><td>=</td><td>(${numVERSION[*]})</td><td>Version Number.</td> </tr>"
-declare -a -i -r numVERSION=(2 0 1)
+declare -a -i -r numVERSION=(2 1 1)
 ##M>echo -e "<tr><td align=right> <i>integer</i>[]</td><td align=right><b>dateVERSION</b></td><td>=</td><td>(${dateVERSION[*]})</td><td>Date Version Number.</td></tr>"
 declare -a -i -r dateVERSION=(2025 9 30)
 ##M>echo -e "<tr><td align=right><i>integer</i></td><td align=right><b>iFILE</b></td><td>=</td><td>${iFILE}</td><td>Configuration file ID.</td> </tr>"
