@@ -3,28 +3,31 @@
 <head>
     <title>makeDoc Documentation</title>
     <style>
-    table, th, td {
-      border: 1px solid lightgray;
-      border-collapse: collapse;
-      padding: 3;
+    table {
+        border: hidden;
+        border-collapse: collapse;
+        padding-left: 5px;
+        padding-right: 5px;
     }
-    th { background-color: #C0C0C0; }
+    th {
+        background-color: #E0E0E0;
+    }
     </style>
 </head>
 <body>
 
-<h1 id="top"> makeDoc </h1>
+<h1 id="top">makeDoc</h1>
 <table id="description">
-<tr><td align=right><b>Purpose</b>:  </td><td align=left>&ensp;Export Documentation from taged lines. </td> </tr>
-<tr><td align=right><b>File</b>:     </td><td align=left>&ensp;makeDoc.sh </td> </tr>
-<tr><td align=right><b>Date</b>:     </td><td align=left>&ensp;2025-09-29 </td> </tr>
-<tr><td align=right><b>Author</b>:   </td><td align=left>&ensp;<a href="mailto:leandrohuff@email.com">Leandro</a> </td> </tr>
-<tr><td align=right><b>Version</b>:  </td><td align=left>&ensp;2.0.0 / 2025-09-27 </td> </tr>
-<tr><td align=right><b>Copyright</b>:</td><td align=left>&ensp;CC01 1.0 Universal </td> </tr>
+<tr><td align=right></td><td></td><td>Export Documentation from taged lines.</td></tr>
+<tr><td align=right><b>File</b></td><td>:</td><td>makeDoc.sh</td></tr>
+<tr><td align=right><b>Date</b></td><td>:</td><td>2025-09-30</td></tr>
+<tr><td align=right><b>Author</b></td><td>:</td><td><a href="mailto:leandrohuff@email.com">Leandro</a></td></tr>
+<tr><td align=right><b>Version</b></td><td>:</td><td>2.0.1 / 2025-09-30</td></tr>
+<tr><td align=right><b>Copyright</b></td><td>:</td><td>CC01 1.0 Universal</td></tr>
 </table>
 <br>
 <b>Note</b>: Changes in this document will be discarded on next build, any changes should be made on source code documentation instead. <br>
-<h2 id="details"> Details </h2>
+<h2 id="details">Details</h2>
 <p>
 Save formatted lines from source code into documentation file. <br>
 Read source code line-by-line and save prefixed lines by tag ??D to file. <br>
@@ -32,117 +35,116 @@ C/C++ source code lines start with tag //D and Bash lines start with tag ##D. <b
 Only those lines started by tags are exportedd to documentation files. <br>
 Mixed commented lines can co-exist at same source code, one for local documentation purpose and another to be exported to apropriate documentation file. <br>
 All lines are documented using Markdown format, the exported document can be read by an Markdown program reader. <br>
-</p> <br>
-<h2 id="index"> Index </h2>
+</p>
+<h2 id="index">Index</h2>
 <table>
-<tr><td>            <a href="#top">Top</a>                                       </td><td>                                                     </td></tr>
-<tr><td>            <a href="#details">Details</a>                               </td><td>                                                     </td></tr>
-<tr><td>            <a href="#glossary">Glossary</a>                             </td><td>                                                     </td></tr>
-<tr><td>            <a href="#constants">Constants</a>                           </td><td>                                                     </td></tr>
-<tr><td>            <a href="#variables">Variables</a>                           </td><td>                                                     </td></tr>
-<tr><td>            <a href="#functions">Functions</a>                           </td><td>                                                     </td></tr>
-<tr><td align=right><a href="#logFail">logFail</a>:                              </td><td>Print a failure log message                          </td></tr>
-<tr><td align=right><a href="#unsetVars">unsetVars</a>:                          </td><td>Unset global variables                               </td></tr>
-<tr><td align=right><a href="#_exit">_exit</a>:                                  </td><td>End log, stop libShell, unset variables and exit     </td></tr>
-<tr><td align=right><a href="#printHelp">printHelp</a>:                          </td><td>Print an help message                                </td></tr>
-<tr><td align=right><a href="#printHelp">printHelp</a>:                          </td><td>Print an help message                                </td></tr>
-<tr><td align=right><a href="#getTag">getTag</a>:                                </td><td>Get tag name from a string until '=' symbol.         </td></tr>
-<tr><td align=right><a href="#getValue">getValue</a>:                            </td><td>Get tag value from a string after '=' symbol.        </td></tr>
-<tr><td align=right><a href="#saveUserConfigToFile">saveUserConfigToFile</a>:    </td><td>Save a pre formatted configuration into a filename.  </td></tr>
-<tr><td align=right><a href="#loadUserConfigFromFile">loadUserConfigFromFile</a>:</td><td>Load configuration list from file or a defautl table.</td></tr>
-<tr><td align=right><a href="#saveHeaderTo">saveHeaderTo</a>:                    </td><td>Save a pre formatted HTML Header into a target file. </td></tr>
-<tr><td align=right><a href="#saveFooterTo">saveFooterTo</a>:                    </td><td>Save a pre formatted HTML Footer                     </td></tr>
-<tr><td align=right><a href="#guiMessageBox">guiMessageBox</a>:                  </td><td>Dialog box to show a message and get answer.         </td></tr>
-<tr><td align=right><a href="#guiShowMessage">guiShowMessage</a>:                </td><td>Dialog box to show a message.                        </td></tr>
-<tr><td align=right><a href="#loadConfiguration">loadConfiguration</a>:          </td><td>Load user configuration values from file.            </td></tr>
-<tr><td align=right><a href="#parseArgs">parseArgs</a>:                          </td><td>Parse parameters from command line                   </td></tr>
-<tr><td align=right><a href="#source">Load libShell</a>:                         </td><td>fileSOURCE libShell                                  </td></tr>
-<tr><td align=right><a href="#runScript">runScript</a>:                          </td><td>Main shell script application                        </td></tr>
-<tr><td align=right><a href="#bottom">Start Shell Script</a>:                    </td><td>Start Shell Script                                   </td></tr>
-<tr><td>            <a href="#bottom">Bottom</a>                                 </td><td>                                                     </td></tr>
+<tr><td>            <a href="#top">Top</a>                                      </td><td> </td><td>                                                     </td></tr>
+<tr><td>            <a href="#details">Details</a>                              </td><td> </td><td>                                                     </td></tr>
+<tr><td>            <a href="#glossary">Glossary</a>                            </td><td> </td><td>                                                     </td></tr>
+<tr><td>            <a href="#constants">Constants</a>                          </td><td> </td><td>                                                     </td></tr>
+<tr><td>            <a href="#variables">Variables</a>                          </td><td> </td><td>                                                     </td></tr>
+<tr><td align=right><a href="#functions">Functions</a>                          </td><td> </td><td>                                                     </td></tr>
+<tr><td align=right><a href="#logFail">logFail</a>                              </td><td>:</td><td>Print a failure log message.                         </td></tr>
+<tr><td align=right><a href="#unsetVars">unsetVars</a>                          </td><td>:</td><td>Unset global variables.                              </td></tr>
+<tr><td align=right><a href="#_exit">_exit</a>                                  </td><td>:</td><td>End log, stop libShell, unset variables and exit.    </td></tr>
+<tr><td align=right><a href="#printHelp">printHelp</a>                          </td><td>:</td><td>Print an help message.                               </td></tr>
+<tr><td align=right><a href="#printHelp">printHelp</a>                          </td><td>:</td><td>Print an help message.                               </td></tr>
+<tr><td align=right><a href="#getTag">getTag</a>                                </td><td>:</td><td>Get tag name from a string until '=' symbol.         </td></tr>
+<tr><td align=right><a href="#getValue">getValue</a>                            </td><td>:</td><td>Get tag value from a string after '=' symbol.        </td></tr>
+<tr><td align=right><a href="#saveUserConfigToFile">saveUserConfigToFile</a>    </td><td>:</td><td>Save a pre formatted configuration into a filename.  </td></tr>
+<tr><td align=right><a href="#loadUserConfigFromFile">loadUserConfigFromFile</a></td><td>:</td><td>Load configuration list from file or a defautl table.</td></tr>
+<tr><td align=right><a href="#saveHeaderTo">saveHeaderTo</a>                    </td><td>:</td><td>Save a pre formatted HTML Header into a target file. </td></tr>
+<tr><td align=right><a href="#saveFooterTo">saveFooterTo</a>                    </td><td>:</td><td>Save a pre formatted HTML Footer                     </td></tr>
+<tr><td align=right><a href="#guiMessageBox">guiMessageBox</a>                  </td><td>:</td><td>Dialog box to show a message and get answer.         </td></tr>
+<tr><td align=right><a href="#guiShowMessage">guiShowMessage</a>                </td><td>:</td><td>Dialog box to show a message.                        </td></tr>
+<tr><td align=right><a href="#loadConfiguration">loadConfiguration</a>          </td><td>:</td><td>Load user configuration values from file.            </td></tr>
+<tr><td align=right><a href="#parseArgs">parseArgs</a>                          </td><td>:</td><td>Parse parameters from command line                   </td></tr>
+<tr><td align=right><a href="#runScript">runScript</a>                          </td><td>:</td><td>Main shell script application.                       </td></tr>
+<tr><td align=right><a href="#source">Load libShell</a>                         </td><td>:</td><td>fileSOURCE libShell.                                 </td></tr>
+<tr><td align=right><a href="#bottom">Start Shell Script</a>                    </td><td>:</td><td>Start Shell Script.                                  </td></tr>
+<tr><td>            <a href="#bottom">Bottom</a>                                </td><td> </td><td>                                                     </td></tr>
 </table>
-<br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 <h2 id="glossary">Glossary</h2>
 <table>
-<tr><th>Use       </th><th>Description                                                                  </th></tr>
-<tr><td>Constants </td><td>Memory space for read only data                                              </td></tr>
-<tr><td>Variables </td><td>Memory space for read/write data                                             </td></tr>
-<tr><td>Functions </td><td>fileSOURCE/Executable statement code, can be called anywhere from source code</td></tr>
-<tr><td>Parameters</td><td>Data passed to functions                                                     </td></tr>
-<tr><td>Result    </td><td>Functions result after execution                                             </td></tr>
-<tr><td>Return    </td><td>Allways an integer returned from function to inform success or failure       </td></tr>
-<tr><td>none      </td><td>Is similar as a void type, no parameter, no result or no return from function</td></tr>
-<tr><td>char      </td><td>One byte data type to store single characters                                </td></tr>
-<tr><td>string    </td><td>Char vector to store a group of characters                                   </td></tr>
-<tr><td>integer   </td><td>Memory space to store ordinal numbers                                        </td></tr>
-<tr><td>float     </td><td>Memory space to store 32 bits floating point numbers                         </td></tr>
-<tr><td>double    </td><td>Memory space to store 64 bits floating point numbers                         </td></tr>
-<tr><td>type[]    </td><td>Memory vector space to store contigous data type                             </td></tr>
-<tr><th>Tags      </th><th>Programming Language Documentation                                           </th></tr>
-<tr><td>##D       </td><td>Bash, Zsh, Python, Perl, Ruby                                                </td></tr>
-<tr><td>//D       </td><td>C/C++, C#, Java, JavaScript, Pascal/Object Pascal, Go, Swift, Kotlin, Rust   </td></tr>
-<tr><td>--D       </td><td>SQL, Ada, Haskell                                                            </td></tr>
-<tr><td>''D       </td><td>Visual Basic, VBScript                                                       </td></tr>
-<tr><td>%%D       </td><td>LaTex, MATLAB                                                                </td></tr>
-<tr><td>??ED      </td><td>End Documentation, stop documentation until ??BD Tag                         </td></tr>
-<tr><td>??BD      </td><td>Begin Documentation                                                          </td></tr>
-<tr><td>??M       </td><td>Evaluate line as a macro to enable variables inside                          </td></tr>
+<tr><th align=right>Use       </th><th> </th><th align=left>Description                                                        </th></tr>
+<tr><td align=right>Constants </td><td>:</td><td>Memory space for read only data.                                              </td></tr>
+<tr><td align=right>Variables </td><td>:</td><td>Memory space for read/write data.                                             </td></tr>
+<tr><td align=right>Functions </td><td>:</td><td>fileSOURCE/Executable statement code, can be called anywhere from source code.</td></tr>
+<tr><td align=right>Parameters</td><td>:</td><td>Data passed to functions.                                                     </td></tr>
+<tr><td align=right>Result    </td><td>:</td><td>Functions result after execution.                                             </td></tr>
+<tr><td align=right>Return    </td><td>:</td><td>Allways an integer returned from function to inform success or failure.       </td></tr>
+<tr><td align=right>none      </td><td>:</td><td>Is similar as a void type, no parameter, no result or no return from function.</td></tr>
+<tr><td align=right>char      </td><td>:</td><td>One byte data type to store single characters.                                </td></tr>
+<tr><td align=right>string    </td><td>:</td><td>Char vector to store a group of characters.                                   </td></tr>
+<tr><td align=right>integer   </td><td>:</td><td>Memory space to store ordinal numbers.                                        </td></tr>
+<tr><td align=right>float     </td><td>:</td><td>Memory space to store 32 bits floating point numbers.                         </td></tr>
+<tr><td align=right>double    </td><td>:</td><td>Memory space to store 64 bits floating point numbers.                         </td></tr>
+<tr><td align=right>type[]    </td><td>:</td><td>Memory vector space to store contigous data type.                             </td></tr>
 </table>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
-<br>
-<h2 id="constants"> Constants </h2>
 <table>
-<tr><th align=left> Type              </th><th align=left> Name                  </th><th align=left> Value </th><th align=left> Description </th></tr>
-<tr><td align=right> <i>integer</i>[] </td><td align=right> <b>numVERSION</b>    </td><td> =(2 0 0) </td><td> Version Number </td> </tr>
-<tr><td align=right> <i>integer</i>[] </td><td align=right> <b>dateVERSION</b>   </td><td> =(2025 9 27) </td><td> Date Version Number </td></tr>
-<tr><td align=right> <i>integer</i>   </td><td align=right> <b>iFILE</b>         </td><td> =0 </td><td> Configuration file ID </td> </tr>
-<tr><td align=right> <i>integer</i>   </td><td align=right> <b>iUSER_DIR</b>     </td><td> =1 </td><td> ID for user directory </td></tr>
-<tr><td align=right> <i>integer</i>   </td><td align=right> <b>iBASE_DIR</b>     </td><td> =2 </td><td> ID for base directory </td></tr>
-<tr><td align=right> <i>integer</i>   </td><td align=right> <b>iAPP_DIR</b>      </td><td> =3 </td><td> ID for base application directory </td></tr>
-<tr><td align=right> <i>integer</i>   </td><td align=right> <b>iDOC_DIR</b>      </td><td> =4 </td><td> ID for base documentation directory </td></tr>
-<tr><td align=right> <i>integer</i>   </td><td align=right> <b>iICON_FAILURE</b> </td><td> =5 </td><td> ID for Failure icon file </td></tr>
-<tr><td align=right> <i>integer</i>   </td><td align=right> <b>iICON_SUCCESS</b> </td><td> =6 </td><td> ID for Success icon file </td></tr>
-<tr><td align=right> <i>integer</i>   </td><td align=right> <b>iICON_NOK</b>     </td><td> =7 </td><td> ID for Not Ok icon file </td></tr>
-<tr><td align=right> <i>integer</i>   </td><td align=right> <b>iLOG_TARGET</b>   </td><td> =9 </td><td> ID for log target (screen|file) </td></tr>
-<tr><td align=right> <i>integer</i>   </td><td align=right> <b>iLOG_LEVEL</b>    </td><td> =10 </td><td> ID for log level </td></tr>
-<tr><td align=right> <i>integer</i>   </td><td align=right> <b>iMAX</b>          </td><td> =11 </td><td> Number of IDs </td></tr>
-<tr><td align=right> <i>integer</i>[] </td><td align=right> <b>tableID</b>       </td><td> [<a href="#tableID"><sup>1</sup></a>] </td><td> IDs table </td></tr>"
-<tr><td align=right> <i>string</i>[]  </td><td align=right> <b>tableTAG</b>      </td><td> [<a href="#tableTAG"><sup>2</sup></a>] </td><td> Tags table </td></tr>
-<tr><td align=right> <i>string</i>[]  </td><td align=right> <b>tableDEFAULT</b>  </td><td> [<a href="#tableTAG"><sup>3</sup></a>] </td><td> Default values table </td></tr>
+<tr><th align=right>Tags</th><th> </th><th align=left>Programming Language Documentation                              </th></tr>
+<tr><td align=right>##D></td><td>:</td><td>Bash, Zsh, Python, Perl, Ruby.                                             </td></tr>
+<tr><td align=right>//D></td><td>:</td><td>C/C++, C#, Java, JavaScript, Pascal/Object Pascal, Go, Swift, Kotlin, Rust.</td></tr>
+<tr><td align=right>--D></td><td>:</td><td>SQL, Ada, Haskell.                                                         </td></tr>
+<tr><td align=right>''D></td><td>:</td><td>Visual Basic, VBScript.                                                    </td></tr>
+<tr><td align=right>%%D></td><td>:</td><td>LaTex, MATLAB.                                                             </td></tr>
+<tr><td align=right>??E></td><td>:</td><td>End, stop documentation until ??B> tag.                                    </td></tr>
+<tr><td align=right>??B></td><td>:</td><td>Begin, start documentation until ??E> tag.                                 </td></tr>
+<tr><td align=right>??M></td><td>:</td><td>Macro, evaluate lines to show variables values.                            </td></tr>
 </table>
-<p id=tableID> <sup>1</sup> =(0 1 2 3 4 5 6 7 8 9 10) </p>
-<p id=tableTAG> <sup>2</sup> =(FILE USER_DIR BASE_DIR APP_DIR DOC_DIR ICON_FAILURE ICON_SUCCESS ICON_NOK ICON_OK LOG_TARGET LOG_LEVEL) </p>
-<p id=tableDEFAULT> <sup>3</sup> =(makeDoc.cfg $HOME dev makeDoc doc icons/failure.png icons/success.png icons/nok.png icons/ok.png 1 -v) </p>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
 <br>
-<h2 id="variables"> Variables </h2>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
+<h2 id="constants">Constants</h2>
 <table>
-<tr><th align=left> Type            </th><th align=left> Name                  </th><th align=left> Value </th><th align=left> Description </th></tr>
-<tr><td align=right> <i>boolean</i> </td><td align=right> <b>enableDOC</b>   </td><td> =true            </td><td> Enable documentation </td> </tr>
-<tr><td align=right> <i>boolean</i> </td><td align=right> <b>flagFORCE</b>   </td><td> =false           </td><td> Assume yes for any question </td> </tr>
-<tr><td align=right> <i>string</i>  </td><td align=right> <b>fileSOURCE</b>  </td><td> =''              </td><td> Source file to generate documentation from code </td> </tr>
-<tr><td align=right> <i>string</i>  </td><td align=right> <b>fileDESTINE</b> </td><td> =''              </td><td> Destine file to save documentation into </td> </tr>
-<tr><td align=right> <i>integer</i> </td><td align=right> <b>exitCODE</b>    </td><td> =0               </td><td> Store exit code from main program </td> </tr>
-<tr><td align=right> <i>string</i>  </td><td align=right> <b>userMESSAGE</b> </td><td> =''              </td><td> Formatted message for message box </td> </tr>
-<tr><td align=right> <i>string</i>  </td><td align=right> <b>tableCONFIG</b> </td><td> =''              </td><td> Table for user configuration values </td> </tr>
-<tr><td align=right> <i>string</i>  </td><td align=right> <b>configFile</b>  </td><td> =''              </td><td> User configuration filename </td> </tr>
-<tr><td align=right> <i>string</i>  </td><td align=right> <b>currentDir</b>  </td><td> =''              </td><td> Current directory </td> </tr>
-<tr><td align=right> <i>string</i>  </td><td align=right> <b>userDIR</b>     </td><td> =''              </td><td> User home directory </td> </tr>
-<tr><td align=right> <i>string</i>  </td><td align=right> <b>baseDIR</b>     </td><td> =''              </td><td> Base development directory </td> </tr>
-<tr><td align=right> <i>string</i>  </td><td align=right> <b>appDIR</b>      </td><td> =''              </td><td> Application directory </td> </tr>
-<tr><td align=right> <i>string</i>  </td><td align=right> <b>docDIR</b>      </td><td> =''              </td><td> Documentation directory </td> </tr>
-<tr><td align=right> <i>string</i>  </td><td align=right> <b>iconFAIL</b>    </td><td> =''              </td><td> Icon failure directory </td> </tr>
-<tr><td align=right> <i>string</i>  </td><td align=right> <b>iconSUCCESS</b> </td><td> =''              </td><td> Icon success directory </td> </tr>
-<tr><td align=right> <i>string</i>  </td><td align=right> <b>iconNOK</b>     </td><td> =''              </td><td> Icon not Ok directory </td> </tr>
-<tr><td align=right> <i>string</i>  </td><td align=right> <b>iconOK</b>      </td><td> =''              </td><td> Icon Ok directory </td> </tr>
+<tr><th align=right>Type</th><th align=right>Name</th><th></th><th align=left>Value</th><th align=left>Description</th></tr>
+<tr><td align=right> <i>integer</i>[]</td><td align=right><b>numVERSION</b></td><td>=</td><td>(2 0 1)</td><td>Version Number.</td> </tr>
+<tr><td align=right> <i>integer</i>[]</td><td align=right><b>dateVERSION</b></td><td>=</td><td>(2025 9 30)</td><td>Date Version Number.</td></tr>
+<tr><td align=right><i>integer</i></td><td align=right><b>iFILE</b></td><td>=</td><td>0</td><td>Configuration file ID.</td> </tr>
+<tr><td align=right><i>integer</i></td><td align=right><b>iUSER_DIR</b></td><td>=</td><td>1</td><td>ID for user directory.</td></tr>
+<tr><td align=right><i>integer</i></td><td align=right><b>iBASE_DIR</b></td><td>=</td><td>2</td><td>ID for base directory.</td></tr>
+<tr><td align=right><i>integer</i></td><td align=right><b>iAPP_DIR</b></td><td>=</td><td>3</td><td>ID for base application directory.</td></tr>
+<tr><td align=right><i>integer</i></td><td align=right><b>iDOC_DIR</b></td><td>=</td><td>4</td><td>ID for base documentation directory.</td></tr>
+<tr><td align=right><i>integer</i></td><td align=right><b>iICON_FAILURE</b></td><td>=</td><td>5</td><td>ID for Failure icon file.</td></tr>
+<tr><td align=right><i>integer</i></td><td align=right><b>iICON_SUCCESS</b></td><td>=</td><td>6</td><td>ID for Success icon file.</td></tr>
+<tr><td align=right><i>integer</i></td><td align=right><b>iICON_NOK</b></td><td>=</td><td>7</td><td>ID for Not Ok icon file.</td></tr>
+<tr><td align=right><i>integer</i></td><td align=right><b>iICON_OK</b></td><td>=</td><td>8</td><td>ID for Ok icon file.</td></tr>
+<tr><td align=right><i>integer</i></td><td align=right><b>iLOG_TARGET</b></td><td>=</td><td>9</td><td>ID for log target (screen|file).</td></tr>
+<tr><td align=right><i>integer</i></td><td align=right><b>iLOG_LEVEL</b></td><td>=</td><td>10</td><td>ID for log level.</td></tr>
+<tr><td align=right><i>integer</i></td><td align=right><b>iMAX</b></td><td>=</td><td>11</td><td>Number of IDs.</td></tr>
+<tr><td align=right><i>integer</i>[]</td><td align=right><b>tableID</b></td><td>=</td><td>[<a href="#tableID"><sup>1</sup></a>]</td><td>IDs table.</td></tr>
+<tr><td align=right><i>string</i>[]</td><td align=right><b>tableTAG</b></td><td>=</td><td>[<a href="#tableTAG"><sup>2</sup></a>]</td><td>Tags table.</td></tr>
+<tr><td align=right><i>string</i>[]</td><td align=right><b>tableDEFAULT</b></td><td>=</td><td>[<a href="#tableTAG"><sup>3</sup></a>]</td><td>Default values table.</td></tr>
+</table>
+<p id=tableID><sup>1</sup> =(0 1 2 3 4 5 6 7 8 9 10) </p>
+<p id=tableTAG><sup>2</sup> =(FILE USER_DIR BASE_DIR APP_DIR DOC_DIR ICON_FAILURE ICON_SUCCESS ICON_NOK ICON_OK LOG_TARGET LOG_LEVEL) </p>
+<p id=tableDEFAULT><sup>3</sup> =(makeDoc.cfg $HOME dev makeDoc doc icons/failure.png icons/success.png icons/nok.png icons/ok.png 1 -v) </p>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
+<h2 id="variables">Variables</h2>
+<table>
+<tr><th align=right>Type            </th><th align=right>Name                </th> <th> </th> <th align=left>Value</th><th align=left>Description                           </th></tr>
+<tr><td align=right> <i>boolean</i> </td><td align=right> <b>enableDOC</b>   </td> <td>=</td> <td>true            </td><td> Enable documentation.                           </td></tr>
+<tr><td align=right> <i>boolean</i> </td><td align=right> <b>flagFORCE</b>   </td> <td>=</td> <td>false           </td><td> Assume yes for any question.                    </td></tr>
+<tr><td align=right> <i>string</i>  </td><td align=right> <b>fileSOURCE</b>  </td> <td>=</td> <td>''              </td><td> Source file to generate documentation from code.</td></tr>
+<tr><td align=right> <i>string</i>  </td><td align=right> <b>fileDESTINE</b> </td> <td>=</td> <td>''              </td><td> Destine file to save documentation into.        </td></tr>
+<tr><td align=right> <i>integer</i> </td><td align=right> <b>exitCODE</b>    </td> <td>=</td> <td>0               </td><td> Store exit code from main program.              </td></tr>
+<tr><td align=right> <i>string</i>  </td><td align=right> <b>userMESSAGE</b> </td> <td>=</td> <td>''              </td><td> Formatted message for message box.              </td></tr>
+<tr><td align=right> <i>string</i>  </td><td align=right> <b>tableCONFIG</b> </td> <td>=</td> <td>''              </td><td> Table for user configuration values.            </td></tr>
+<tr><td align=right> <i>string</i>  </td><td align=right> <b>configFile</b>  </td> <td>=</td> <td>''              </td><td> User configuration filename.                    </td></tr>
+<tr><td align=right> <i>string</i>  </td><td align=right> <b>currentDir</b>  </td> <td>=</td> <td>''              </td><td> Current directory.                              </td></tr>
+<tr><td align=right> <i>string</i>  </td><td align=right> <b>userDIR</b>     </td> <td>=</td> <td>''              </td><td> User home directory.                            </td></tr>
+<tr><td align=right> <i>string</i>  </td><td align=right> <b>baseDIR</b>     </td> <td>=</td> <td>''              </td><td> Base development directory.                     </td></tr>
+<tr><td align=right> <i>string</i>  </td><td align=right> <b>appDIR</b>      </td> <td>=</td> <td>''              </td><td> Application directory.                          </td></tr>
+<tr><td align=right> <i>string</i>  </td><td align=right> <b>docDIR</b>      </td> <td>=</td> <td>''              </td><td> Documentation directory.                        </td></tr>
+<tr><td align=right> <i>string</i>  </td><td align=right> <b>iconFAIL</b>    </td> <td>=</td> <td>''              </td><td> Icon failure directory.                         </td></tr>
+<tr><td align=right> <i>string</i>  </td><td align=right> <b>iconSUCCESS</b> </td> <td>=</td> <td>''              </td><td> Icon success directory.                         </td></tr>
+<tr><td align=right> <i>string</i>  </td><td align=right> <b>iconNOK</b>     </td> <td>=</td> <td>''              </td><td> Icon not Ok directory.                          </td></tr>
+<tr><td align=right> <i>string</i>  </td><td align=right> <b>iconOK</b>      </td> <td>=</td> <td>''              </td><td> Icon Ok directory.                              </td></tr>
 </table>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
-<br>
-<h2 id="functions"> Functions </h2>
-<h3 id="logFail"> logFail( ) </h3>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
+<h2 id="functions">Functions</h2>
+<h3 id="logFail">logFail( )</h3>
 <i>none</i> <b>logFail</b>( <i>string</i> <b>"$*"</b> ) : <i>string</i> <br>
 &ensp;Send formatted failure log messages to screen. <br>
 <br>
@@ -155,9 +157,9 @@ All lines are documented using Markdown format, the exported document can be rea
 <b>Return</b>: <br>
 &ensp;<i>none</i> <br>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 <br>
-<h3 id="unsetVars"> unsetVars( ) </h3>
+<h3 id="unsetVars">unsetVars( )</h3>
 <i>integer</i> <b>unsetVars</b>( <i>none</i> ) : <i>none</i> <br>
 &ensp;Unset global variables. <br>
 <br>
@@ -170,9 +172,9 @@ All lines are documented using Markdown format, the exported document can be rea
 <b>Return</b>: <br>
 &ensp;<i>integer</i>: <b>0</b> - Success <br>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 <br>
-<h3 id="_exit"> _exit( ) </h3>
+<h3 id="_exit">_exit( )</h3>
 <i>integer</i> <b>_exit</b>( <i>integer</i> <b>$1</b> ) : <i>none</i> <br>
 &ensp;Finish script file and return an exit code. <br>
 <ul>
@@ -192,9 +194,9 @@ All lines are documented using Markdown format, the exported document can be rea
 &ensp;<i>integer</i>: <b>0</b> - Success <br>
 &ensp;<i>integer</i>: <b>1..N</b> - Error code. <br>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 <br>
-<h3 id="printHelp"> printHelp( ) </h3>
+<h3 id="printHelp">printHelp( )</h3>
 <i>integer</i> <b>printHelp</b>( <i>none</i> ) : <i>string</i> <br>
 &ensp;Print an help information. <br>
 <br>
@@ -207,9 +209,9 @@ All lines are documented using Markdown format, the exported document can be rea
 <b>Return</b>: <br>
 &ensp;<i>integer</i>: <b>0</b> - Success <br>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 <br>
-<h3 id="getTag"> getTag( )</h3>
+<h3 id="getTag">getTag( )</h3>
 <i>none</i> <b>getTag</b>( <i>string</i> <b>line</b> ) : <i>string</i> <br>
 &ensp;Get tag name from a string until '=' symbol. <br>
 <br>
@@ -220,11 +222,11 @@ All lines are documented using Markdown format, the exported document can be rea
 &ensp;<i>string</i> : Echoe the 'tag' name from line string. <br>
 <br>
 <b>Return</b>: <br>
-&ensp;<i>none</i>
+&ensp;<i>none</i> <br>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 <br>
-<h3 id="getValue"> getValue( )</h3>
+<h3 id="getValue">getValue( )</h3>
 <i>none</i> <b>getValue</b>( <i>string</i> <b>line</b> ) : <i>string</i> <br>
 &ensp;Get tag value from a string after '=' symbol. <br>
 <br>
@@ -235,11 +237,11 @@ All lines are documented using Markdown format, the exported document can be rea
 &ensp;<i>string</i> : Echoe the 'tag' value from line string. <br>
 <br>
 <b>Return</b>: <br>
-&ensp;<i>none</i>
+&ensp;<i>none</i> <br>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 <br>
-<h3 id="saveUserConfigToFile"> saveUserConfigToFile( )</h3>
+<h3 id="saveUserConfigToFile">saveUserConfigToFile( )</h3>
 <i>integer</i> <b>saveUserConfigToFile</b>( <i>string</i> <b>filename</b> ) : <i>string</i> <br>
 &ensp;Save a pre formatted configuration into a filename. <br>
 <br>
@@ -255,9 +257,9 @@ All lines are documented using Markdown format, the exported document can be rea
 &ensp;<i>integer</i> : <b>1</b> - Empty parameter. <br>
 &ensp;<i>integer</i> : <b>2</b> - Could not save to file. <br>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 <br>
-<h3 id="loadUserConfigFromFile"> loadUserConfigFromFile( )</h3>
+<h3 id="loadUserConfigFromFile">loadUserConfigFromFile( )</h3>
 <i>integer</i> <b>loadUserConfigFromFile</b>( <i>string</i> <b>filename</b> ) : <i>string</i> <br>
 &ensp;Load configuration list from a file or a default configuration table. <br>
 <br>
@@ -272,9 +274,9 @@ All lines are documented using Markdown format, the exported document can be rea
 &ensp;<i>integer</i> : <b>0</b> - Success <br>
 &ensp;<i>integer</i> : <b>1</b> - Empty parameter or file acces is not available. <br>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 <br>
-<h3 id="saveHeaderTo"> saveHeaderTo( )</h3>
+<h3 id="saveHeaderTo">saveHeaderTo( )</h3>
 <i>integer</i> <b>saveHeaderTo</b>( <i>string</i> <b>title</b> , <i>string</i> <b>file</b> ) : <i>string</i> <br>
 &ensp;Save a pre formatted HTML Header into a target file passed by parameter. <br>
 <br>
@@ -289,9 +291,9 @@ All lines are documented using Markdown format, the exported document can be rea
 &ensp;<i>integer</i> : <b>0</b> - Success <br>
 &ensp;<i>integer</i> : <b>1</b> - Error code, empty parameter or file not found. <br>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 <br>
-<h3 id="saveFooterTo"> saveFooterTo( )</h3>
+<h3 id="saveFooterTo">saveFooterTo( )</h3>
 <i>integer</i> <b>saveFooterTo</b>( <i>string</i> <b>file</b> ) : <i>string</i> <br>
 &ensp;Save a pre defined HTML Footer into file. <br>
 <br>
@@ -305,9 +307,9 @@ All lines are documented using Markdown format, the exported document can be rea
 &ensp;<i>integer</i> : <b>0</b> - Success <br>
 &ensp;<i>integer</i> : <b>1</b> - Error code, empty parameter or file not found. <br>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 <br>
-<h3 id="guiMessageBox"> guiMessageBox( )</h3>
+<h3 id="guiMessageBox">guiMessageBox( )</h3>
 <i>integer</i> <b>guiMessageBox</b>( <i>string</i> <b>title</b> , <i>string</i> <b>text</b> , <i>string</i> <b>image</b> ) : <i>none</i> <br>
 &ensp;Dialog box to show a message and get answer. <br>
 <br>
@@ -323,9 +325,9 @@ All lines are documented using Markdown format, the exported document can be rea
 &ensp;<i>integer</i> : <b>0</b> - User choose Ok. <br>
 &ensp;<i>integer</i> : <b>1</b> - User choose Close. <br>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 <br>
-<h3 id="guiShowMessage"> guiShowMessage( )</h3>
+<h3 id="guiShowMessage">guiShowMessage( )</h3>
 <i>integer</i> <b>guiShowMessage</b>( <i>string</i> <b>title</b> , <i>string</i> <b>text</b> , <i>string</i> <b>image</b> ) : <i>none</i> <br>
 &ensp;Dialog box to show a message. <br>
 <br>
@@ -341,9 +343,9 @@ All lines are documented using Markdown format, the exported document can be rea
 &ensp;<i>integer</i> : <b>0</b> - User choose Ok. <br>
 &ensp;<i>integer</i> : <b>1</b> - User choose Close. <br>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 <br>
-<h3 id="loadConfiguration"> loadConfiguration( )</h3>
+<h3 id="loadConfiguration">loadConfiguration( )</h3>
 <i>integer</i> <b>loadConfiguration</b>( <i>string</i> <b>file</b> ) : <i>none</i> <br>
 &ensp;Load user configuration values from file. <br>
 <br>
@@ -357,9 +359,9 @@ All lines are documented using Markdown format, the exported document can be rea
 &ensp;<i>integer</i> : <b>0</b> - Success <br>
 &ensp;<i>integer</i> : <b>1..N</b> -Failure <br>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 <br>
-<h3 id="parseArgs"> parseArgs( ) </h3>
+<h3 id="parseArgs">parseArgs( )</h3>
 <i>integer</i> <b>parseArgs</b>( <i>string</i> "<b>$@</b>" ) : <i>none</i> <br>
 &ensp;Parse all parameters from command line. <br>
 <br>
@@ -379,16 +381,9 @@ Options: <br>
 &ensp;<i>integer</i>: <b>0</b>    - Success <br>
 &ensp;<i>integer</i>: <b>1..N</b> - Error code. <br>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 <br>
-<h3 id="source"> Load and Initialize libShell </h3>
-<i>source</i> <b>libShell.sh</b> <br>
-<b>libInit</b> <i>-v -l 1</i> <br>
-<b>logBegin</b> <br>
-<br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
-<br>
-<h3 id="runScript"> runScript( ) </h3>
+<h3 id="runScript">runScript( )</h3>
 <i>integer</i> <b>runScript</b>( <i>string</i> "<b>$@</b>" ) : <i>none</i> <br>
 &ensp;Run bash script file. <br>
 <br>
@@ -402,13 +397,21 @@ Options: <br>
 &ensp;<i>integer</i>: <b>0</b>    - Success <br>
 &ensp;<i>integer</i>: <b>1..N</b> - Error code. <br>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 <br>
-<h3 id="bottom"> Start Shell Script </h3> <br>
+<hr>
+<h3 id="source">Load and Initialize libShell</h3>
+<i>source</i> <b>libShell.sh</b> <br>
+<b>libInit</b> <i>-v -l 1</i> <br>
+<b>logBegin</b> <br>
+<br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
+<br>
+<h3 id="bottom">Start Shell Script</h3>
 <b>runScript</b> "<i>$@</i>" <br>
 Call function runScript( ) and pass all parameters from command line. <br>
 <br>
-<a href="#top"> Top </a> | <a href="#index"> Index </a> | <a href="#bottom"> Bottom </a> <br>
+[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 
 </body>
 </html>

@@ -3,45 +3,50 @@
 <head>
     <title>makeDoc Documentation</title>
     <style>
-    table, th, td {
-      border: 1px solid lightgray;
-      border-collapse: collapse;
+    table {
+        border: hidden;
+        border-collapse: collapse;
+        padding-left: 5px;
+        padding-right: 5px;
     }
-    th { background-color: #C0C0C0;
+    th {
+        background-color: #E0E0E0;
     }
     </style>
 </head>
 <body>
 
-<h1> makeDoc User Configuration </h1>
+<h1>makeDoc User Configuration</h1>
 <table>
-<tr> <td align="right"> <b>  Purpose</b>: </td> <td align="left">&ensp;User configuration file for makeDoc application.                             </td> </tr>
-<tr> <td align="right"> <b>     File</b>: </td> <td align="left">&ensp;makeDoc.cfg                                                                  </td> </tr>
-<tr> <td align="right"> <b>File Date</b>: </td> <td align="left">&ensp;2025-09-28                                                                   </td> </tr>
-<tr> <td align="right"> <b>  Version</b>: </td> <td align="left">&ensp;1.0.0 / 2025-09-27 </td> </tr>
-<tr> <td align="right"> <b>   Author</b>: </td> <td align="left">&ensp;<a href="mailto:leandrohuff@email.com">Leandro</a>   </td> </tr>
-<tr> <td align="right"> <b>Copyright</b>: </td> <td align="left">&ensp;CC01 1.0 Universal                                                           </td> </tr>
+<tr><td align=right>                </td><td> </td><td>User configuration file for makeDoc application.                            </td></tr>
+<tr><td align=right><b>     File</b></td><td>:</td><td>makeDoc.cfg                                                                 </td></tr>
+<tr><td align=right><b>File Date</b></td><td>:</td><td>2025-09-30                                                                  </td></tr>
+<tr><td align=right><b>  Version</b></td><td>:</td><td>1.0.0 / 2025-09-27</td></tr>
+<tr><td align=right><b>   Author</b></td><td>:</td><td><a href="mailto:leandrohuff@email.com">Leandro</a>                          </td></tr>
+<tr><td align=right><b>Copyright</b></td><td>:</td><td>CC01 1.0 Universal                                                          </td></tr>
 </table> <br>
 <p>
 <b>Note</b>: Changes in this documentation will be discarded on next build, any changes should be made in source code documentation instead. <br>
 </p>
-<h2> Details </h2>
+<h2>Details</h2>
 <p>
 Export HTML documentation. <br>
-Syntax: <b>makeDoc.sh</b> <b>-i</b> <i>filename.cfg</i> <b>-o</b> <i>filename[.cfg].html</i> <br>
+Syntax: <b>makeDoc.sh</b> [<b>-y</b>] <b>-i</b> <i>filename.cfg</i> <b>-o</b> <i>filename[.cfg].html</i> <br>
 </p>
 <h2> Configuration </h2>
-<b>FILE</b> = <i>makeDoc.cfg</i> <br>
-<b>USER_DIR</b> = <i>$HOME</i> <br>
-<b>BASE_DIR</b> = <i>dev</i> <br>
-<b>APP_DIR</b> = <i>makeDoc</i> <br>
-<b>DOC_DIR</b> = <i>doc</i> <br>
-<b>ICON_FAILURE</b> = <i>icons/failure.png</i> <br>
-<b>ICON_SUCCESS</b> = <i>icons/success.png</i> <br>
-<b>ICON_NOK</b> = <i>icons/nok.png</i> <br>
-<b>ICON_OK</b> = <i>icons/ok.png</i> <br>
-<b>LOG_TARGET</b> = <i>1</i> <br>
-<b>LOG_LEVEL</b> = <i>-v</i> <br>
+<table>
+<tr><th align=right>Tag</th><th> </th><th align=left>Value</th></tr>
+<tr><td align=right><b>FILE</b></td><td>=</td><td><i>makeDoc.cfg</i></td></tr>
+<tr><td align=right><b>USER_DIR</b></td><td>=</td><td><i>$HOME</i></td></tr>
+<tr><td align=right><b>BASE_DIR</b></td><td>=</td><td><i>dev</i></td></tr>
+<tr><td align=right><b>APP_DIR</b></td><td>=</td><td><i>makeDoc</i></td></tr>
+<tr><td align=right><b>DOC_DIR</b></td><td>=</td><td><i>doc</i></td></tr>
+<tr><td align=right><b>ICON_FAILURE</b></td><td>=</td><td><i>icons/failure.png</i></td></tr>
+<tr><td align=right><b>ICON_SUCCESS</b></td><td>=</td><td><i>icons/success.png</i></td></tr>
+<tr><td align=right><b>ICON_NOK</b></td><td>=</td><td><i>icons/nok.png</i></td></tr>
+<tr><td align=right><b>ICON_OK</b></td><td>=</td><td><i>icons/ok.png</i></td></tr>
+<tr><td align=right><b>LOG_TARGET</b></td><td>=</td><td><i>1</i></td></tr>
+<tr><td align=right><b>LOG_LEVEL</b></td><td>=</td><td><i>-v</i></td></tr>
 
 </body>
 </html>
