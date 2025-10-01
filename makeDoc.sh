@@ -959,12 +959,13 @@ function runScript()
                 *)  case "${line:0:4}" in
                         "##D>"  | "//D>"  | "\\D>"  | "''D>") printf -v userMESSAGE "%s" "${line:4}" ;;
                         "##M>"  | "//M>"  | "\\M>"  | "''M>") printf -v userMESSAGE "%s" "$(eval ${line:4})" ;;
+                        *) continue ;;
                     esac
                     ;;
             esac
             ;;
         esac
-        [ -n "${userMESSAGE}" ] && echo "${userMESSAGE}" >> "${fileDESTINE}"
+        echo "${userMESSAGE}" >> "${fileDESTINE}"
     done < "${fileSOURCE}"
     # at the end, print a new line for logNLF "".
     echo
