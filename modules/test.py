@@ -1,5 +1,5 @@
 import unittest
-from modules.color import *
+from modules import color
 
 class TestFunctionsInMain(unittest.TestCase):
 

@@ -72,7 +72,7 @@ def main(args) -> int:
         errorCode=1
         return (errorCode)
     elif not os.path.exists(args.input):
-        debug.info(f"Input file {inputFilename} not found.")
+        debug.info(f"Input file {inputFilename} not found, no documentaion exported.")
         errorCode=2
         return (errorCode)
 
@@ -84,7 +84,7 @@ def main(args) -> int:
         errorCode=3
         return (errorCode)
     elif not args.force and os.path.exists(args.output):
-        debug.info(f"Output file {outputFilename} already exist.")
+        debug.warning(f"Output file {outputFilename} already exist, no documentation exported.")
         errorCode=4
         return (errorCode)
 
@@ -96,27 +96,30 @@ def main(args) -> int:
     padraoEndDoc: str = r"^ *([#|/|'|%|-]{2}E>) *"
     flagMakeDoc: str = True
 
+    fileName, fileExt = os.path.splitext(outputFilename)
+
     try:
         with open(inputFilename, "r") as inputFile, open(outputFilename, "w") as outputFile:
             # Save a header
-            headerStr: str = """<!DOCTYPE html>
-            <html>
-            <head>
-                <title>Documentation</title>
-                <style>
-                table {
-                    border: hidden;
-                    border-collapse: collapse;
-                    padding-left: 5px;
-                    padding-right: 5px;
-                }
-                th {
-                    background-color: #E0E0E0;
-                }
-                </style>
-            </head>
-            <body>
-            """
+            if fileExt == ".html":
+                headerStr: str = """<!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Documentation</title>
+                    <style>
+                    table {
+                        border: hidden;
+                        border-collapse: collapse;
+                        padding-left: 5px;
+                        padding-right: 5px;
+                    }
+                    th {
+                        background-color: #E0E0E0;
+                    }
+                    </style>
+                </head>
+                <body>
+                """
 
             # save header
             outputFile.write(headerStr)
@@ -134,14 +137,15 @@ def main(args) -> int:
                         outputFile.write(textDoc[2])
 
             # load footer
-            footerStr: str = """
-            </body>
-            </html>
-            """
+            if fileExt == ".html":
+                footerStr: str = """
+                </body>
+                </html>
+                """
 
             # save footer
             outputFile.write(footerStr)
-            
+
     except FileNotFoundError as err:
         errorCode=3
         debug.log(f"File not found: {err}")
