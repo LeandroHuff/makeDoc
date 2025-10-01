@@ -1,0 +1,10 @@
+__author__ = "Leandro"
+__version__ = "1.0.0"
+PACKAGE_NAME = "modules"
+all = [
+    'askuser',
+    'codes',
+    'color',
+    'console',
+    'debug',
+]
