@@ -954,11 +954,11 @@ function runScript()
         "##E>" | "//E>" | "--E>" | "''E>") enableDOC=false ; continue ;;
         *)  if ! $enableDOC ; then continue ; fi
             case "${line:0:5}" in
-                "##D> " | "//D> " | "\\D> " | "''D> ") printf -v userMESSAGE "%s" "${line:5}" ;;
-                "##M> " | "//M> " | "\\M> " | "''M> ") printf -v userMESSAGE "%s" "$(eval ${line:5})" ;;
+                "##D> " | "//D> " | "%%D> " | "''D> " | "--D>") printf -v userMESSAGE "%s" "${line:5}" ;;
+                "##M> " | "//M> " | "%%M> " | "''M>  | "--M>") printf -v userMESSAGE "%s" "$(eval ${line:5})" ;;
                 *)  case "${line:0:4}" in
-                        "##D>"  | "//D>"  | "\\D>"  | "''D>") printf -v userMESSAGE "%s" "${line:4}" ;;
-                        "##M>"  | "//M>"  | "\\M>"  | "''M>") printf -v userMESSAGE "%s" "$(eval ${line:4})" ;;
+                        "##D>"  | "//D>"  | "%%D>"  | "''D>" | "--D>") printf -v userMESSAGE "%s" "${line:4}" ;;
+                        "##M>"  | "//M>"  | "%%M>"  | "''M>" | "--M>") printf -v userMESSAGE "%s" "$(eval ${line:4})" ;;
                         *) continue ;;
                     esac
                     ;;

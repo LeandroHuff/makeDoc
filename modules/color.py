@@ -29,7 +29,7 @@ __all__ = [
     'ITALIC',
     'UNDERLINE',
     'DARK',
-    'HIGH',
+    'LIGHT',
     'BLACK',
     'RED',
     'GREEN',

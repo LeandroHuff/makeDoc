@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # coding=utf-8
+##H>
 ##D><h1 id="top">makeDoc.py</h1>
 import os
 import re
@@ -21,6 +22,7 @@ from modules import debug
 ##D><b>Note</b>: Changes in this documentation will be discarded on next build, any changes should be made on source code documentation instead. <br>
 ##D></p>
 
+
 ##D><br>
 ##D><h3 id="main">main( )</h3>
 ##D><i>integer</i> <b>main</b>( <i>string</i> <b>args</b> ) : <i>none</i> <br>
@@ -41,16 +43,22 @@ from modules import debug
 ##D>&ensp;<i>integer</i>: <b>0</b> - Success <br>
 ##D>&ensp;<i>integer</i>: <b>1</b> - Failure <br>
 def main(args) -> int:
-    errorCode:int = 0
-    inputFilename:str=''
-    outputFilename:str=''
-
+    errorCode: int = 0
+    inputFilename: str = ""
+    outputFilename: str = ""
+    flagSaveFooter: bool = False
+    flagMakeDoc : bool = True
+    
     parser = argparse.ArgumentParser(
         description="Read taged lines documentation from source code and export documentation to output file."
     )
 
-    parser.add_argument("-i", "--input", help="Path and filename to the input file.")
-    parser.add_argument("-o", "--output", help="Path and filename to the output file.")
+    parser.add_argument(
+        "-i", "--input", help="Path and filename to the input file."
+    )
+    parser.add_argument(
+        "-o", "--output", help="Path and filename to the output file."
+    )
     parser.add_argument(
         "-f", "--force", action="store_true", help="Force yes for any question."
     )
@@ -61,7 +69,7 @@ def main(args) -> int:
     args = parser.parse_args()
 
     if args.debug:
-        debug.setDebugFlag( True )
+        debug.setDebugFlag(True)
         debug.log("Debug enabled.")
 
     if args.force:
@@ -69,90 +77,102 @@ def main(args) -> int:
 
     if not args.input:
         debug.error(f"Empty parameter for input file.")
-        errorCode=1
-        return (errorCode)
+        errorCode = 1
+        return errorCode
     elif not os.path.exists(args.input):
-        debug.info(f"Input file {inputFilename} not found, no documentaion exported.")
-        errorCode=2
-        return (errorCode)
+        debug.info(f"Input file {args.input} not found, no documentaion exported.")
+        errorCode = 2
+        return errorCode
 
-    inputFilename=args.input
+    inputFilename = args.input
     debug.log(f"Input file: {inputFilename}")
 
     if not args.output:
         debug.error(f"Empty parameter for output file.")
-        errorCode=3
-        return (errorCode)
+        errorCode = 3
+        return errorCode
     elif not args.force and os.path.exists(args.output):
-        debug.warning(f"Output file {outputFilename} already exist, no documentation exported.")
-        errorCode=4
-        return (errorCode)
+        debug.warning(
+            f"Output file {args.output} already exist, no documentation exported."
+        )
+        errorCode = 4
+        return errorCode
 
-    outputFilename=args.output
+    outputFilename = args.output
     debug.log(f"Output file: {outputFilename}")
 
-    padraoDoc: str = r"^ *([#|/|'|%|-]{2}[D|M|B|E]>) *"
-    padraoBeginDoc: str = r"^ *([#|/|'|%|-]{2}B>) *"
-    padraoEndDoc: str = r"^ *([#|/|'|%|-]{2}E>) *"
-    flagMakeDoc: str = True
-
-    fileName, fileExt = os.path.splitext(outputFilename)
+    padraoRegex: str = r"^ *([#|/|'|%|-]{2}[D|M|B|E|H|F]>?) *"
+    padraoBeginDoc: str = r"^ *([#|/|'|%|-]{2}B>?) *"
+    padraoSaveHeader: str = r"^ *([#|/|'|%|-]{2}H>?) *"
+    padraoDoc: str = r"^ *([#|/|'|%|-]{2}[D|M]>?) *"
+    padraoSaveFooter: str = r"^ *([#|/|'|%|-]{2}F>?) *"
+    padraoEndDoc: str = r"^ *([#|/|'|%|-]{2}E>?) *"
 
     try:
-        with open(inputFilename, "r") as inputFile, open(outputFilename, "w") as outputFile:
-            # Save a header
-            if fileExt == ".html":
-                headerStr: str = """<!DOCTYPE html>
-                <html>
-                <head>
-                    <title>Documentation</title>
-                    <style>
-                    table {
-                        border: hidden;
-                        border-collapse: collapse;
-                        padding-left: 5px;
-                        padding-right: 5px;
-                    }
-                    th {
-                        background-color: #E0E0E0;
-                    }
-                    </style>
-                </head>
-                <body>
-                """
-
-            # save header
-            outputFile.write(headerStr)
-
+        with (
+            open(inputFilename, "r") as inputFile,
+            open(outputFilename, "w") as outputFile,
+        ):
             # make Documentation
             for linhaFile in inputFile:
-                matchDoc = re.search(padraoDoc, linhaFile)
+                matchDoc = re.search(padraoRegex, linhaFile)
                 if matchDoc:
-                    if re.search(padraoEndDoc, linhaFile):
-                        flagMakeDoc = False
-                    elif re.search(padraoBeginDoc, linhaFile):
-                        flagMakeDoc = True
-                    if flagMakeDoc:
+                    if flagMakeDoc and re.search(padraoDoc, linhaFile):
                         textDoc = re.split(padraoDoc, linhaFile)
                         outputFile.write(textDoc[2])
+                    elif re.search(padraoEndDoc, linhaFile):
+                        flagMakeDoc = False
+                        debug.info ("Make Doc disabled.")
+                    elif re.search(padraoBeginDoc, linhaFile):
+                        flagMakeDoc = True
+                        debug.info ("Make Doc enabled.")
+                    elif flagMakeDoc and re.search(padraoSaveHeader, linhaFile):
+                        debug.info ("Save Hader detected.")
+                        flagSaveFooter = True
+                        # Save a header
+                        headerStr: str = \
+"""<!DOCTYPE html>
+<html>
+<head>
+    <title>Documentation</title>
+    <style>
+    table {
+        border: hidden;
+        border-collapse: collapse;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    th {
+        background-color: #E0E0E0;
+    }
+    </style>
+</head>
+<body>
 
-            # load footer
-            if fileExt == ".html":
-                footerStr: str = """
-                </body>
-                </html>
-                """
+"""
+                        # save header
+                        outputFile.write(headerStr)
 
-            # save footer
-            outputFile.write(footerStr)
+                    # load footer
+                    elif flagMakeDoc and ( flagSaveFooter or re.search(padraoSaveFooter, linhaFile) ):
+                        debug.info ("Save Footer detected.")
+                        footerStr: str = \
+"""
+</body>
+</html>
+"""
+                        # save footer
+                        outputFile.write(footerStr)
+
 
     except FileNotFoundError as err:
-        errorCode=3
+        errorCode = 3
         debug.log(f"File not found: {err}")
     except IOError as err:
-        errorCode=4
+        errorCode = 4
         debug.log(f"File I/O error: {err}")
     return errorCode
+
 
 ##D><br>
 ##D><h3 id="entry">Python Entry Point</h3>
@@ -168,10 +188,11 @@ def main(args) -> int:
 ##D><b>Return</b>: <br>
 ##D>&ensp;<i>integer</i>: <b>0</b> - Success <br>
 ##D>&ensp;<i>integer</i>: <b>1</b> - Failure <br>
+##F>
 if __name__ == "__main__":
-    ret:int = main(sys.argv)
+    ret: int = main(sys.argv)
     if ret == 0:
-        debug.info("Success")
+        debug.info("Export documentation.")
     else:
-        debug.error ("Failure")
+        debug.error("Export documentation.")
     exit(ret)
