@@ -115,7 +115,7 @@ def log(msg:str, force:bool=False) -> None:
     # fname: receive the filename.extension
     # Obs.: path variable is no longer used but it is needed by os.path.split() requirements the return 2 separated strings.
     path,fname = os.path.split( file_name() )
-    print( '{}DEBUG:{}{} file:{}  line:{}  function:{}'.format( color.styleFg( color.NORMAL, color.GREEN ), color.reset(), msg, fname, str( line_number() ), function_name() ) )
+    print( '{}DEBUG:{}{} file:{}  line:{}  function:{}'.format( color.styleFg( color.NORMAL, color.LIGHT + color.GREEN ), color.reset(), msg, fname, str( line_number() ), function_name() ) )
 
 
 def info(msg:str) -> None:
@@ -124,7 +124,7 @@ def info(msg:str) -> None:
     :param      msg     str             - Message to be sent to the terminal.
     :return             none
     '''
-    print('{}INFO:{} {}'.format(color.styleFg(color.NORMAL, color.GRAY), color.reset(), msg))
+    print('{}INFO:{} {}'.format(color.styleFg(color.NORMAL, color.LIGHT + color.GRAY), color.reset(), msg))
 
 
 def error(msg:str) -> None:
@@ -133,7 +133,7 @@ def error(msg:str) -> None:
     :param      msg     str             - Message to be sent to the terminal.
     :return             none
     '''
-    print('{}ERROR:{} {}'.format(color.styleFg(color.NORMAL, color.RED), color.reset(), msg))
+    print('{}ERROR:{} {}'.format(color.styleFg(color.NORMAL, color.LIGHT + color.RED), color.reset(), msg))
 
 
 def warning(msg:str) -> None:
@@ -142,4 +142,4 @@ def warning(msg:str) -> None:
     :param      msg     str             - Message to be sent to the terminal.
     :return             none
     '''
-    print('{}WARNING:{} {}'.format(color.styleFg(color.NORMAL, color.YELLOW), color.reset(), msg))
+    print('{}WARNING:{} {}'.format(color.styleFg(color.NORMAL, color.LIGHT + color.CYAN), color.reset(), msg))

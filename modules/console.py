@@ -98,7 +98,7 @@ MOUNT_DIR = '/mnt'
 MAPPER_DIR = '/dev/mapper'
 FILE_SZ_MB = 512
 BLOCK_SZ = 512
-TOUT_DEFAULT = (2 * 60 * 60)  # hours * mins * segs
+TOUT_DEFAULT = (60)  # segundos
 
 
 def runCommand(cmd:str, tmout:float=TOUT_DEFAULT) -> int:

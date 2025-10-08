@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 ########################################
-##D><h1 id="top">makeDoc</h1>
+##H>
+##D> <h1 id="top">makeDoc</h1>
 
 ########################################
-##D><table id="description">
+##D> <table id="description">
 ##D><tr><td align=right></td><td></td><td>Export Documentation from taged lines.</td></tr>
 ##D><tr><td align=right><b>File</b></td><td>:</td><td>makeDoc.sh</td></tr>
-##M>echo -e "<tr><td align=right><b>Date</b></td><td>:</td><td>$(getDate)</td></tr>"
+##D><tr><td align=right><b>Date</b></td><td>:</td><td>2025-10-05</td></tr>
 ##D><tr><td align=right><b>Author</b></td><td>:</td><td><a href="mailto:leandrohuff@email.com">Leandro</a></td></tr>
-##M>echo -e "<tr><td align=right><b>Version</b></td><td>:</td><td>$(genVersionStr ${numVERSION[@]}) / $(genDateVersionStr ${dateVERSION[@]})</td></tr>"
+##D><tr><td align=right><b>Version</b></td><td>:</td><td>2.1.1 / 2025-9-30</td></tr>
 ##D><tr><td align=right><b>Copyright</b></td><td>:</td><td>CC01 1.0 Universal</td></tr>
 ##D></table>
 ##D><br>
@@ -93,33 +94,33 @@
 ##D><h2 id="constants">Constants</h2>
 ##D><table>
 ##D><tr><th align=right>Type</th><th align=right>Name</th><th></th><th align=left>Value</th><th align=left>Description</th></tr>
-##M>echo -e "<tr><td align=right> <i>integer</i>[]</td><td align=right><b>numVERSION</b></td><td>=</td><td>(${numVERSION[*]})</td><td>Version Number.</td> </tr>"
+##D><tr><td align=right> <i>integer</i>[]</td><td align=right><b>numVERSION</b></td><td>=</td><td>(2 1 1)</td><td>Version Number.</td> </tr>
 declare -a -i -r numVERSION=(2 1 1)
-##M>echo -e "<tr><td align=right> <i>integer</i>[]</td><td align=right><b>dateVERSION</b></td><td>=</td><td>(${dateVERSION[*]})</td><td>Date Version Number.</td></tr>"
+##D><tr><td align=right> <i>integer</i>[]</td><td align=right><b>dateVERSION</b></td><td>=</td><td>(2025 9 30)</td><td>Date Version Number.</td></tr>
 declare -a -i -r dateVERSION=(2025 9 30)
-##M>echo -e "<tr><td align=right><i>integer</i></td><td align=right><b>iFILE</b></td><td>=</td><td>${iFILE}</td><td>Configuration file ID.</td> </tr>"
+##D><tr><td align=right><i>integer</i></td><td align=right><b>iFILE</b></td><td>=</td><td>0</td><td>Configuration file ID.</td> </tr>
 declare -i -r iFILE=0
-##M>echo -e "<tr><td align=right><i>integer</i></td><td align=right><b>iUSER_DIR</b></td><td>=</td><td>${iUSER_DIR}</td><td>ID for user directory.</td></tr>"
+##D><tr><td align=right><i>integer</i></td><td align=right><b>iUSER_DIR</b></td><td>=</td><td>1</td><td>ID for user directory.</td></tr>
 declare -i -r iUSER_DIR=1
-##M>echo -e "<tr><td align=right><i>integer</i></td><td align=right><b>iBASE_DIR</b></td><td>=</td><td>${iBASE_DIR}</td><td>ID for base directory.</td></tr>"
+##D><tr><td align=right><i>integer</i></td><td align=right><b>iBASE_DIR</b></td><td>=</td><td>2</td><td>ID for base directory.</td></tr>
 declare -i -r iBASE_DIR=2
-##M>echo -e "<tr><td align=right><i>integer</i></td><td align=right><b>iAPP_DIR</b></td><td>=</td><td>${iAPP_DIR}</td><td>ID for base application directory.</td></tr>"
+##D><tr><td align=right><i>integer</i></td><td align=right><b>iAPP_DIR</b></td><td>=</td><td>3</td><td>ID for base application directory.</td></tr>
 declare -i -r iAPP_DIR=3
-##M>echo -e "<tr><td align=right><i>integer</i></td><td align=right><b>iDOC_DIR</b></td><td>=</td><td>${iDOC_DIR}</td><td>ID for base documentation directory.</td></tr>"
+##D><tr><td align=right><i>integer</i></td><td align=right><b>iDOC_DIR</b></td><td>=</td><td>4</td><td>ID for base documentation directory.</td></tr>
 declare -i -r iDOC_DIR=4
-##M>echo -e "<tr><td align=right><i>integer</i></td><td align=right><b>iICON_FAILURE</b></td><td>=</td><td>${iICON_FAILURE}</td><td>ID for Failure icon file.</td></tr>"
+##D><tr><td align=right><i>integer</i></td><td align=right><b>iICON_FAILURE</b></td><td>=</td><td>5</td><td>ID for Failure icon file.</td></tr>
 declare -i -r iICON_FAILURE=5
-##M>echo -e "<tr><td align=right><i>integer</i></td><td align=right><b>iICON_SUCCESS</b></td><td>=</td><td>${iICON_SUCCESS}</td><td>ID for Success icon file.</td></tr>"
+##D><tr><td align=right><i>integer</i></td><td align=right><b>iICON_SUCCESS</b></td><td>=</td><td>6</td><td>ID for Success icon file.</td></tr>
 declare -i -r iICON_SUCCESS=6
-##M>echo -e "<tr><td align=right><i>integer</i></td><td align=right><b>iICON_NOK</b></td><td>=</td><td>${iICON_NOK}</td><td>ID for Not Ok icon file.</td></tr>"
+##D><tr><td align=right><i>integer</i></td><td align=right><b>iICON_NOK</b></td><td>=</td><td>7</td><td>ID for Not Ok icon file.</td></tr>
 declare -i -r iICON_NOK=7
-##M>echo -e "<tr><td align=right><i>integer</i></td><td align=right><b>iICON_OK</b></td><td>=</td><td>${iICON_OK}</td><td>ID for Ok icon file.</td></tr>"
+##D><tr><td align=right><i>integer</i></td><td align=right><b>iICON_OK</b></td><td>=</td><td>8</td><td>ID for Ok icon file.</td></tr>
 declare -i -r iICON_OK=8
-##M>echo -e "<tr><td align=right><i>integer</i></td><td align=right><b>iLOG_TARGET</b></td><td>=</td><td>${iLOG_TARGET}</td><td>ID for log target (screen|file).</td></tr>"
+##D><tr><td align=right><i>integer</i></td><td align=right><b>iLOG_TARGET</b></td><td>=</td><td>9</td><td>ID for log target (screen|file).</td></tr>
 declare -i -r iLOG_TARGET=9
-##M>echo -e "<tr><td align=right><i>integer</i></td><td align=right><b>iLOG_LEVEL</b></td><td>=</td><td>${iLOG_LEVEL}</td><td>ID for log level.</td></tr>"
+##D><tr><td align=right><i>integer</i></td><td align=right><b>iLOG_LEVEL</b></td><td>=</td><td>10</td><td>ID for log level.</td></tr>
 declare -i -r iLOG_LEVEL=10
-##M>echo -e "<tr><td align=right><i>integer</i></td><td align=right><b>iMAX</b></td><td>=</td><td>${iMAX}</td><td>Number of IDs.</td></tr>"
+##D><tr><td align=right><i>integer</i></td><td align=right><b>iMAX</b></td><td>=</td><td>11</td><td>Number of IDs.</td></tr>
 declare -i -r iMAX=11
 ##D><tr><td align=right><i>integer</i>[]</td><td align=right><b>tableID</b></td><td>=</td><td>[<a href="#tableID"><sup>1</sup></a>]</td><td>IDs table.</td></tr>
 declare -a -r tableID=($iFILE \
@@ -158,9 +159,9 @@ icons/ok.png \
 1 \
 -v)
 ##D></table>
-##M>echo -e "<p id=\"tableID\"><sup>1</sup> =(${tableID[*]}) </p>"
-##M>echo -e "<p id=\"tableTAG\"><sup>2</sup> =(${tableTAG[*]}) </p>"
-##M>echo -e "<p id=\"tableDEFAULT\"><sup>3</sup> =(${tableDEFAULT[*]}) </p>"
+##D><p id=\"tableID\"><sup>1</sup> =(0 1 2 3 4 5 6 7 8 9 10) </p>
+##D><p id=\"tableTAG\"><sup>2</sup> =(FILE USER_DIR BASE_DIR APP_DIR DOC_DIR ICON_FAILURE ICON_SUCCESS ICON_NOK ICON_OK LOG_TARGET LOG_LEVEL) </p>
+##D><p id=\"tableDEFAULT\"><sup>3</sup> =(makeDoc.cfg \$HOME dev makeDoc doc icons/failure.png icons/success.png icons/nok.png icons/ok.png 1 -v) </p>
 ##D>[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
 
 ########################################
@@ -954,11 +955,11 @@ function runScript()
         "##E>" | "//E>" | "--E>" | "''E>") enableDOC=false ; continue ;;
         *)  if ! $enableDOC ; then continue ; fi
             case "${line:0:5}" in
-                "##D> " | "//D> " | "\\D> " | "''D> ") printf -v userMESSAGE "%s" "${line:5}" ;;
-                "##M> " | "//M> " | "\\M> " | "''M> ") printf -v userMESSAGE "%s" "$(eval ${line:5})" ;;
+                "##D> " | "//D> " | "%%D> " | "''D> " | "--D>") printf -v userMESSAGE "%s" "${line:5}" ;;
+                "##M> " | "//M> " | "%%M> " | "''M>  | "--M>") printf -v userMESSAGE "%s" "$(eval ${line:5})" ;;
                 *)  case "${line:0:4}" in
-                        "##D>"  | "//D>"  | "\\D>"  | "''D>") printf -v userMESSAGE "%s" "${line:4}" ;;
-                        "##M>"  | "//M>"  | "\\M>"  | "''M>") printf -v userMESSAGE "%s" "$(eval ${line:4})" ;;
+                        "##D>"  | "//D>"  | "%%D>"  | "''D>" | "--D>") printf -v userMESSAGE "%s" "${line:4}" ;;
+                        "##M>"  | "//M>"  | "%%M>"  | "''M>" | "--M>") printf -v userMESSAGE "%s" "$(eval ${line:4})" ;;
                         *) continue ;;
                     esac
                     ;;
@@ -1000,6 +1001,7 @@ logBegin           || { logFail "Initialize Log."        ; _exit 1 ; }
 ##D>Call function runScript( ) and pass all parameters from command line. <br>
 ##D><br>
 ##D>[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
+##F>
 runScript "$@"
 exitCODE=$?
 
