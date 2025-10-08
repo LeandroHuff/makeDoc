@@ -1,7 +1,7 @@
 object FormMain: TFormMain
-  Left = 434
+  Left = 486
   Height = 162
-  Top = 162
+  Top = 182
   Width = 640
   Caption = 'makeDoc'
   ClientHeight = 162

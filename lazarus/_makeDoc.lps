@@ -8,8 +8,8 @@
         <Filename Value="_makeDoc.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="makeDoc"/>
-        <EditorIndex Value="2"/>
-        <CursorPos X="45" Y="26"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="19" Y="13"/>
         <UsageCount Value="45"/>
         <Loaded Value="True"/>
       </Unit>
@@ -19,11 +19,11 @@
         <ComponentName Value="FormMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
-        <TopLine Value="199"/>
-        <CursorPos X="37" Y="212"/>
+        <TopLine Value="387"/>
+        <CursorPos X="20" Y="458"/>
         <UsageCount Value="45"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit>
       <Unit>
         <Filename Value="makeDoc.lfm"/>
@@ -159,14 +159,15 @@
         <TopLine Value="17"/>
         <CursorPos X="2" Y="36"/>
         <UsageCount Value="10"/>
-        <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit>
       <Unit>
         <Filename Value="_makeDoc.lpi"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="59"/>
-        <CursorPos Y="29"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="67"/>
+        <CursorPos X="28" Y="58"/>
         <UsageCount Value="10"/>
+        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="XML"/>
       </Unit>
       <Unit>
@@ -235,7 +236,6 @@
         <TopLine Value="22"/>
         <CursorPos X="20" Y="36"/>
         <UsageCount Value="10"/>
-        <DefaultSyntaxHighlighter Value="Delphi"/>
       </Unit>
       <Unit>
         <Filename Value="/usr/share/lazarus/ide/lazarus.pp"/>
@@ -247,19 +247,13 @@
       </Unit>
       <Unit>
         <Filename Value="makeDoc.pas.html"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="14" Y="6"/>
         <UsageCount Value="11"/>
-        <Loaded Value="True"/>
         <DefaultSyntaxHighlighter Value="HTML"/>
       </Unit>
     </Units>
     <JumpHistory HistoryIndex="29">
-      <Position>
-        <Filename Value="makeDoc.pas"/>
-        <Caret Line="439" Column="29" TopLine="125"/>
-      </Position>
       <Position>
         <Filename Value="makeDoc.pas"/>
         <Caret Line="128" Column="2" TopLine="122"/>
@@ -375,6 +369,10 @@
       <Position>
         <Filename Value="makeDoc.pas"/>
         <Caret Line="168" Column="61" TopLine="157"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="91" Column="13" TopLine="88"/>
       </Position>
     </JumpHistory>
     <RunParams>

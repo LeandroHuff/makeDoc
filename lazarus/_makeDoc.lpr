@@ -17,7 +17,6 @@ uses
 
 begin
     RequireDerivedFormResource:= True;
-    Application. Title:='makeDoc';
     Application. Scaled:= True;
     {$PUSH}{$WARN 5044 OFF}
     Application. MainFormOnTaskbar:= True;

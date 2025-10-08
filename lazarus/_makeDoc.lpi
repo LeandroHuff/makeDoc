@@ -55,7 +55,7 @@
   <CompilerOptions>
     <Version Value="11"/>
     <Target>
-      <Filename Value="_makeDoc"/>
+      <Filename Value="bin/makeDoc"/>
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
