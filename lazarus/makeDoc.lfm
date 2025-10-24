@@ -1,17 +1,17 @@
 object FormMain: TFormMain
   Left = 486
-  Height = 162
+  Height = 198
   Top = 182
   Width = 640
   Caption = 'makeDoc'
-  ClientHeight = 162
+  ClientHeight = 198
   ClientWidth = 640
   LCLVersion = '4.2.0.0'
-  OnShow = FormShow
+  OnCreate = OnCreate
   object btnClose: TButton
-    Left = 488
+    Left = 487
     Height = 37
-    Top = 112
+    Top = 144
     Width = 109
     Cancel = True
     Caption = 'Close'
@@ -25,29 +25,32 @@ object FormMain: TFormMain
     Top = 16
     Width = 556
     FilterIndex = 0
+    DefaultExt = '*.sh;*.c;*.cpp;*.h;*.hpp;*.py'
     HideDirectories = False
     ButtonWidth = 23
     NumGlyphs = 1
     MaxLength = 0
     TabOrder = 0
-    OnChange = updateEditDestine
   end
   object editDestine: TFileNameEdit
     Left = 72
     Height = 36
     Top = 56
     Width = 556
+    Filter = '*.md'
     FilterIndex = 0
+    DefaultExt = 'md'
     HideDirectories = False
     ButtonWidth = 23
     NumGlyphs = 1
     MaxLength = 0
     TabOrder = 1
+    OnClick = OnClick
   end
   object btnRun: TButton
     Left = 344
     Height = 37
-    Top = 112
+    Top = 144
     Width = 109
     Caption = 'Run'
     TabOrder = 2
@@ -70,10 +73,17 @@ object FormMain: TFormMain
   object btnAbout: TButton
     Left = 72
     Height = 37
-    Top = 112
+    Top = 144
     Width = 109
     Caption = 'About'
     TabOrder = 4
     OnClick = btnAboutClick
+  end
+  object lblStatus: TLabel
+    Left = 82
+    Height = 19
+    Top = 109
+    Width = 326
+    Caption = 'Choose source and destine directory/filename'
   end
 end

@@ -1,53 +1,69 @@
 #!/usr/bin/env bash
-########################################
-##H>
-##D> <h1 id="top">makeDoc</h1>
 
-########################################
-##D> <table id="description">
-##D><tr><td align=right></td><td></td><td>Export Documentation from taged lines.</td></tr>
-##D><tr><td align=right><b>File</b></td><td>:</td><td>makeDoc.sh</td></tr>
-##D><tr><td align=right><b>Date</b></td><td>:</td><td>2025-10-05</td></tr>
-##D><tr><td align=right><b>Author</b></td><td>:</td><td><a href="mailto:leandrohuff@email.com">Leandro</a></td></tr>
-##D><tr><td align=right><b>Version</b></td><td>:</td><td>2.1.1 / 2025-9-30</td></tr>
-##D><tr><td align=right><b>Copyright</b></td><td>:</td><td>CC01 1.0 Universal</td></tr>
-##D></table>
-##D><br>
-########################################
-##D><b>Note</b>: Changes in this document will be discarded on next build, any changes should be made on source code documentation instead. <br>
+################################################################################
+##D> <a id="makeDoc"></a>
+##D> # makeDoc
 
-########################################
-##D><h2 id="details">Details</h2>
-##D><p>
-##D>Save formatted lines from source code into documentation file. <br>
-##D>Read source code line-by-line and save prefixed lines by tag ??D to file. <br>
-##D>C/C++ source code lines start with tag //D and Bash lines start with tag ##D. <br>
-##D>Only those lines started by tags are exportedd to documentation files. <br>
-##D>Mixed commented lines can co-exist at same source code, one for local documentation purpose and another to be exported to apropriate documentation file. <br>
-##D>All lines are documented using Markdown format, the exported document can be read by an Markdown program reader. <br>
-##D></p>
+################################################################################
+##D>
+##D> |               | Description                             |
+##D> | ------------: | --------------------------------------- |
+##D> |               | Export Documentation from taged lines   | 
+##D> | **File**      | makeDoc.sh                              | 
+##D> | **Author**    | [Leandro](mailto:leandrohuff@email.com) |
+##D> | **Date**      | _2025-10-05_                            | 
+##D> | **Version**   | _2.1.1_ / _2025-9-30_                   | 
+##D> | **Copyright** | CC01 1.0 Universal                      | 
 
-########################################
-##D><h2 id="index">Index</h2>
-##D><table>
-##D><tr><td>            <a href="#top">Top</a>                                      </td><td> </td><td>                                                     </td></tr>
-##D><tr><td>            <a href="#details">Details</a>                              </td><td> </td><td>                                                     </td></tr>
-##D><tr><td>            <a href="#glossary">Glossary</a>                            </td><td> </td><td>                                                     </td></tr>
-##D><tr><td>            <a href="#constants">Constants</a>                          </td><td> </td><td>                                                     </td></tr>
-##D><tr><td>            <a href="#variables">Variables</a>                          </td><td> </td><td>                                                     </td></tr>
-##D><tr><td align=right><a href="#functions">Functions</a>                          </td><td> </td><td>                                                     </td></tr>
-##D><tr><td align=right><a href="#logFail">logFail</a>                              </td><td>:</td><td>Print a failure log message.                         </td></tr>
-##D><tr><td align=right><a href="#unsetVars">unsetVars</a>                          </td><td>:</td><td>Unset global variables.                              </td></tr>
-##D><tr><td align=right><a href="#_exit">_exit</a>                                  </td><td>:</td><td>End log, stop libShell, unset variables and exit.    </td></tr>
-##D><tr><td align=right><a href="#printHelp">printHelp</a>                          </td><td>:</td><td>Print an help message.                               </td></tr>
-##D><tr><td align=right><a href="#printHelp">printHelp</a>                          </td><td>:</td><td>Print an help message.                               </td></tr>
-##D><tr><td align=right><a href="#getTag">getTag</a>                                </td><td>:</td><td>Get tag name from a string until '=' symbol.         </td></tr>
-##D><tr><td align=right><a href="#getValue">getValue</a>                            </td><td>:</td><td>Get tag value from a string after '=' symbol.        </td></tr>
-##D><tr><td align=right><a href="#saveUserConfigToFile">saveUserConfigToFile</a>    </td><td>:</td><td>Save a pre formatted configuration into a filename.  </td></tr>
-##D><tr><td align=right><a href="#loadUserConfigFromFile">loadUserConfigFromFile</a></td><td>:</td><td>Load configuration list from file or a defautl table.</td></tr>
-##D><tr><td align=right><a href="#saveHeaderTo">saveHeaderTo</a>                    </td><td>:</td><td>Save a pre formatted HTML Header into a target file. </td></tr>
-##D><tr><td align=right><a href="#saveFooterTo">saveFooterTo</a>                    </td><td>:</td><td>Save a pre formatted HTML Footer                     </td></tr>
-##D><tr><td align=right><a href="#guiMessageBox">guiMessageBox</a>                  </td><td>:</td><td>Dialog box to show a message and get answer.         </td></tr>
+##D> **Note**: Changes in this document will be discarded on next build,  
+##D> any changes should be made on source code documentation instead.  
+
+################################################################################
+##D> 
+##D> <a id="Details"></a>
+##D>
+##D> Save formatted lines from source code into documentation file.  
+##D> Read source code line-by-line and save prefixed lines by tag ??D to file.  
+##D> C/C++ source code lines start with tag //D and Bash lines start with tag ##D.  
+##D> Only those lines started by tags are exportedd to documentation files. <br>
+##D> Mixed commented lines can co-exist at same source code, one for local  
+##D> documentation purpose and another to be exported to apropriate documentation file.
+##D> All lines are documented using Markdown format, the exported document can be  
+##D>  read by an Markdown program reader.
+
+################################################################################
+##D> 
+##D> <a id="Index"></a>
+##D> ## Index
+##D> 
+##D> | Index                           | Description                                         |
+##D> | :------------------------------ | :-------------------------------------------------- |
+##D> | [Top](#libTemplate)             |                                                     |
+##D> | [Constants](#Constants)         |                                                     |
+##D> | [Variables](#Variables)         |                                                     |
+##D> | [Functions](#Functions)         |                                                     |
+
+##D> | [logFail](#logFail)         | Description                                         |
+##D> | [unsetVars](#unsetVars)         | Description                                         |
+##D> | [_exit](#_exit)         | Description                                         |
+##D> | [printHelp](#printHelp)         | Description                                         |
+##D> | [getTag](#getTag)         | Description                                         |
+##D> | [getValue](#getValue)         | Description                                         |
+##D> | [saveUserConfigToFile](#saveUserConfigToFile)         | Description                                         |
+##D> | [loadUserConfigFromFile](loadUserConfigFromFile) |  |
+##D> | [guiMessageBox](guiMessageBox) |  |
+##D> | []() |  |
+##D> | []() |  |
+##D> | []() |  |
+##D> | []() |  |
+##D> | []() |  |
+##D> | []() |  |
+##D> | []() |  |
+##D> | []() |  |
+##D> | []() |  |
+##D> | []() |  |
+##D> | []() |  |
+
 ##D><tr><td align=right><a href="#guiShowMessage">guiShowMessage</a>                </td><td>:</td><td>Dialog box to show a message.                        </td></tr>
 ##D><tr><td align=right><a href="#loadConfiguration">loadConfiguration</a>          </td><td>:</td><td>Load user configuration values from file.            </td></tr>
 ##D><tr><td align=right><a href="#parseArgs">parseArgs</a>                          </td><td>:</td><td>Parse parameters from command line                   </td></tr>
@@ -95,35 +111,35 @@
 ##D><table>
 ##D><tr><th align=right>Type</th><th align=right>Name</th><th></th><th align=left>Value</th><th align=left>Description</th></tr>
 ##D><tr><td align=right> <i>integer</i>[]</td><td align=right><b>numVERSION</b></td><td>=</td><td>(2 1 1)</td><td>Version Number.</td> </tr>
-declare -a -i -r numVERSION=(2 1 1)
+declare -a -i numVERSION=(2 1 1)
 ##D><tr><td align=right> <i>integer</i>[]</td><td align=right><b>dateVERSION</b></td><td>=</td><td>(2025 9 30)</td><td>Date Version Number.</td></tr>
-declare -a -i -r dateVERSION=(2025 9 30)
+declare -a -i dateVERSION=(2025 9 30)
 ##D><tr><td align=right><i>integer</i></td><td align=right><b>iFILE</b></td><td>=</td><td>0</td><td>Configuration file ID.</td> </tr>
-declare -i -r iFILE=0
+declare -i iFILE=0
 ##D><tr><td align=right><i>integer</i></td><td align=right><b>iUSER_DIR</b></td><td>=</td><td>1</td><td>ID for user directory.</td></tr>
-declare -i -r iUSER_DIR=1
+declare -i iUSER_DIR=1
 ##D><tr><td align=right><i>integer</i></td><td align=right><b>iBASE_DIR</b></td><td>=</td><td>2</td><td>ID for base directory.</td></tr>
-declare -i -r iBASE_DIR=2
+declare -i iBASE_DIR=2
 ##D><tr><td align=right><i>integer</i></td><td align=right><b>iAPP_DIR</b></td><td>=</td><td>3</td><td>ID for base application directory.</td></tr>
-declare -i -r iAPP_DIR=3
+declare -i iAPP_DIR=3
 ##D><tr><td align=right><i>integer</i></td><td align=right><b>iDOC_DIR</b></td><td>=</td><td>4</td><td>ID for base documentation directory.</td></tr>
-declare -i -r iDOC_DIR=4
+declare -i iDOC_DIR=4
 ##D><tr><td align=right><i>integer</i></td><td align=right><b>iICON_FAILURE</b></td><td>=</td><td>5</td><td>ID for Failure icon file.</td></tr>
-declare -i -r iICON_FAILURE=5
+declare -i iICON_FAILURE=5
 ##D><tr><td align=right><i>integer</i></td><td align=right><b>iICON_SUCCESS</b></td><td>=</td><td>6</td><td>ID for Success icon file.</td></tr>
-declare -i -r iICON_SUCCESS=6
+declare -i iICON_SUCCESS=6
 ##D><tr><td align=right><i>integer</i></td><td align=right><b>iICON_NOK</b></td><td>=</td><td>7</td><td>ID for Not Ok icon file.</td></tr>
-declare -i -r iICON_NOK=7
+declare -i iICON_NOK=7
 ##D><tr><td align=right><i>integer</i></td><td align=right><b>iICON_OK</b></td><td>=</td><td>8</td><td>ID for Ok icon file.</td></tr>
-declare -i -r iICON_OK=8
+declare -i iICON_OK=8
 ##D><tr><td align=right><i>integer</i></td><td align=right><b>iLOG_TARGET</b></td><td>=</td><td>9</td><td>ID for log target (screen|file).</td></tr>
-declare -i -r iLOG_TARGET=9
+declare -i iLOG_TARGET=9
 ##D><tr><td align=right><i>integer</i></td><td align=right><b>iLOG_LEVEL</b></td><td>=</td><td>10</td><td>ID for log level.</td></tr>
-declare -i -r iLOG_LEVEL=10
+declare -i iLOG_LEVEL=10
 ##D><tr><td align=right><i>integer</i></td><td align=right><b>iMAX</b></td><td>=</td><td>11</td><td>Number of IDs.</td></tr>
-declare -i -r iMAX=11
+declare -i iMAX=11
 ##D><tr><td align=right><i>integer</i>[]</td><td align=right><b>tableID</b></td><td>=</td><td>[<a href="#tableID"><sup>1</sup></a>]</td><td>IDs table.</td></tr>
-declare -a -r tableID=($iFILE \
+declare -a tableID=($iFILE \
 $iUSER_DIR \
 $iBASE_DIR \
 $iAPP_DIR \
@@ -135,7 +151,7 @@ $iICON_OK \
 $iLOG_TARGET \
 $iLOG_LEVEL)
 ##D><tr><td align=right><i>string</i>[]</td><td align=right><b>tableTAG</b></td><td>=</td><td>[<a href="#tableTAG"><sup>2</sup></a>]</td><td>Tags table.</td></tr>
-declare -a -r tableTAG=(FILE \
+declare -a tableTAG=(FILE \
 USER_DIR \
 BASE_DIR \
 APP_DIR \
@@ -147,7 +163,7 @@ ICON_OK \
 LOG_TARGET \
 LOG_LEVEL)
 ##D><tr><td align=right><i>string</i>[]</td><td align=right><b>tableDEFAULT</b></td><td>=</td><td>[<a href="#tableTAG"><sup>3</sup></a>]</td><td>Default values table.</td></tr>
-declare -a -r tableDEFAULT=(makeDoc.cfg \
+declare -a tableDEFAULT=(makeDoc.cfg \
 \$HOME \
 dev \
 makeDoc \
@@ -158,6 +174,13 @@ icons/nok.png \
 icons/ok.png \
 1 \
 -v)
+
+declare regexLINE="^ *([#']+|[-%\/]{2,}[DBE])>? *"
+declare regexDOC="^ *([#']+|[-%\/]{2,}D)>? *"
+declare regexBEGIN="^ *([#']+|[-%\/]{2,}B)>? *"
+declare regexEND="^ *([#']+|[-%\/]{2,}E)>? *"
+
+
 ##D></table>
 ##D><p id=\"tableID\"><sup>1</sup> =(0 1 2 3 4 5 6 7 8 9 10) </p>
 ##D><p id=\"tableTAG\"><sup>2</sup> =(FILE USER_DIR BASE_DIR APP_DIR DOC_DIR ICON_FAILURE ICON_SUCCESS ICON_NOK ICON_OK LOG_TARGET LOG_LEVEL) </p>
@@ -250,6 +273,7 @@ function unsetVars()
     unset -v title
     unset -v message
     unset -v exitCODE
+    unset -v lib
     return 0
 }
 
@@ -281,8 +305,9 @@ function _exit()
     declare -i code=$( [ -n "$1" ] && echo -n $1 || echo -n 0 )
     logR
     logEnd    || logFail "End log to file."
-    libStop   || logFail "Stop libShell"
-    unsetVars || logFail "Unset local variables"
+    logStop   || logFail "Stop and disable log"
+    logUnsetVars || logFail "Unset log variables"
+    unsetVars || logFail "Unset makeDoc variables"
     exit $code
 }
 
@@ -825,9 +850,11 @@ function parseArgs()
 function runScript()
 {
     declare -i err=0
+    declare -i len
+    declare str=''
 
     loadConfiguration
-    libSetup "${tableCONFIG[$iLOG_LEVEL]}" -l "${tableCONFIG[$iLOG_TARGET]}"
+    logSetup "${tableCONFIG[$iLOG_LEVEL]}" -l "${tableCONFIG[$iLOG_TARGET]}"
     parseArgs "$@" || return 1
 
     logD "-----------------------------------------------"
@@ -936,11 +963,6 @@ function runScript()
         guiShowMessage "$(getFileName "${fileDESTINE}")" "Could not create file!" "${iconFAIL}"
         return 1
     fi
-    # For HTML file, first save a header into documentation file.
-    if [ "$(getExt "${fileDESTINE}")" = "html" ]
-    then
-        saveHeaderTo "$(getName "${fileSOURCE}")" "${fileDESTINE}"
-    fi
     local counter=0
     # Run export documentation procedure.
     while read -e line
@@ -949,33 +971,33 @@ function runScript()
         logNLF "         (${WHITE}$counter${NC}) lines completed."
         # skip empty lines
         [ -n "${line}" ] || continue
-        userMESSAGE=''
-        case "${line:0:4}" in
-        "##B>" | "//B>" | "--B>" | "''B>") enableDOC=true  ; continue ;;
-        "##E>" | "//E>" | "--E>" | "''E>") enableDOC=false ; continue ;;
-        *)  if ! $enableDOC ; then continue ; fi
-            case "${line:0:5}" in
-                "##D> " | "//D> " | "%%D> " | "''D> " | "--D>") printf -v userMESSAGE "%s" "${line:5}" ;;
-                "##M> " | "//M> " | "%%M> " | "''M>"  | "--M>") printf -v userMESSAGE "%s" "$(eval ${line:5})" ;;
-                *)  case "${line:0:4}" in
-                        "##D>"  | "//D>"  | "%%D>"  | "''D>" | "--D>") printf -v userMESSAGE "%s" "${line:4}" ;;
-                        "##M>"  | "//M>"  | "%%M>"  | "''M>" | "--M>") printf -v userMESSAGE "%s" "$(eval ${line:4})" ;;
-                        *) continue ;;
-                    esac
-                    ;;
-            esac
-            ;;
-        esac
-        echo "${userMESSAGE}" >> "${fileDESTINE}"
+
+        str="$(echo -n ${line} | grep -aoP "${regexLINE}")"
+        len=${#str}
+
+        if [ $len -gt 0 ]
+        then
+            if $enableDOC
+            then
+                if echo -n "${line}" | grep -aoP "${regexDOC}" > /dev/null 2>&1
+                then
+                    echo "${line:$len}" >> "${fileDESTINE}"
+                elif echo -n "${line}" | grep -aoP "${regexEND}" > /dev/null 2>&1
+                then
+                    enableDOC=false
+                else
+                    logE "${line}"
+                fi
+            else
+                if echo -n "${line}" | grep -aoP "${regexBEGIN}" > /dev/null 2>&1
+                then
+                    enableDOC=true
+                fi
+            fi
+        fi
     done < "${fileSOURCE}"
     # at the end, print a new line for logNLF "".
     echo
-    # for HTML files, add a footer at the end of documentation file.
-    if [ "$(getExt "${fileDESTINE}")" = "html" ]
-    then
-        saveFooterTo "${fileDESTINE}"
-    fi
-
     return $err
 }
 
@@ -990,9 +1012,14 @@ function runScript()
 ##D><b>logBegin</b> <br>
 ##D><br>
 ##D>[<a href="#top">Top</a>] | [<a href="#index">Index</a>] | [<a href="#bottom">Bottom</a>] <br>
-source libShell.sh || { logFail "Load libShell.sh"       ; _exit 1 ; }
-libInit -v -l 1    || { logFail "Initialize libShell.sh" ; _exit 1 ; }
-logBegin           || { logFail "Initialize Log."        ; _exit 1 ; }
+
+for lib in *.sh
+do
+    source "${lib}" || { logFail "Loading ${lib}" ; _exit 1 ; }
+done
+
+logSetup -v -l 1
+logBegin
 
 ########################################
 ##D><br>

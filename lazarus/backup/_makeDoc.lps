@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="12"/>
+    <BuildModes Active="Default"/>
+    <Units>
+      <Unit>
+        <Filename Value="_makeDoc.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="makeDoc"/>
+        <EditorIndex Value="1"/>
+        <CursorPos Y="19"/>
+        <UsageCount Value="53"/>
+        <Loaded Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="makeDoc.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FormMain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="34"/>
+        <CursorPos X="38" Y="47"/>
+        <UsageCount Value="53"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit>
+      <Unit>
+        <Filename Value="makeDoc.lfm"/>
+        <HasResources Value="True"/>
+        <EditorIndex Value="3"/>
+        <TopLine Value="11"/>
+        <CursorPos X="17" Y="33"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/fpcsrc/3.2.2/rtl/objpas/classes/classesh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="657"/>
+        <CursorPos X="14" Y="670"/>
+        <UsageCount Value="11"/>
+      </Unit>
+      <Unit>
+        <Filename Value="doc/makeDoc.sh2.html"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="377"/>
+        <CursorPos X="5" Y="396"/>
+        <UsageCount Value="13"/>
+        <DefaultSyntaxHighlighter Value="HTML"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/fpcsrc/3.2.2/rtl/objpas/classes/stringl.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="472"/>
+        <CursorPos X="19" Y="492"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/fpcsrc/3.2.2/packages/regexpr/src/regexpr.pas"/>
+        <UnitName Value="RegExpr"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="458"/>
+        <CursorPos X="15" Y="480"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/lazarus/lcl/include/control.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="2833"/>
+        <CursorPos Y="2964"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="doc/makeDoc.sh3.html"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="5" Y="391"/>
+        <UsageCount Value="8"/>
+        <DefaultSyntaxHighlighter Value="HTML"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/lazarus/docs/xml/lcl/dialogs/tryshowmessage.pas"/>
+        <UnitName Value="LazMessage"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/lazarus/docs/xml/lcl/dialogs/trymessagedlg.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="72" Y="6"/>
+        <UsageCount Value="10"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/fpcsrc/3.2.2/rtl/inc/ustrings.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1890"/>
+        <CursorPos X="10" Y="2117"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/fpcsrc/3.2.2/rtl/unix/sysutils.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="640"/>
+        <CursorPos X="10" Y="659"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/fpcsrc/3.2.2/rtl/objpas/sysutils/filutil.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="29"/>
+        <CursorPos X="52" Y="49"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/fpcsrc/3.2.2/rtl/objpas/objpas.pp"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="276"/>
+        <CursorPos X="11" Y="295"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/fpcsrc/3.2.2/rtl/objpas/sysutils/filutilh.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="180"/>
+        <CursorPos X="10" Y="201"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/lazarus/lcl/lcltype.pp"/>
+        <UnitName Value="LCLType"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="3174"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/lazarus/lcl/dialogs.pp"/>
+        <UnitName Value="Dialogs"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1137"/>
+        <CursorPos X="25" Y="1156"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../DzHTMLText/Example/UFrmExample.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="18"/>
+        <CursorPos X="20" Y="10"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../DzHTMLText/Example/UFrmExample.dfm"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="9"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../DzHTMLText/Vcl.DzHTMLText.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="17"/>
+        <CursorPos X="2" Y="36"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="_makeDoc.lpi"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="67"/>
+        <CursorPos X="28" Y="58"/>
+        <UsageCount Value="15"/>
+        <Loaded Value="True"/>
+        <DefaultSyntaxHighlighter Value="XML"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../DzHTMLText/LazDzHTMLText.lpk"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="19"/>
+        <DefaultSyntaxHighlighter Value="XML"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../DzHTMLText/lib/x86_64-linux/LazDzHTMLText.ppu"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="19"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../DzHTMLText/lib/x86_64-linux/Vcl.DHCommon.ppu"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="19"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../DzHTMLText/lib/x86_64-linux/Vcl.DHTokenEngine.ppu"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="19"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../DzHTMLText/lib/x86_64-linux/Vcl.DzHTMLText.ppu"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="19"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../DzHTMLText/lib/x86_64-linux/Vcl.DzHTMLTextReg.ppu"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="19"/>
+        <DefaultSyntaxHighlighter Value="None"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../DzHTMLText/Example/UFrmExample.pas"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="17" Y="6"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="../../DzHTMLText/Vcl.DzHTMLText.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="22"/>
+        <CursorPos X="20" Y="36"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/lazarus/ide/lazarus.pp"/>
+        <UnitName Value="Lazarus"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="128"/>
+        <CursorPos X="40" Y="153"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="makeDoc.pas.html"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="14" Y="6"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="HTML"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/lazarus/lcl/editbtn.pas"/>
+        <UnitName Value="EditBtn"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="391"/>
+        <CursorPos X="14" Y="401"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/lazarus/lcl/extdlgs.pas"/>
+        <UnitName Value="ExtDlgs"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="692"/>
+        <UsageCount Value="9"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/lazarus/lcl/groupededit.pp"/>
+        <UnitName Value="GroupedEdit"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="1026"/>
+        <CursorPos Y="1041"/>
+        <UsageCount Value="11"/>
+      </Unit>
+      <Unit>
+        <Filename Value="/usr/share/lazarus/lcl/include/customform.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="68"/>
+        <CursorPos Y="86"/>
+        <UsageCount Value="10"/>
+      </Unit>
+    </Units>
+    <JumpHistory HistoryIndex="29">
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="416" TopLine="403"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="417" TopLine="403"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="418" TopLine="403"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="419" TopLine="403"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="416" TopLine="403"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="421" Column="11" TopLine="403"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="419" TopLine="403"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="420" TopLine="403"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="421" Column="25" TopLine="405"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="414" TopLine="405"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="419" TopLine="405"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="420" Column="29" TopLine="405"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="421" Column="27" TopLine="405"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="422" Column="28" TopLine="405"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="421" Column="60" TopLine="405"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="425" Column="9" TopLine="405"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="424" Column="27" TopLine="405"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="421" Column="25" TopLine="407"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="425" TopLine="407"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="423" Column="13" TopLine="417"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="358" TopLine="368"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="404" TopLine="336"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="129" Column="27" TopLine="119"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="47" Column="28" TopLine="36"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="107" Column="36" TopLine="107"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="129" Column="27" TopLine="127"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="375" Column="21" TopLine="372"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="376" Column="18" TopLine="372"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="380" Column="28" TopLine="372"/>
+      </Position>
+      <Position>
+        <Filename Value="makeDoc.pas"/>
+        <Caret Line="407" Column="22" TopLine="315"/>
+      </Position>
+    </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes ActiveMode=""/>
+    </RunParams>
+  </ProjectSession>
+  <Debugging>
+    <Watches>
+      <Item>
+        <Expression Value="line"/>
+      </Item>
+      <Item>
+        <Expression Value="strList"/>
+      </Item>
+      <Item>
+        <Expression Value="reDoc"/>
+      </Item>
+      <Item>
+        <Expression Value="editSource.InitialDir"/>
+      </Item>
+      <Item>
+        <Expression Value="docDir"/>
+      </Item>
+      <Item>
+        <Expression Value="currentDir"/>
+      </Item>
+      <Item>
+        <Expression Value="editDestine.InitialDir"/>
+      </Item>
+      <Item>
+        <Expression Value="strFilename"/>
+      </Item>
+      <Item>
+        <Expression Value="strFilename.Strings[indexFilename]"/>
+      </Item>
+      <Item>
+        <Expression Value="strFilename.Count"/>
+      </Item>
+      <Item>
+        <Expression Value="filename"/>
+      </Item>
+      <Item>
+        <Expression Value="editDestine.FileName"/>
+      </Item>
+      <Item>
+        <Expression Value="editDestine.Text"/>
+      </Item>
+    </Watches>
+  </Debugging>
+</CONFIG>

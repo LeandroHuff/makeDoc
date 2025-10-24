@@ -48,7 +48,7 @@ def main(args) -> int:
     outputFilename: str = ""
     flagSaveFooter: bool = False
     flagMakeDoc : bool = True
-    
+
     parser = argparse.ArgumentParser(
         description="Read taged lines documentation from source code and export documentation to output file."
     )
@@ -101,12 +101,10 @@ def main(args) -> int:
     outputFilename = args.output
     debug.log(f"Output file: {outputFilename}")
 
-    padraoRegex: str = r"^ *([#|/|'|%|-]{2}[D|M|B|E|H|F]>?) *"
-    padraoBeginDoc: str = r"^ *([#|/|'|%|-]{2}B>?) *"
-    padraoSaveHeader: str = r"^ *([#|/|'|%|-]{2}H>?) *"
-    padraoDoc: str = r"^ *([#|/|'|%|-]{2}[D|M]>?) *"
-    padraoSaveFooter: str = r"^ *([#|/|'|%|-]{2}F>?) *"
-    padraoEndDoc: str = r"^ *([#|/|'|%|-]{2}E>?) *"
+    padraoRegex: str = r"^ *([#|']+|[/|'|%|-]{2,}[B|D|E])>? *"
+    padraoBeginDoc: str = r"^ *([#|']+|[/|'|%|-]{2,}B>?) *"
+    padraoDoc: str = r"^ *([#|']+|[/|'|%|-]{2,}D>?) *"
+    padraoEndDoc: str = r"^ *([#|']+|[/|'|%|-]{2,}E>?) *"
 
     try:
         with (
@@ -126,45 +124,6 @@ def main(args) -> int:
                     elif re.search(padraoBeginDoc, linhaFile):
                         flagMakeDoc = True
                         debug.info ("Make Doc enabled.")
-                    elif flagMakeDoc and re.search(padraoSaveHeader, linhaFile):
-                        debug.info ("Save Hader detected.")
-                        flagSaveFooter = True
-                        # Save a header
-                        headerStr: str = \
-"""<!DOCTYPE html>
-<html>
-<head>
-    <title>Documentation</title>
-    <style>
-    table {
-        border: hidden;
-        border-collapse: collapse;
-        padding-left: 5px;
-        padding-right: 5px;
-    }
-    th {
-        background-color: #E0E0E0;
-    }
-    </style>
-</head>
-<body>
-
-"""
-                        # save header
-                        outputFile.write(headerStr)
-
-                    # load footer
-                    elif flagMakeDoc and ( flagSaveFooter or re.search(padraoSaveFooter, linhaFile) ):
-                        debug.info ("Save Footer detected.")
-                        footerStr: str = \
-"""
-</body>
-</html>
-"""
-                        # save footer
-                        outputFile.write(footerStr)
-
-
     except FileNotFoundError as err:
         errorCode = 3
         debug.log(f"File not found: {err}")
